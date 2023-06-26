@@ -1,0 +1,12 @@
+@charset "UTF-8";
+
+/******   Connexion   *******/
+
+.block-connection {
+	display: block;
+	text-align: center;
+}
+
+.conteneur-input {
+    margin: 2%;
+}
