@@ -10,6 +10,8 @@ import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import fr.eni.siteEncheres.bo.ArticleVendu;
+
 @Repository
 public class ArticleVenduDaoSqlServerImpl implements ArticleVenduDAO{
 
@@ -26,7 +28,7 @@ public class ArticleVenduDaoSqlServerImpl implements ArticleVenduDAO{
 	private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 	
 	
-	class ArticleVendu implements RowMapper<ArticleVendu> {
+	class ArticleVenduMapper implements RowMapper<ArticleVendu> {
 
 		@Override
 		public ArticleVendu mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -43,7 +45,7 @@ public class ArticleVenduDaoSqlServerImpl implements ArticleVenduDAO{
 			// Récupération id Utilisateur
 			articleVendu.setUtilisateur(utilisateurDAO.read(rs.getInt("no_utilisateur")));
 			
-			//Récupération id Catégorie
+			//Récupération id Catégorie (normal pour l'erreur car DAO incomplete de la categorieDAO).
 			articleVendu.setCategorie(categorieDAO.read(rs.getInt("no_categorie")));
 			
 			return articleVendu;
@@ -52,14 +54,14 @@ public class ArticleVenduDaoSqlServerImpl implements ArticleVenduDAO{
 	}
 
 	@Override
-	public List<fr.eni.siteEncheres.bo.ArticleVendu> findAll() {
+	public List<ArticleVendu> findAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 
 	@Override
-	public fr.eni.siteEncheres.bo.ArticleVendu read(Integer idArticle) {
+	public ArticleVendu read(Integer idArticle) {
 		// TODO Auto-generated method stub
 		return null;
 	}
