@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Pages Liste Enchères connecté</title>
+</head>
+<body>
+	<header>
+		<h1>ENI - Encheres</h1>
+		<nav>
+			<a href="/PageVendreUnArticle">Enchères</a>
+			<a href="/PageVendreUnArticle">Vendre un article</a>
+			<a href="/PageMonProfil">Mon profil</a>
+			<a href="/connexion">Déconnexion</a>
+		</nav>
+	</header>
+	<h2>Liste des enchères</h2>
+	<form action="/PagesListesEncheresConnecte" method="post">
+		<h3>Filtres : </h3>
+		<input type="text" placeholder="🔍 Le nom de l'article">
+		<label>Catégorie :</label>
+		<select name="categorie">
+		<option>Toutes</option>
+		<option>1</option>
+		<option>2</option>
+		</select>
+		<input type="radio" value="achats" name="AchatVente" ><label>Achats</label>
+		<input type="checkbox" name=""><label>enchères ouvertes</label>
+		<input type="checkbox" name=""><label>mes enchères en cours</label>
+		<input type="checkbox" name=""><label>mes enchères remportées</label>
+		<input type="radio" value="venntes" name="AchatVente"><label>Mes ventes</label>
+		<input type="checkbox" name=""><label>mes ventes en cours</label>
+		<input type="checkbox" name=""><label>ventes non débutées</label>
+		<input type="checkbox" name=""><label>ventes terminées</label>
+		<input type="submit" value="Rechercher">	
+	</form>
+	<div>
+		<img alt="photo object en vente" src="">
+		<h3>Titre</h3>
+		<p>Prix :</p>
+		<p>Fin de l'enchère : </p>
+		<p>Vendeur</p>
+	</div>
+</body>
+</html>
