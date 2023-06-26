@@ -3,31 +3,50 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link href="/css/styleflo.css" rel="stylesheet">
 </head>
 <body>
 	<header>
 		<h1>ENI - Encheres</h1>
 	</header>
-	<form action="#" method="post">
-		<div>
-			<label for="pseudo">Pseudo :</label>
-			<input type="text" name="pseudo" id="pseudo" required>
-			<label for="nom">Nom :</label>
-			<input type="text" name="nom" id="nom" required>
-			<label for="Prénom">Prénom :</label>
-			<input type="text" name="prenom" id="prenom" required>
-			<label for="email">Email :</label>
-			<input type="email" name="email" id="email" required>
-			<label for="tel">Téléphonne :</label>
-			<input type="tel" name="tel" id="tel" required>
-			<label for="rue">Rue :</label>
-			<input type="text" name="rue" id="rue" required>
-			<label for="cdp">Code postal :</label>
-			<input type="number" name="cdp" id="cdp" required>
-			<label for="ville">Ville :</label>
-			<input type="text" name="ville" id="ville" required>
-		</div>
-		<input type="button" value="Modifier">
-	</form>
+	<div class="center">
+		<form action="#" method="post" id="form">
+			<div>
+				<label for="pseudo">Pseudo :</label>
+				<input type="text" name="pseudo" id="pseudo" required>
+			</div>
+			<div>
+				<label for="nom">Nom :</label>
+				<input type="text" name="nom" id="nom" required>
+			</div>
+			<div>
+				<label for="Prénom">Prénom :</label>
+				<input type="text" name="prenom" id="prenom" required>			
+			</div>
+			<div>
+				<label for="email">Email :</label>
+				<input type="email" name="email" id="email" required>			
+			</div>
+			<div>
+				<label for="tel">Téléphonne :</label>
+				<input type="tel" name="tel" id="tel" required>
+			</div>
+			<div>
+				<label for="rue">Rue :</label>
+				<input type="text" name="rue" id="rue" required>
+			</div>
+			<div>
+				<label for="cdp">Code postal :</label>
+				<input type="text" name="cdp" id="cdp" required>
+			</div>
+			<div>
+				<label for="ville">Ville :</label>
+				<input type="text" name="ville" id="ville" required>			
+			</div>
+			<div class="button-profil">
+				<input type="button" value="Modifier" class="profil-modifier">
+			</div>	
+		</form>
+	</div>
 </body>
 </html>
