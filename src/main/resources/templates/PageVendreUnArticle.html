@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Nouvelle vente</title>
+<script src="https://kit.fontawesome.com/dc547d252d.js"></script>
 </head>
 <body>
 
@@ -37,6 +38,10 @@
 					<option value="sport&Loisirs">Sport & Loisirs</option>
 				</select>
 				
+				<label for="telechargerImage">Photo de l'article :</label>.
+				<input type="button" value="Télécharger l'image de votre article" onClick="window.location.href='img'"/>
+				
+				
 				<label for="prixArticle">Mise à prix :</label>
 				<input type="number" id="prixArticle"/>
 				
@@ -46,8 +51,6 @@
 				<label for="finEnchere">Fin de l'enchère :</label>
 				<input type="date" id="finEnchere"/>
 				
-				<label for="article">Article :</label>
-				<input type="text" id="article"/>
 			</div>
 		</form>
 	
@@ -71,8 +74,11 @@
 		</div>
 	</main>
 	
-	<i class="fa-solid fa-brake-warning"><span>Par défaut, le retrait est effectué à l'adresse du vendeur</span></i>
 	
-
+	<footer>
+		<p>Par défaut, le retrait est effectué à l'adresse du vendeur</p>
+	</footer>
+	
+	
 </body>
 </html>
