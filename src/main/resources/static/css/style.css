@@ -2,11 +2,47 @@
 
 /******   Connexion   *******/
 
-.block-connection {
+.block-connexion {
 	display: block;
 	text-align: center;
 }
 
 .conteneur-input {
-    margin: 2%;
+       margin: 20px;
+}
+
+#block-conteneur-choix {
+	display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#block-choix {
+    margin: 5px;
+    padding: 5px;
+}
+
+#block-input-connexion {
+	margin: 20px;
+    padding: 15px;
+}
+
+#block-input-connexion input {
+	padding: 10px;
+    margin: 5px;
+}
+
+.block-checkbox {
+	margin: 5px 0;
+}
+
+#liens-inscription {
+    display: flex;
+    margin: 15px;
+    justify-content: center;
+}
+
+#liens-inscription button {
+	display: block;
+    padding: 15px 15px;
 }

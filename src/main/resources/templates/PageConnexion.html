@@ -8,7 +8,7 @@
 <body>
 	<h1>ENI-Enchères</h1>
 
-	<div class="block-connection">
+	<div class="block-connexion">
 		<form action="connexion" method="post">
 			<div class="conteneur-input">
 				<label for="name">Identifiant : </label> 
@@ -19,17 +19,23 @@
 				<input type="password" id="mdp" name="mdp">
 			</div>
 			
-			<input type="submit" name="Connexion">
-			
-			<div id="block-choix">
-				<div id="block-checkbox">
-					<input type="checkbox" name="ssdm" >
-					<label for="ssdm">Se souvenir de moi</label>
+			<div id="block-conteneur-choix">
+				<div id="block-input-connexion">
+					<input type="submit" name="Connexion" value="Connexion">
 				</div>
-				<a href="#">Mot de passe oublier</a>
+				
+				<div id="block-choix">
+					<div class="block-checkbox">
+						<input type="checkbox" name="ssdm" >
+						<label for="ssdm">Se souvenir de moi</label>
+					</div>
+					<div class="block-checkbox">
+						<a href="#">Mot de passe oublier</a>
+					</div>
+				</div>
 			</div>
 			
-			<div>
+			<div id="liens-inscription">
 				<button href="/inscritpion">Créer un compte</button>
 			</div>
 		</form>
