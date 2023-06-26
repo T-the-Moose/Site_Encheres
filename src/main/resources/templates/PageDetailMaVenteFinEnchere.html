@@ -2,51 +2,62 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
+<link href="/css/style.css" rel="stylesheet">
 <title>Detail Ma Fin De Vente</title>
 </head>
 <body>
 
 	<div class="conteneur-block">
-		<div class="img-detail">
-			<img alt="" src="">	
+		<div id="conteneur-img-detail">
+			<img id="img-detail" alt="" src="/img/imagePcTest.jpeg">	
 		</div>
 		
-		<div>
-			<p>A remporté</p>
-			<p>Nom de l'article</p>
+		<div class="conteneur-block-centre">
+			
+			<div id="h3-description">
+				<h3>A remporté</h3>
+			</div>
+			
+			<div class="block-description">
+				<p>Nom de l'article</p>
+			</div>
 			
 			<div class="block-description">		
 				<p class="titre-description">Description :</p>
 				
 				<div class="description">
-					<p>Description 1</p>
-					<p>Description 1</p>
+					<p class="p-description">Description 1</p>
+					<p class="p-description">Description 1</p>
 				</div>
 			</div>
 			
 			<div class="block-description">
-				<p>Meilleur offre :</p>
-				<p>210 pts par jojo</p>
+				<p class="titre-description">Meilleur offre :</p>
+				<p class="description">210 pts par jojo</p>
 			</div>
 			
 			<div class="block-description">
-				<p>Mise a prix :</p>
-				<p>185 points</p>
+				<p class="titre-description">Mise a prix :</p>
+				<p class="description">185 points</p>
 			</div>
 			
 			<div class="block-description">
-				<p>Fin de l'enchère :</p>
-				<p>185 points</p>
+				<p class="titre-description">Fin de l'enchère :</p>
+				<p class="description">185 points</p>
 			</div>
 			
 			<div class="block-description">
-				<p>Retrait :</p>
-				<p>5 rue des Pisons 44000 Nantes</p>
+				<p class="titre-description">Retrait :</p>
+				
+				<div class="description">
+				<p class="p-description">5 rue des Pisons</p>
+				<p class="p-description">44000 Nantes</p>
+				</div>
 			</div>
 			
 			<div class="block-description">
-				<p>Vendeur :</p>
-				<p>NinaJea</p>
+				<p class="titre-description">Vendeur :</p>
+				<p class="description">NinaJea</p>
 			</div>
 			
 			<div class="block-button">

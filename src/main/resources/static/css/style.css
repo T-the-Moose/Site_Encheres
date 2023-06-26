@@ -1,5 +1,10 @@
 @charset "UTF-8";
 
+body {
+	margin: 0;
+	padding: 0;
+}
+
 /******   Connexion   *******/
 
 .block-connexion {
@@ -45,4 +50,67 @@
 #liens-inscription button {
 	display: block;
     padding: 15px 15px;
+}
+
+/******  FIN Connexion   *******/
+
+/******   Detail Fin Vente   *******/
+
+.conteneur-block {
+	display: flex;
+	margin: 2vh;
+    width: 100%;
+}
+
+#conteneur-img-detail {
+	display: block;
+    margin: 2vh;
+    width: 30%;
+}
+
+#img-detail{
+    width: 350px;
+    height: auto;
+    max-width: 350px;
+}
+
+#h3-description {
+    display: flex;
+    justify-content: center;
+}
+
+.titre-description {
+    display: flex;
+    justify-content: flex-start;
+    width: 50%;
+}
+
+.conteneur-block-centre {
+    margin: 2vh;
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+}
+
+.block-description {
+    display: flex;
+    width: 100%;
+}
+
+.description {
+    display: flex;
+    flex-direction: column;
+    align-content: flex-end;
+}
+
+.p-description {
+	margin: 0;
+}
+
+.block-button {
+    margin-top: 5vh;
+}
+
+.block-button button {
+    padding: 1vh;
 }
