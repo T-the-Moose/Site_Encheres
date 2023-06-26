@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Page d'accueil</title>
+</head>
+<body>
+
+	<header>
+		<h1>ENI - Encheres</h1>
+		<nav>
+			<a href="/PageConnexion">S'inscrire - Se connecter</a>
+		</nav>
+	</header>
+
+	<main>
+		<h2>Liste des enchères</h2>
+			<form action="/PageAccueilNonConnecte" method="post">
+				<div>
+					<label for="filtres">Filtres : </label>
+					<input type="search" id="filtres"/>
+				</div>
+				
+				<div>
+				<label for="categories">Catégories : </label>
+				<select name="categories" id="categories">
+					<option value="Toutes">-- Toutes catégorie --</option>
+					<option value="Informatique">Informatique</option>
+					<option value="Ameublement">Ameublement</option>
+					<option value="Vêtement">Vêtement</option>
+					<option value="Sport&Loisirs">Sport & Loisirs</option>
+				</select>
+				</div>
+				
+				<div>
+				<button type="submit">Rechercher</button>
+				</div>
+			</form>
+			
+			<div>
+			Encadré des enchères en cours
+			</div>
+
+	</main>
+
+</body>
+</html>
