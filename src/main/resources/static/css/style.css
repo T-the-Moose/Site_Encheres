@@ -103,6 +103,10 @@ body {
     align-content: flex-end;
 }
 
+.p-description {
+	margin: 0;
+}
+
 .block-button {
     margin-top: 5vh;
 }
