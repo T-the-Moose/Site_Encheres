@@ -2,21 +2,25 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Création de votre compte</title>
-<script src="https://kit.fontawesome.com/dc547d252d.js"></script>
+<title>Modifier mon profil</title>
 </head>
 <body>
 
 	<header>
 		<h1>ENI - Enchères</h1>
+		<nav>
+			<a href="/PageVendreUnArticle">Enchères</a>
+			<a href="/PageVendreUnArticle">Vendre un article</a>
+			<a href="/PageMonProfil">Mon profil</a>
+			<a href="/connexion">Déconnexion</a>
+		</nav>
 	</header>
 	
 	<main>
-		<h2>Mon profil</h2>
-		
-		<form action="/PageCreerCompte" method="POST">
-		
-			<div class="creationProfil">
+	<h2>Mon profil</h2>
+	
+		<form action="/PageModifierMonProfil" method="POST">
+			<div class="modifierProfil">
 				<label for="pseudo">Pseudo : </label>
 				<input type="text" id="creationPseudo"/>
 				
@@ -41,18 +45,23 @@
 				<label for="ville">Ville </label>
 				<input type="text" id="creationVille"/>
 				
-				<label for="motDePasse">Mot de Passe : </label>
+				<label for="motDePasse">Mot de Passe actuel : </label>
 				<input type="text" id="creationMDP"/>
+				
+				<label for="nouveauMotDePasse">Nouveau mot de Passe : </label>
+				<input type="text" id="nouveauMDP"/>
 				
 				<label for="confMDP"> Confirmation Mot de Passe </label>
 				<input type="text" id="creationConfMDP"/>
 				
-				<button type="submit">Créer</button>
-				<button type="reset">Annuler</button>
+				<p>Crédit : Nombre de crédit utilisateur si on à le temps <p>
+				
+				<button type="submit">Enregistrer</button>
+				<button type="submit">Supprimer mon compte</button>
 			</div>
 		</form>
-		
 	</main>
+
 
 </body>
 </html>
