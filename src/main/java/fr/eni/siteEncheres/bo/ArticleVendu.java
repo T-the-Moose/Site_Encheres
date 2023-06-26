@@ -19,6 +19,22 @@ public class ArticleVendu {
 	public ArticleVendu() {
 	}
 
+	// Constructeur sans étatVente
+	public ArticleVendu(Integer idArticle, String nomArticle, String description, LocalDate dateDebutEncheres,
+			LocalDate dateFinEncheres, Integer miseAPrix, Integer prixVente, Utilisateur utilisateur,
+			Categorie categorie) {
+		super();
+		this.idArticle = idArticle;
+		this.nomArticle = nomArticle;
+		this.description = description;
+		this.dateDebutEncheres = dateDebutEncheres;
+		this.dateFinEncheres = dateFinEncheres;
+		this.miseAPrix = miseAPrix;
+		this.prixVente = prixVente;
+		this.utilisateur = utilisateur;
+		this.categorie = categorie;
+	}
+	
 	public ArticleVendu(Integer idArticle, String nomArticle, String description, LocalDate dateDebutEncheres,
 			LocalDate dateFinEncheres, Integer miseAPrix, Integer prixVente, boolean etatVente, Utilisateur utilisateur,
 			Categorie categorie) {
