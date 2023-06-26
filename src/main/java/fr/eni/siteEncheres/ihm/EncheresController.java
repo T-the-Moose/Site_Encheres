@@ -8,7 +8,7 @@ public class EncheresController {
 	
 	@GetMapping({"/", "/accueil"})
 	public String afficherAccueil() {
-		return "PagesAccueilNonConnecte";
+		return "PageAccueilNonConnecte";
 	}
 	
 	@GetMapping("/connexion")
@@ -23,7 +23,7 @@ public class EncheresController {
 	
 	@GetMapping("/encheres")
 	public String afficherPageEncheres() {
-		return "PageListeEncheresConnecte";
+		return "PagesListeEncheresConnecte";
 	}
 	
 	@GetMapping("/liste-encheres/mes-ventes")

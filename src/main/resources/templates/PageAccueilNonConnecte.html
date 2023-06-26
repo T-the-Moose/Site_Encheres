@@ -1,23 +1,25 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>Page d'accueil</title>
+<script src="https://kit.fontawesome.com/dc547d252d.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
 	<header>
 		<h1>ENI - Encheres</h1>
 		<nav>
-			<a href="/PageConnexion">S'inscrire - Se connecter</a>
+			<a href="/connexion">S'inscrire - Se connecter</a>
 		</nav>
 	</header>
 
 	<main>
 		<h2>Liste des enchères</h2>
-			<form action="/PageAccueilNonConnecte" method="post">
+			<form action="/PageAccueilNonConnecte" method="POST">
 				<div>
 					<label for="filtres">Filtres : </label>
+					<i class="fa-solid fa-magnifying-glass"></i>
 					<input type="search" id="filtres"/>
 				</div>
 				
