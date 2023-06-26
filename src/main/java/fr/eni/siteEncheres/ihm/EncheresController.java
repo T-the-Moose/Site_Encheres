@@ -23,7 +23,7 @@ public class EncheresController {
 	
 	@GetMapping("/encheres")
 	public String afficherPageEncheres() {
-		return "PageListeEncheresConnecte";
+		return "PagesListeEncheresConnecte";
 	}
 	
 	@GetMapping("/liste-encheres/mes-ventes")
