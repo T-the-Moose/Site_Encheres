@@ -38,7 +38,7 @@ public class EncheresController {
 	
 	@GetMapping("/vendre")
 	public String afficherPageVendre() {
-		return "PageVendreUnActicle";
+		return "PageVendreUnArticle";
 	}
 	
 	@GetMapping("/vendre/modif")
