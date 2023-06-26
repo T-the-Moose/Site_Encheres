@@ -1,0 +1,34 @@
+@charset "UTF-8";
+
+.center{
+	max-width: 1024px;
+	margin-left: auto; 
+	margin-right: auto;	
+}
+
+
+#form{
+	max-width: 400px;
+	margin-left: auto; 
+	margin-right: auto;
+	display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+div{
+	margin-top: 1vh;
+}
+input{
+	width: 300px;
+}
+.modifier{
+	width: 100px;
+}
+.button-profil{
+    display: block;
+    margin-left: 200px;
+    margin-right: auto;	
+}
+.profil-modifier{
+	width: 100px;
+}
