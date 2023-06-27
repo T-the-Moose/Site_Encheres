@@ -3,37 +3,75 @@
 <head>
 <meta charset="UTF-8">
 <title>Pages Liste Enchères connecté</title>
+<link href="/css/styleflo.css" rel="stylesheet">
 </head>
 <body>
 	<div data-th-replace="~{fragments/header :: header}"></div>
-	<h2>Liste des enchères</h2>
-	<form action="/PagesListesEncheresConnecte" method="post">
-		<h3>Filtres : </h3>
-		<input type="text" placeholder="🔍 Le nom de l'article">
-		<label>Catégorie :</label>
-		<select name="categories">
-			<option value="Toutes">-- Toutes catégorie --</option>
-			<option value="Informatique">Informatique</option>
-			<option value="Ameublement">Ameublement</option>
-			<option value="Vêtement">Vêtement</option>
-			<option value="Sport&Loisirs">Sport & Loisirs</option>
-		</select>
-		<input type="radio" value="achats" name="AchatVente" ><label>Achats</label>
-		<input type="checkbox" name=""><label>enchères ouvertes</label>
-		<input type="checkbox" name=""><label>mes enchères en cours</label>
-		<input type="checkbox" name=""><label>mes enchères remportées</label>
-		<input type="radio" value="venntes" name="AchatVente"><label>Mes ventes</label>
-		<input type="checkbox" name=""><label>mes ventes en cours</label>
-		<input type="checkbox" name=""><label>ventes non débutées</label>
-		<input type="checkbox" name=""><label>ventes terminées</label>
-		<input type="submit" value="Rechercher">	
+		<h2 class="h2_accueil">Liste des enchères</h2>
+		<form action="/PagesListesEncheresConnecte" method="post" class="form_accueil">
+			<div class="gauche_accueil">
+				<div class="div_label_filtre_accueil">
+					<label class="label_filtre_accueil">Filtres : </label>
+					<input type="text" id="filtres" placeholder="🔍 Le nom de l'article">
+				</div>
+				<div class="div_label_categorie_accueil" >
+					<label for="categories">Catégorie :</label>
+					<select id="categories" class="categorie_accueil">
+						<option value="Toutes">-- Toutes catégorie --</option>
+						<option value="Informatique">Informatique</option>
+						<option value="Ameublement">Ameublement</option>
+						<option value="Vêtement">Vêtement</option>
+						<option value="Sport&Loisirs">Sport & Loisirs</option>
+					</select>
+				</div>
+				<div class="general_radio_enchere">
+					<div class="radio_enchere">
+						<input type="radio" value="achats" name="AchatVente" ><label>Achats</label>
+						<div class="checkbox_enchere">
+							<div class="checkbox_enligne">
+								<input type="checkbox" name=""><label>enchères ouvertes</label>
+							</div>
+							<div class="checkbox_enligne">
+								<input type="checkbox" name=""><label>mes enchères en cours</label>
+							</div>
+							<div class="checkbox_enligne">
+								<input type="checkbox" name=""><label>mes enchères remportées</label>
+							</div>
+						</div>
+					</div>
+					<div class="radio_enchere">	
+						<input type="radio" value="venntes" name="AchatVente"><label>Mes ventes</label>
+						<div class="checkbox_enchere">
+							<div class="checkbox_enligne">
+								<input type="checkbox" name=""><label>mes ventes en cours</label>
+							</div>
+							<div class="checkbox_enligne">
+								<input type="checkbox" name=""><label>ventes non débutées</label>
+							</div>
+							<div class="checkbox_enligne">
+								<input type="checkbox" name=""><label>ventes terminées</label>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>				
+		<div class="rechercher_accueil">
+			<button type="submit" class="button_rechercher_accueil">Rechercher</button>
+		</div>
 	</form>
-	<div>
-		<img alt="photo object en vente" src="">
-		<h3>Titre</h3>
-		<p>Prix :</p>
-		<p>Fin de l'enchère : </p>
-		<p>Vendeur</p>
+	
+	<div class="listes_accueil">
+		<div class="card_accueil">
+			<div class="img_card_accueil">
+				<img alt="" src="/img/imagePcTest.jpeg" class="img_accueil">
+			</div>
+			<div class="description_accueil">	
+			<h3>Titre</h3>
+			<p>Prix :</p>
+			<p>Fin de l'enchère : </p>
+			<p>Vendeur</p>
+			</div>
+		</div>
 	</div>
 </body>
 </html>

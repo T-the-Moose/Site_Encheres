@@ -1,60 +1,30 @@
 
-/*Page accueil*/
-
-.div_header{
-	display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 1vh;
-	}
-
-.h2_accueil{
-	display: flex;
-	justify-content: center;
+/* pages listes enchéres connecté */
+.div_label_filtre_accueil input{
+	border-radius: 1vh;
 }
-.form_accueil{
-	display: flex;
-	align-items: center;
+.general_nav a{
+	margin-right: 1.5vh;
 }
-.form_accueil label{
+.general_radio_enchere{
+	display: flex;
+	width: 100%;
+}
+.radio_enchere{
+	width: 50%;
+	margin-top: 1vh;
 	margin-bottom: 1vh;
 }
-.gauche_accueil{
-	margin: 1vh;
-	margin-left:2vh;
-	margin-bottom: 0;
+.checkbox_enchere{
+	margin-bottom: 1vh;
+	margin-top: 1vh;
+	margin-left: 3vh;	
 }
-.div_label_filtre_accueil {
-    margin: 1vh;
-    display: flex;
-    flex-direction: column;
+.checkbox_enchere input {
+	display:flex;
 }
-.div_label_categorie_accueil{
-	margin: 1vh;
-}
-.button_rechercher_accueil{
-	width: 30vh;
-	height: 5vh;
-	margin-left: 5vh;
-}
-.filtre_accueil{
-	width: 100%;
-	margin-right: 10vh;
-}
-.categorie_accueil{
-	width: 25vh;
-}
-.listes_accueil{
-	width: 100%;
-}
-.card_accueil{
-	border: 1px black solid;
-	border-radius: 15px;
-	margin: 1.5vh;
-	width: 50%;
+.checkbox_enligne{
 	display: flex;
+    align-items: flex-start;
 }
-.img_accueil{
-	width: 15vh;
-	margin: 1vh;
-}
+
