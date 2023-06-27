@@ -118,7 +118,14 @@ body {
 
 /******  FIN Detail Fin Vente   *******/
 
-/******   Detail Fin Vente   *******/
 
+/******  Inscription   *******/
+
+#h2-creation {
+	display: flex;
+    justify-content: center;
+}
+
+/******  FIN Inscription   *******/
 
 

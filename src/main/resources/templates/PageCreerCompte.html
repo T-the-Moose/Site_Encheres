@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
+<link href="/css/style.css" rel="stylesheet">
 <title>Création de votre compte</title>
 <script src="https://kit.fontawesome.com/dc547d252d.js"></script>
 </head>
@@ -12,43 +13,65 @@
 	</header>
 	
 	<main>
-		<h2>Mon profil</h2>
+		<h2 id="h2-creation">Mon profil</h2>
 		
 		<form action="/PageCreerCompte" method="POST">
 		
 			<div class="creationProfil">
-				<label for="pseudo">Pseudo : </label>
-				<input type="text" id="creationPseudo"/>
+				<div class="block-infos-creation">
+					<div class="infos-creation">
+						<label for="pseudo">Pseudo : </label>
+						<input type="text" id="creationPseudo"/>
+					</div>
+					<div class="infos-creation">
+						<label for="prenom">Prénom : </label>
+						<input type="text" id="creationPrenom"/>
+					</div>
+					<div class="infos-creation">
+						<label for="telephone">Téléphone : </label>
+						<input type="text" id="creationTelephone"/>
+					</div>
+					<div class="infos-creation">
+						<label for="codePostal">Code Postal : </label>
+						<input type="text" id="creationCP"/>
+					</div>
+					<div class="infos-creation">
+						<label for="motDePasse">Mot de Passe : </label>
+						<input type="text" id="creationMDP"/>
+					</div>
+				</div>
 				
-				<label for="nom">Nom  :</label>
-				<input type="text" id="creationNom"/>
+				<div class="block-infos-creation">
+					<div class="infos-creation">
+						<label for="nom">Nom  :</label>
+						<input type="text" id="creationNom"/>
+					</div>
+					<div class="infos-creation">
+						<label for="email">Email : </label>
+						<input type="email" id="creationEmail"/>					
+					</div>
+					<div class="infos-creation">
+						<label for="rue">Rue : </label>
+						<input type="text" id="creationRue"/>					
+					</div>
+					<div class="infos-creation">
+						<label for="ville">Ville </label>
+						<input type="text" id="creationVille"/>					
+					</div>
+					<div class="infos-creation">
+						<label for="confMDP"> Confirmation Mot de Passe </label>
+						<input type="text" id="creationConfMDP"/>
+					</div>
+				</div>
 				
-				<label for="prenom">Prénom : </label>
-				<input type="text" id="creationPrenom"/>
-				
-				<label for="email">Email : </label>
-				<input type="email" id="creationEmail"/>
-				
-				<label for="telephone">Téléphone : </label>
-				<input type="text" id="creationTelephone"/>
-				
-				<label for="rue">Rue : </label>
-				<input type="text" id="creationRue"/>
-				
-				<label for="codePostal">Code Postal : </label>
-				<input type="text" id="creationCP"/>
-				
-				<label for="ville">Ville </label>
-				<input type="text" id="creationVille"/>
-				
-				<label for="motDePasse">Mot de Passe : </label>
-				<input type="text" id="creationMDP"/>
-				
-				<label for="confMDP"> Confirmation Mot de Passe </label>
-				<input type="text" id="creationConfMDP"/>
-				
-				<button type="submit">Créer</button>
-				<button type="reset">Annuler</button>
+				<div class="block-creation-choix">
+					<div class="creation-choix">
+						<button type="submit">Créer</button>
+					</div>
+					<div class="creation-choix">
+						<button type="reset">Annuler</button>
+					</div>
+				</div>
 			</div>
 		</form>
 		
