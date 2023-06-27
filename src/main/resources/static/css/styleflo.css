@@ -1,0 +1,29 @@
+/* pages listes enchéres connecté */
+.div_label_filtre_accueil input{
+	border-radius: 1vh;
+}
+.general_nav a{
+	margin-right: 1.5vh;
+}
+.general_radio_enchere{
+	display: flex;
+	width: 100%;
+}
+.radio_enchere{
+	width: 50%;
+	margin-top: 1vh;
+	margin-bottom: 1vh;
+}
+.checkbox_enchere{
+	margin-bottom: 1vh;
+	margin-top: 1vh;
+	margin-left: 3vh;	
+}
+.checkbox_enchere input {
+	display:flex;
+}
+.checkbox_enligne{
+	display: flex;
+    align-items: flex-start;
+}
+
