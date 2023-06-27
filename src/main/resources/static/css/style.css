@@ -263,6 +263,7 @@ body {
 	margin: 1vh;
 	margin-left:2vh;
 	margin-bottom: 0;
+	width: 40%;
 }
 .div_label_filtre_accueil {
     margin: 1vh;
@@ -300,3 +301,13 @@ body {
 }
 
 /******   FIN Page accueil     *******/
+
+/******   Page Modif profil     *******/
+
+.block-infos-creation-credit {
+    display: flex;
+    justify-content: center;
+    margin: 2vh;
+}
+
+/******   FIN Page Modif profil    *******/
