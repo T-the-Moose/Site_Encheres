@@ -33,7 +33,7 @@ public class Utilisateur {
 		this.ville = ville;
 		this.credit = credit;
 	}
-
+	
 	public Utilisateur(Integer idUtilisateur, String pseudo, String nom, String prenom, String email, String telephone,
 			String rue, String codePostal, String ville, String motDePasse, Integer credit, boolean administrateur) {
 		this.idUtilisateur = idUtilisateur;
@@ -50,7 +50,6 @@ public class Utilisateur {
 		this.administrateur = administrateur;
 	}
 
-	
 	public Integer getIdUtilisateur() {
 		return idUtilisateur;
 	}
