@@ -313,6 +313,7 @@ body {
 /******   FIN Page Modif profil    *******/
 
 /******   Pages listes enchéres connecté    *******/
+
 .div_label_filtre_accueil input{
 	border-radius: 1vh;
 }
@@ -340,4 +341,5 @@ body {
 	display: flex;
     align-items: flex-start;
 }
+
 /******     FIN Pages listes enchéres connecté    *******/
