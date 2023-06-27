@@ -4,6 +4,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.Customizer;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.User;
@@ -12,9 +13,11 @@ import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
+//@EnableMethodSecurity
 public class SecurityConfig {
 
 	@Bean
@@ -22,7 +25,7 @@ public class SecurityConfig {
 		http.authorizeHttpRequests(auth -> {
 			auth
 //					//Permettre aux visiteurs d'accéder à la liste des films
-//					.requestMatchers(HttpMethod.GET, "/films").permitAll()
+					.requestMatchers(HttpMethod.GET, "/profil").authenticated()
 //					//Permettre aux visiteurs d'accéder au détail d'un film
 //					.requestMatchers(HttpMethod.GET, "/films/film").permitAll()	
 //					//Permettre aux visiteurs d'accéder au détail d'un film
@@ -38,24 +41,24 @@ public class SecurityConfig {
 					.anyRequest().permitAll();
 		});
 		
-		//formulaire de connexion par défaut
-		http.formLogin(Customizer.withDefaults());
+//		//formulaire de connexion par défaut
+//		http.formLogin(Customizer.withDefaults());
 
 		
 		// Customiser le formulaire
-//			http.formLogin(form -> {
-//				form.loginPage("/login").permitAll();
-//				form.defaultSuccessUrl("/session").permitAll();
-//			});
+			http.formLogin(form -> {
+				form.loginPage("/connexion").permitAll();
+				form.defaultSuccessUrl("/encheres").permitAll();
+			});
 
 		// /logout --> vider la session et le contexte de sécurité
-//			http.logout(logout -> 
-//					logout
-//					.invalidateHttpSession(true)
-//					.clearAuthentication(true)
-//					.deleteCookies("JSESSIONID")
-//					.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-//					.logoutSuccessUrl("/").permitAll());
+			http.logout(logout -> 
+					logout
+					.invalidateHttpSession(true)
+					.clearAuthentication(true)
+					.deleteCookies("JSESSIONID")
+					.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+					.logoutSuccessUrl("/").permitAll());
 
 		return http.build();
 
