@@ -238,3 +238,65 @@ body {
 }
 
 /******   FIN Vendre un article   *******/
+
+/******    Page accueil     *******/
+
+.div_header{
+	display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1vh;
+	}
+
+.h2_accueil{
+	display: flex;
+	justify-content: center;
+}
+.form_accueil{
+	display: flex;
+	align-items: center;
+}
+.form_accueil label{
+	margin-bottom: 1vh;
+}
+.gauche_accueil{
+	margin: 1vh;
+	margin-left:2vh;
+	margin-bottom: 0;
+}
+.div_label_filtre_accueil {
+    margin: 1vh;
+    display: flex;
+    flex-direction: column;
+}
+.div_label_categorie_accueil{
+	margin: 1vh;
+}
+.button_rechercher_accueil{
+	width: 30vh;
+	height: 5vh;
+	margin-left: 5vh;
+}
+.filtre_accueil{
+	width: 100%;
+	margin-right: 10vh;
+}
+.categorie_accueil{
+	width: 25vh;
+}
+.listes_accueil{
+	width: 100%;
+}
+.card_accueil{
+	border: 1px black solid;
+	border-radius: 15px;
+	margin: 1.5vh;
+	width: 50%;
+	display: flex;
+}
+.img_accueil{
+	width: 15vh;
+	margin: 1vh;
+}
+
+/******   FIN Page accueil     *******/
