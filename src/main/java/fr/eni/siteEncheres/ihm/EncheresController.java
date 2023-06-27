@@ -67,7 +67,7 @@ public class EncheresController {
 	@GetMapping("/profil")
 	public String afficherPageProfil(Integer idUtilisateur, Model modele) {
 		
-		Utilisateur utilisateur = utilisateurService.findById(idUtilisateur);
+		Utilisateur utilisateur = utilisateurService.findById(2);
 		 modele.addAttribute("utilisateur", utilisateur);
 		
 		return "PageMonProfil";

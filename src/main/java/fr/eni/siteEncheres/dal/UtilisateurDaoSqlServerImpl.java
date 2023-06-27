@@ -17,7 +17,7 @@ import fr.eni.siteEncheres.bo.Utilisateur;
 public class UtilisateurDaoSqlServerImpl implements UtilisateurDAO {
 	
 	private final static String SELECT_ALL = "SELECT no_utilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, ville, credit  FROM UTILISATEURS";
-	private final static String FIND_BY_ID = "SELECT no_utilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, ville, credit FROM UTILISATEURS WHERE no_utilisateur=:no_utilisateur";
+	private final static String FIND_BY_ID = "SELECT no_utilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, ville, credit FROM UTILISATEURS WHERE no_utilisateur=?";
 	
 	@Autowired
 	private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
@@ -54,7 +54,9 @@ public class UtilisateurDaoSqlServerImpl implements UtilisateurDAO {
 	    
 	    System.out.println("L id de l uilisateur est " + idUtilisateur);
 	    
-		return (Utilisateur) t.getJdbcOperations().query(FIND_BY_ID, new UtilisateurMapper(), idUtilisateur );
+	    Utilisateur utilisateur = t.getJdbcOperations().queryForObject(FIND_BY_ID, new UtilisateurMapper(), idUtilisateur );
+	    
+		return utilisateur;
 	}
 	
 	
