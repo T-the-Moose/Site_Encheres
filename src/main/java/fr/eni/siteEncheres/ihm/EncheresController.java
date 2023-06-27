@@ -78,6 +78,11 @@ public class EncheresController {
 		return "PageVendreUnArticle";
 	}
 	
+	@GetMapping("/profil/modifier")
+	public String afficherPageProfilModifier() {
+		return "PageModifierMonProfil";
+	}
+	
 	@GetMapping("/vendre/modif")
 	public String afficherPageEnchereNonCommencee() {
 		return "PageEnchereNonCommencee";

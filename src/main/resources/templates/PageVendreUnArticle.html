@@ -2,77 +2,97 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
+<link href="/css/style.css" rel="stylesheet">
 <title>Nouvelle vente</title>
 <script src="https://kit.fontawesome.com/dc547d252d.js"></script>
 </head>
 <body>
-<div data-th-replace="~{fragments/header :: header}"></div>
-	
-		<h1>ENI - Enchères</h1>
-		
+
+	<div data-th-replace="~{fragments/header :: header}"></div>
 	
 	<main>
-		<h2>Nouvelle vente</h2>
-		<img src="" alt="">
-		
-		<form action="/PageVendreUnArticle" method="POST">
-			<div>
-				<label for="article">Article :</label>
-				<input type="text" id="article"/>
-				
-				<label for="article">Description :</label>
-				<input type="text" id="descriptionArticle"/>
-				
-				<label for="categorie">Catégorie :</label>
-					<select name="categories" id="categories">
-					<option value="choisirCategorie">-- Choisir une catégorie --</option>
-					<option value="informatique">Informatique</option>
-					<option value="ameublement">Ameublement</option>
-					<option value="vetement">Vêtement</option>
-					<option value="sport&Loisirs">Sport & Loisirs</option>
-				</select>
-				
-				<label for="telechargerImage">Photo de l'article :</label>.
-				<input type="button" value="Télécharger l'image de votre article" onClick="window.location.href='img'"/>
-				
-				
-				<label for="prixArticle">Mise à prix :</label>
-				<input type="number" id="prixArticle"/>
-				
-				<label for="debutEnchere">Début de l'enchère :</label>
-				<input type="date" id="debutEnchere"/>
-				
-				<label for="finEnchere">Fin de l'enchère :</label>
-				<input type="date" id="finEnchere"/>
-				
+		<div class="conteneur-block-articleavendre">
+			<div id="conteneur-img-detail">
+				<img id="img-detail" alt="" src="/img/imagePcTest.jpeg">	
 			</div>
-		</form>
-	
-		<fieldset>
-			<legend>Retrait</legend>
-				<form>
-					<label for="rue">Rue :</label>
-					<input type="text" id="rueNouvelleArticle"/>
-					
-					<label for="codePostal">Code postal :</label>
-					<input type="text" id="codePostalNouvelArticle"/>
-					
-					<label for="ville">Ville :</label>
-					<input type="text" id="villeNouvelArticle"/>
+			<div class="conteneur-block-centre-vendre">
+				<div class="h2-vendre">
+					<h2>Nouvelle vente</h2>
+				</div>
+				
+				<form class="block-detail-vendre" action="/PageVendreUnArticle" method="POST">
+					<div class="block-conteneur-infos-vendre">
+						<div class="infos-vendre">
+							<label class="titre-description" for="article">Article :</label>
+							<input class="description-vendre" type="text" id="article"/>
+						</div>
+						
+						<div class="infos-vendre">
+							<label class="titre-description" for="article">Description :</label>
+							<textarea class="description-vendre" id="descriptionArticle"/></textarea>
+						</div>
+						
+						<div class="infos-vendre">
+							<label class="titre-description" for="categorie">Catégorie :</label>
+								<select name="categories" id="categories">
+								<option value="choisirCategorie">-- Choisir une catégorie --</option>
+								<option value="informatique">Informatique</option>
+								<option value="ameublement">Ameublement</option>
+								<option value="vetement">Vêtement</option>
+								<option value="sport&Loisirs">Sport & Loisirs</option>
+							</select>
+						</div>
+						
+						<div class="infos-vendre">
+							<label class="titre-description" for="telechargerImage">Photo de l'article :</label>
+							<input class="description-vendre" type="file"/>
+						</div>			
+						
+						<div class="infos-vendre">
+							<label class="titre-description" for="prixArticle">Mise à prix :</label>
+							<input class="description-vendre" type="number" id="prixArticle"/>
+						</div>				
+						
+						<div class="infos-vendre">
+							<label class="titre-description" for="debutEnchere">Début de l'enchère :</label>
+							<input class="description-vendre" type="date" id="debutEnchere"/>
+						</div>		
+						
+						<div class="infos-vendre">
+							<label  class="titre-description" for="finEnchere">Fin de l'enchère :</label>
+							<input  class="description-vendre" type="date" id="finEnchere"/>
+						</div>
+						
+					</div>
 				</form>
-		</fieldset>
-
-		<div>
-		<button type="submit">Enregistrer</button>
-		<button type="reset">Annuler</button>
+				
+				<fieldset class="block-detail-vendre">
+				<legend>Retrait</legend>
+					<form>			
+						<div class="infos-vendre">
+							<label class="titre-description" for="rue">Rue :</label>
+							<input class="description-vendre" type="text" id="rueNouvelleArticle"/>
+						</div>
+						
+						<div class="infos-vendre">
+							<label class="titre-description" for="codePostal">Code postal :</label>
+							<input class="description-vendre" type="text" id="codePostalNouvelArticle"/>
+						</div>
+						
+						<div class="infos-vendre">
+							<label class="titre-description" for="ville">Ville :</label>
+							<input class="description-vendre" type="text" id="villeNouvelArticle"/>
+						</div>
+					</form>
+				</fieldset>
+				
+				<div class="boutton-vendre">
+					<button class="boutton-vendre-choix" type="submit">Enregistrer</button>
+					<button class="boutton-vendre-choix" type="reset">Annuler</button>
+				</div>
+			</div>
 		</div>
 	</main>
-	
-	
-	<footer>
-		<p>Par défaut, le retrait est effectué à l'adresse du vendeur</p>
-	</footer>
-	
-	
+
 </body>
 </html>

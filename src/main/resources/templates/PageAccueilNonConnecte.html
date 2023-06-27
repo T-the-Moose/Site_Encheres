@@ -3,29 +3,31 @@
 <head>
 <meta charset="UTF-8">
 <title>Page d'accueil</title>
-<script src="https://kit.fontawesome.com/dc547d252d.js"></script>
+<link href="/css/styleflo.css" rel="stylesheet">
 </head>
 <body>
 
 	<header>
-		<h1>ENI - Enchères</h1>
-		<nav>
-			<a href="/connexion">S'inscrire - Se connecter</a>
-		</nav>
+		<div class="div_header">
+			<h1 class="titre_nav_accueil">ENI - Enchères</h1>
+			<nav class="nav_accueil">
+				<a href="/connexion">S'inscrire - Se connecter</a>
+			</nav>
+		</div>
 	</header>
 
 	<main>
-		<h2>Liste des enchères</h2>
-			<form action="/PageAccueilNonConnecte" method="POST">
-				<div>
-					<label for="filtres">Filtres : </label>
-					<i class="fa-solid fa-magnifying-glass"></i>
-					<input type="search" id="filtres"/>
+		<h2 class="h2_accueil">Liste des enchères</h2>
+			<form action="/PageAccueilNonConnecte" method="POST" class="form_accueil">
+			<div class="gauche_accueil">
+				<div class="div_label_filtre_accueil">
+					<label for="filtres" class="label_filtre_accueil">Filtres : </label>
+					<input type="search" id="filtres" placeholder="🔍 Le nom de l'article contient" class="filtre_accueil"/>
 				</div>
 				
-				<div>
+				<div class="div_label_categorie_accueil">
 				<label for="categories">Catégories : </label>
-				<select name="categories" id="categories">
+				<select name="categories" id="categories" class="categorie_accueil">
 					<option value="Toutes">-- Toutes catégorie --</option>
 					<option value="Informatique">Informatique</option>
 					<option value="Ameublement">Ameublement</option>
@@ -33,19 +35,27 @@
 					<option value="Sport&Loisirs">Sport & Loisirs</option>
 				</select>
 				</div>
-				
-				<div>
-				<button type="submit">Rechercher</button>
-				</div>
-			</form>
-			
-			<div>
-			<p>Encadré des enchères en cours</p>
-			<p>Info du produit</p>
-			<p>Prix du produit</p>
-			<p>Fin de l'enchère : date</p>
-			<p>Vendeur</p>
+			</div >
+			<div class="rechercher_accueil">
+				<button type="submit" class="button_rechercher_accueil">Rechercher</button>
 			</div>
+			</form>
+			<div class="listes_accueil">
+				<div class="card_accueil">
+					<div class="img_card_accueil">
+						<img alt="" src="/img/imagePcTest.jpeg" class="img_accueil">
+					</div>
+					<div class="description_accueil">
+						<p>Encadré des enchères en cours</p>
+						<p>Info du produit</p>
+						<p>Prix du produit</p>
+						<p>Fin de l'enchère : date</p>
+						<p>Vendeur</p>
+					</div>
+				
+				</div>
+			</div>
+			
 
 	</main>
 
