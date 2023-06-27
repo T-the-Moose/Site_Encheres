@@ -15,8 +15,8 @@ import fr.eni.siteEncheres.bo.Utilisateur;
 @Repository
 public class UtilisateurDaoSqlServerImpl implements UtilisateurDAO {
 	
-	private final static String SELECT_ALL = "SELECT idUtilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, ville, credit  FROM UTILISATEURS";
-	private final static String FIND_BY_ID = "SELECT idUtilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, ville, credit FROM UTILISATEURS WHERE id=:no_utilisateur";
+	private final static String SELECT_ALL = "SELECT no_utilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, ville, credit  FROM UTILISATEURS";
+	private final static String FIND_BY_ID = "SELECT no_utilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, ville, credit FROM UTILISATEURS WHERE no_utilisateur=:no_utilisateur";
 	
 	@Autowired
 	private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
@@ -28,7 +28,7 @@ public class UtilisateurDaoSqlServerImpl implements UtilisateurDAO {
 		public Utilisateur mapRow(ResultSet rs, int rowNum) throws SQLException {
 			Utilisateur utilisateur = new Utilisateur();
 			
-			utilisateur.setIdUtilisateur(rs.getInt("idUtilisateur"));
+			utilisateur.setIdUtilisateur(rs.getInt("no_utilisateur"));
 			utilisateur.setPseudo(rs.getString("pseudo"));
 			utilisateur.setNom(rs.getString("nom"));
 			utilisateur.setPrenom(rs.getString("prenom"));
@@ -51,10 +51,10 @@ public class UtilisateurDaoSqlServerImpl implements UtilisateurDAO {
 	
 	@Override
 	public Utilisateur read(Integer idUtilisateur) {
-		MapSqlParameterSource paramSrc = new MapSqlParameterSource ("id", idUtilisateur);
+		MapSqlParameterSource paramSrc = new MapSqlParameterSource ("no_utilisateur", idUtilisateur);
 		Utilisateur utilisateur = namedParameterJdbcTemplate.queryForObject(FIND_BY_ID, paramSrc, new UtilisateurMapper());
+
 		return utilisateur;
 	}
-	
 	
 }

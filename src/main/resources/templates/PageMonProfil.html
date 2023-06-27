@@ -10,43 +10,44 @@
 		<h1>ENI - Encheres</h1>
 	</header>
 	<div class="center">
-		<form action="#" method="post" id="form">
 			<div>
 				<label for="pseudo">Pseudo :</label>
-				<input type="text" name="pseudo" id="pseudo" required>
+				<span data-th-field="${utilisateur.pseudo}">PseudoUserTest</span>
 			</div>
 			<div>
 				<label for="nom">Nom :</label>
-				<input type="text" name="nom" id="nom" required>
+				<span data-th-field="${utilisateur.nom}">NomUserTest</span>
 			</div>
 			<div>
 				<label for="Prénom">Prénom :</label>
-				<input type="text" name="prenom" id="prenom" required>			
+				<span data-th-field="${utilisateur.prenom}">PrenomUserTest</span>			
 			</div>
 			<div>
 				<label for="email">Email :</label>
-				<input type="email" name="email" id="email" required>			
+				<span data-th-field="${utilisateur.email}">EmailUserTest</span>		
 			</div>
 			<div>
 				<label for="tel">Téléphonne :</label>
-				<input type="tel" name="tel" id="tel" required>
+				<span data-th-field="${utilisateur.telephone}">TéléphoneUserTest</span>
 			</div>
 			<div>
 				<label for="rue">Rue :</label>
-				<input type="text" name="rue" id="rue" required>
+				<span data-th-field="${utilisateur.rue}">RueUserTest</span>
 			</div>
 			<div>
 				<label for="cdp">Code postal :</label>
-				<input type="text" name="cdp" id="cdp" required>
+				<span data-th-field="${utilisateur.codePostal}">CPUserTest</span>
 			</div>
 			<div>
 				<label for="ville">Ville :</label>
-				<input type="text" name="ville" id="ville" required>			
+				<span data-th-field="${utilisateur.ville}">VilleUserTest</span>		
 			</div>
-			<div class="button-profil">
-				<input type="button" value="Modifier" class="profil-modifier">
-			</div>	
-		</form>
+			<form action="/modifierProfil" method="get">
+			    <div class="button-profil">
+			        <input type="submit" value="Modifier" class="profil-modifier">
+			    </div>
+			</form>
+
 	</div>
 </body>
 </html>

@@ -1,13 +1,41 @@
 package fr.eni.siteEncheres.ihm;
 
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+
+import fr.eni.siteEncheres.bll.ArticleVenduService;
+import fr.eni.siteEncheres.bll.CategorieService;
+import fr.eni.siteEncheres.bll.UtilisateurService;
+import fr.eni.siteEncheres.bo.ArticleVendu;
+import fr.eni.siteEncheres.bo.Utilisateur;
 
 @Controller
 public class EncheresController {
 	
+	private UtilisateurService utilisateurService;
+	private ArticleVenduService articleVenduService;
+	private CategorieService categorieService;
+	
+	
+	public EncheresController(UtilisateurService utilisateurService, ArticleVenduService articleVenduService,
+			CategorieService categorieService) {
+		this.utilisateurService = utilisateurService;
+		this.articleVenduService = articleVenduService;
+		this.categorieService = categorieService;
+	}
+	
+	
 	@GetMapping({"/", "/accueil"})
-	public String afficherAccueil() {
+	public String afficherAccueil(Model modele) {
+		
+		// Pas sûr de la récup de tout les articles pour afficher nomArticle/miseAPrix/dateFinEncheres/utilisateur
+		List<ArticleVendu> listeArticle = articleVenduService.getArticleVendu();
+		modele.addAttribute("articleVendu", listeArticle);
+		
 		return "PageAccueilNonConnecte";
 	}
 	
@@ -32,8 +60,17 @@ public class EncheresController {
 	}
 	
 	@GetMapping("/profil")
-	public String afficherPageProfil() {
+	public String afficherPageProfil(Integer idUtilisateur, Model modele) {
+		
+		Utilisateur utilisateur = utilisateurService.findById(idUtilisateur);
+		 modele.addAttribute("utilisateur", utilisateur);
+		
 		return "PageMonProfil";
+	}
+	
+	@GetMapping("/modifierProfil")
+	public String afficherPagesModifierMonProfil() {
+		return "PageModifierMonProfil";
 	}
 	
 	@GetMapping("/vendre")
@@ -60,5 +97,7 @@ public class EncheresController {
 	public String afficherPageMaFinVente() {
 		return "PageDetailMaVenteFinEnchere";
 	}
+
+
 
 }
