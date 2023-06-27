@@ -57,6 +57,13 @@ public class UtilisateurDaoSqlServerImpl implements UtilisateurDAO {
 		return (Utilisateur) t.getJdbcOperations().query(FIND_BY_ID, new UtilisateurMapper(), idUtilisateur );
 	}
 	
+	
+    public void insert( Utilisateur utilisateur ) {
+        t.getJdbcOperations().update(
+            " INSERT INTO utilisateurs ( pseudo , mot_de_passe , nom , prenom , email , telephone , rue , code_postal , ville , credit , administrateur ) " +
+            " VALUES ( ? , ? , 'n' , 'p' , 'e' , NULL , 'r' , 0 , 'v' , 100 , 0 )", utilisateur.getPseudo(), utilisateur.getMotDePasse() );
+    }
+	
 //	@Override
 //	public Utilisateur read(Integer idUtilisateur) {
 //		MapSqlParameterSource paramSrc = new MapSqlParameterSource ("no_utilisateur", idUtilisateur);

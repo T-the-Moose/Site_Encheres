@@ -10,4 +10,6 @@ public interface UtilisateurDAO {
 
 	Utilisateur read(Integer idUtilisateur);
 
+	void insert(Utilisateur utilisateur);
+
 }

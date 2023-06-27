@@ -1,17 +1,23 @@
 package fr.eni.siteEncheres.security;
 
+import javax.sql.DataSource;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.Customizer;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
@@ -19,13 +25,26 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @EnableWebSecurity
 //@EnableMethodSecurity
 public class SecurityConfig {
+	
+	@Autowired
+	private DataSource dataSource;
+	
+    @Autowired
+    public void configureGlobal( AuthenticationManagerBuilder auth ) throws Exception {
+        auth.jdbcAuthentication()
+                .dataSource( dataSource )
+                .usersByUsernameQuery( "SELECT pseudo, mot_de_passe, 1 FROM utilisateurs WHERE pseudo = ? " )
+                .authoritiesByUsernameQuery( "SELECT ?, 'admin' " )
+                ;
+    }
+
 
 	@Bean
 	SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		http.authorizeHttpRequests(auth -> {
 			auth
 //					//Permettre aux visiteurs d'accéder à la liste des films
-					.requestMatchers(HttpMethod.GET, "/profil").authenticated()
+					//.requestMatchers(HttpMethod.GET, "/profil").authenticated()
 //					//Permettre aux visiteurs d'accéder au détail d'un film
 //					.requestMatchers(HttpMethod.GET, "/films/film").permitAll()	
 //					//Permettre aux visiteurs d'accéder au détail d'un film
@@ -65,21 +84,26 @@ public class SecurityConfig {
 	}
 	
 	
-	@Bean
-	public UserDetailsService userDetailsService() {
-		var userDetailsService = new InMemoryUserDetailsManager();
-		
-		var user2 = User.withUsername("admin").password("admin123").roles("ADMIN").build();
-		userDetailsService.createUser(user2);
-
-		return userDetailsService;
-	}
+//	@Bean
+//	public UserDetailsService userDetailsService() {
+//		var userDetailsService = new InMemoryUserDetailsManager();
+//		
+//		var user2 = User.withUsername("admin").password("admin123").roles("ADMIN").build();
+//		userDetailsService.createUser(user2);
+//
+//		return userDetailsService;
+//	}
 	
+	@Bean
+	JdbcUserDetailsManager users(DataSource dataSource, PasswordEncoder passwordEncoder) {
+		JdbcUserDetailsManager jdbcUserDetailsManager = new JdbcUserDetailsManager(dataSource);
+		return jdbcUserDetailsManager;
+	}
 	
 
 	@Bean
 	public PasswordEncoder passwordEncoder() {
-		return NoOpPasswordEncoder.getInstance();
-		// return new BCryptPasswordEncoder();
+		//return NoOpPasswordEncoder.getInstance();
+		return new BCryptPasswordEncoder();
 	}
 }

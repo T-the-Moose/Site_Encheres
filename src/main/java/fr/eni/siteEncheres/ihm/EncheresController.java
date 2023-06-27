@@ -5,12 +5,14 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
 import fr.eni.siteEncheres.bll.ArticleVenduService;
 import fr.eni.siteEncheres.bll.CategorieService;
 import fr.eni.siteEncheres.bll.UtilisateurService;
 import fr.eni.siteEncheres.bo.ArticleVendu;
 import fr.eni.siteEncheres.bo.Utilisateur;
+import fr.eni.siteEncheres.dal.UtilisateurDAO;
 
 @Controller
 public class EncheresController {
@@ -18,6 +20,8 @@ public class EncheresController {
 	private UtilisateurService utilisateurService;
 	private ArticleVenduService articleVenduService;
 	private CategorieService categorieService;
+	
+	private UtilisateurDAO utilisateurDAO;
 	
 	
 	public EncheresController(UtilisateurService utilisateurService, ArticleVenduService articleVenduService,
@@ -44,7 +48,9 @@ public class EncheresController {
 	}
 	
 	@GetMapping("/inscription")
-	public String afficherPageInscription() {
+	public String afficherPageInscription(@ModelAttribute Utilisateur utilisateur) {
+//		utilisateur.setMotDePasse( "{noop}" + utilisateur.getMotDePasse() );
+//		utilisateurDAO.insert(utilisateur);
 		return "PageCreerCompte";
 	}
 	
