@@ -196,4 +196,45 @@ body {
 
 /******  FIN Inscription   *******/
 
+/******  Vendre un article   *******/
 
+.conteneur-block-centre-vendre {
+    margin: 2vh;
+    display: flex;
+    flex-direction: column;
+    width: 55%;
+}
+
+.h2-vendre {
+    display: flex;
+    justify-content: center;
+}
+
+.infos-vendre {
+    display: flex;
+    margin: 1vh;
+}
+
+.description-vendre {
+    display: flex;
+    align-content: flex-end;
+    width: 35%;
+    text-align: center;
+}
+
+.conteneur-block-articleavendre {
+	display: flex;
+    margin: 2vh;
+}
+
+#descriptionArticle {
+	height: 60px;
+	text-align: start;
+}
+
+.boutton-vendre-choix {
+   padding: 1vh 5vh;
+   margin: 2vh 2vh 2vh 0;
+}
+
+/******   FIN Vendre un article   *******/
