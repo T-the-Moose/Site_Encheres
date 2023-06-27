@@ -6,7 +6,7 @@
 <link href="/css/style.css" rel="stylesheet">
 </head>
 <body>
-	<div data-th-replace="~{fragments/header :: header}"></div>
+		<div data-th-replace="~{fragments/header :: header}"></div>
 	<div class="conteneur-block">
 		<div id="conteneur-img-detail">
 			<img id="img-detail" alt="" src="/img/imagePcTest.jpeg">	
@@ -15,7 +15,7 @@
 		<div class="conteneur-block-centre">
 			
 			<div id="h3-description">
-				<h3>Vous avez remporté la vente</h3>
+				<h3>Détail vente</h3>
 			</div>
 			
 			<div class="block-description">
@@ -37,13 +37,23 @@
 			</div>
 			
 			<div class="block-description">
-				<p class="titre-description">Mise a prix :</p>
+				<p class="titre-description">Catégorie :</p>
+				<p class="description">Informatique</p>
+			</div>
+			
+			<div class="block-description">
+				<p class="titre-description">Meilleure offre :</p>
+				<p class="description">210 pts par Bob</p>
+			</div>
+			
+			<div class="block-description">
+				<p class="titre-description">Mise à prix :</p>
 				<p class="description">185 points</p>
 			</div>
 			
 			<div class="block-description">
 				<p class="titre-description">Fin de l'enchère :</p>
-				<p class="description">185 points</p>
+				<p class="description">09/10/2018</p>
 			</div>
 			
 			<div class="block-description">
@@ -60,18 +70,18 @@
 				<p class="description">NinaJea</p>
 			</div>
 			
-			<div class="block-description">
-				<p class="titre-description">Tel :</p>
-				<p class="description">06060606</p>
+			<div class="block-description proposition">
+				<p class="titre-description">Ma proposition : </p>
+				<input type="number">
+				<div class="block-button proposition">
+					<button onclick="window.location.href='/'" class="encherir">Enchérir</button>
+				</div>
 			</div>
 			
-			<div class="block-button">
-				<button onclick="window.location.href='/'">Back</button>
-			</div>
+			
 			
 			
 		</div>
 	</div>
-	
 </body>
 </html>
