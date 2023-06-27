@@ -10,10 +10,14 @@ import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import fr.eni.siteEncheres.bo.ArticleVendu;
+import fr.eni.siteEncheres.bo.Utilisateur;
+import fr.eni.siteEncheres.dal.UtilisateurDaoSqlServerImpl.UtilisateurMapper;
+
 @Repository
 public class ArticleVenduDaoSqlServerImpl implements ArticleVenduDAO{
 
-	private final static String SELECT_ALL = "SELECT no_Article, nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial, prix_vente, no_utilisateur, no_categorie FROM ARTICLES_VENDUS";
+	private final static String SELECT_ALL = "SELECT no_article, nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial, prix_vente, no_utilisateur, no_categorie FROM ARTICLES_VENDUS";
 	private final static String FIND_BY_ID = "SELECT * FROM ARTICLES_VENDUS WHERE id=:no_article";
 	
 	@Autowired
@@ -26,13 +30,13 @@ public class ArticleVenduDaoSqlServerImpl implements ArticleVenduDAO{
 	private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 	
 	
-	class ArticleVendu implements RowMapper<ArticleVendu> {
+	class ArticleVenduMapper implements RowMapper<ArticleVendu> {
 
 		@Override
 		public ArticleVendu mapRow(ResultSet rs, int rowNum) throws SQLException {
 			ArticleVendu articleVendu = new ArticleVendu();
 			
-			articleVendu.setIdArticle(rs.getInt("idArticle"));
+			articleVendu.setIdArticle(rs.getInt("no_article"));
 			articleVendu.setNomArticle(rs.getString("nom_article"));
 			articleVendu.setDescription(rs.getString("description"));
 			articleVendu.setDateDebutEncheres(rs.getDate("date_debut_encheres"));
@@ -43,7 +47,7 @@ public class ArticleVenduDaoSqlServerImpl implements ArticleVenduDAO{
 			// Récupération id Utilisateur
 			articleVendu.setUtilisateur(utilisateurDAO.read(rs.getInt("no_utilisateur")));
 			
-			//Récupération id Catégorie
+			// Récupération id Categorie
 			articleVendu.setCategorie(categorieDAO.read(rs.getInt("no_categorie")));
 			
 			return articleVendu;
@@ -52,16 +56,17 @@ public class ArticleVenduDaoSqlServerImpl implements ArticleVenduDAO{
 	}
 
 	@Override
-	public List<fr.eni.siteEncheres.bo.ArticleVendu> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<ArticleVendu> findAll() {
+		List<ArticleVendu> listeArticle = namedParameterJdbcTemplate.query(SELECT_ALL, new ArticleVenduMapper());
+		return listeArticle;
 	}
 
 
 	@Override
-	public fr.eni.siteEncheres.bo.ArticleVendu read(Integer idArticle) {
-		// TODO Auto-generated method stub
-		return null;
+	public ArticleVendu read(Integer idArticle) {
+		MapSqlParameterSource paramSrc = new MapSqlParameterSource ("no_article", idArticle);
+		ArticleVendu articleVendu = namedParameterJdbcTemplate.queryForObject(FIND_BY_ID, paramSrc, new ArticleVenduMapper());
+		return articleVendu;
 	}
 	
 

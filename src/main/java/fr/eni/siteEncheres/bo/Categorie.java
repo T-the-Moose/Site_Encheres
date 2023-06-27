@@ -6,6 +6,10 @@ public class Categorie {
 	private String libelle;
 	
 	
+	public Categorie() {
+		
+	}
+	
 	public Categorie(Integer idCategorie, String libelle) {
 		this.idCategorie = idCategorie;
 		this.libelle = libelle;
