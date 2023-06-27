@@ -74,7 +74,9 @@ public class EncheresController {
 	}
 	
 	@GetMapping("/modifierProfil")
-	public String afficherPagesModifierMonProfil() {
+	public String afficherPagesModifierMonProfil(Integer idUtilisateur, Model modele) {
+		Utilisateur utilisateur = utilisateurService.findById(2);
+		modele.addAttribute("utilisateur", utilisateur);
 		return "PageModifierMonProfil";
 	}
 	

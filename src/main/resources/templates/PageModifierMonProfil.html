@@ -7,15 +7,7 @@
 </head>
 <body>
 
-	<header>
-		<h1>ENI - Enchères</h1>
-		<nav>
-			<a href="/accueil">Enchères</a>
-			<a href="/PageVendreUnArticle">Vendre un article</a>
-			<a href="/PageMonProfil">Mon profil</a>
-			<a href="/connexion">Déconnexion</a>
-		</nav>
-	</header>
+	<div data-th-replace="~{fragments/header :: header}"></div>
 	
 	<main>
 		<h2 id="h2-creation">Mon profil</h2>
@@ -26,53 +18,53 @@
 				<div class="block-infos-creation">
 					<div class="infos-creation">
 						<label class="label-infos-creation" for="pseudo">Pseudo : </label>
-						<input type="text" id="creationPseudo"/>
+						<input type="text" id="creationPseudo" data-th-field="${utilisateur.pseudo}"/>
 					</div>
 					<div class="infos-creation">
 						<label class="label-infos-creation" for="prenom">Prénom : </label>
-						<input type="text" id="creationPrenom"/>
+						<input type="text" id="creationPrenom" data-th-field="${utilisateur.prenom}"/>
 					</div>
 					<div class="infos-creation">
 						<label class="label-infos-creation" for="telephone">Téléphone : </label>
-						<input type="text" id="creationTelephone"/>
+						<input type="text" id="creationTelephone" data-th-field="${utilisateur.telephone}"/>
 					</div>
 					<div class="infos-creation">
 						<label class="label-infos-creation" for="codePostal">Code Postal : </label>
-						<input type="text" id="creationCP"/>
+						<input type="text" id="creationCP" data-th-field="${utilisateur.codePostal}"/>
 					</div>
 					<div class="infos-creation">
 						<label class="label-infos-creation" for="motDePasse">Mot de Passe actuel : </label>
-						<input type="text" id="creationMDP"/>
+						<input type="password" id="creationMDP"/>
 					</div>
 					<div class="infos-creation">
 						<label class="label-infos-creation" for="newMotDePasse">Nouveau Mot de Passe : </label>
-						<input type="text" id="newCreationMDP"/>
+						<input type="password" id="newCreationMDP"/>
 					</div>
 				</div>
 				
 				<div class="block-infos-creation">
 					<div class="infos-creation">
 						<label class="label-infos-creation" for="nom">Nom  :</label>
-						<input type="text" id="creationNom"/>
+						<input type="text" id="creationNom" data-th-field="${utilisateur.nom}"/>
 					</div>
 					<div class="infos-creation">
 						<label class="label-infos-creation" for="email">Email : </label>
-						<input type="email" id="creationEmail"/>					
+						<input type="email" id="creationEmail" data-th-field="${utilisateur.email}"/>					
 					</div>
 					<div class="infos-creation">
 						<label class="label-infos-creation" for="rue">Rue : </label>
-						<input type="text" id="creationRue"/>					
+						<input type="text" id="creationRue" data-th-field="${utilisateur.rue}"/>					
 					</div>
 					<div class="infos-creation">
 						<label class="label-infos-creation" for="ville">Ville : </label>
-						<input type="text" id="creationVille"/>					
+						<input type="text" id="creationVille" data-th-field="${utilisateur.ville}"/>					
 					</div>
 					<div class="infos-creation">
 						<label class="label-infos-creation"></label>
 					</div>
 					<div class="infos-creation">
 						<label class="label-infos-creation" for="confMDP">Confirmation : </label>
-						<input type="text" id="creationConfMDP"/>
+						<input type="password" id="creationConfMDP"/>
 					</div>
 				</div>
 			</div>
