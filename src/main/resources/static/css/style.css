@@ -58,7 +58,6 @@ body {
 
 .conteneur-block {
 	display: flex;
-	margin: 2vh;
     width: 100%;
 }
 
@@ -343,3 +342,34 @@ body {
 }
 
 /******     FIN Pages listes enchéres connecté    *******/
+
+/**** style Encherir ***/
+
+.block-description.proposition {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.block-button.proposition {
+    margin-top: 0;
+    margin-left: 3em;
+    margin-right: 8em;
+    
+}
+
+/******     FIN Page encherir    *******/
+
+/******     DEBUT Page Profil   *******/
+
+.center-profil {
+	display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+
+
+
+
