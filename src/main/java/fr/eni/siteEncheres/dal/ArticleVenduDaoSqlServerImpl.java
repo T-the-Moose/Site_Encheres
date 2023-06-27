@@ -44,7 +44,7 @@ public class ArticleVenduDaoSqlServerImpl implements ArticleVenduDAO{
 			articleVendu.setPrixVente(rs.getInt("prix_vente"));
 			
 			// Récupération id Utilisateur
-			articleVendu.setUtilisateur(utilisateurDAO.read(rs.getInt("no_utilisateur")));
+//			articleVendu.setUtilisateur(utilisateurDAO.read(rs.getInt("no_utilisateur")));
 			
 
 			// Récupération id Categorie
