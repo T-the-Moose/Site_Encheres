@@ -1,2 +1,10 @@
+/**** style Acquisition ***/
 
+.block-description.proposition {
+    display: flex;
+    align-items: center;
+}
 
+.block-button.proposition {
+    margin-top: 0;
+}

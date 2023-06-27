@@ -3,32 +3,85 @@
 <head>
 <meta charset="UTF-8">
 <title>Page Acquisition</title>
-<script src="https://kit.fontawesome.com/dc547d252d.js"></script>
+<link href="/css/style.css" rel="stylesheet">
 </head>
 <body>
-	<div data-th-replace="~{fragments/header :: header}"></div>
-	<h2>Détail vente</h2>
-	<form action="" method="post"></form>
-		<img alt="photo object vente" src="">
-		<h3>PC Gamer pour travailler</h3>
-		<h3>Description : </h3>
-		<p>bla bla</p>
-		<h3>Catégorie : </h3>
-		<p>Informatique</p>
-		<h3>Meilleure offre :</h3>
-		<p> 210 pts par Bob</p>
-		<h3>Mise à prix</h3>
-		<p>185 points</p>
-		<h3>Fin de l'enchère : </h3>
-		<p> 09/10/2018</p>
-		<h3>Retrait : </h3>
-		<p>10 allée des Alouettes</p>
-		<p>44800 Saint Herblain</p>
-		<h3>Vendeur : </h3>
-		<p>jojo44</p>
-		<h3>Ma proposition : </h3>
-		<input type="number" name="enchere">
-		<a href="/">Enchérir</a>
-	</form>
+		<div data-th-replace="~{fragments/header :: header}"></div>
+	<div class="conteneur-block">
+		<div id="conteneur-img-detail">
+			<img id="img-detail" alt="" src="/img/imagePcTest.jpeg">	
+		</div>
+		
+		<div class="conteneur-block-centre">
+			
+			<div id="h3-description">
+				<h3>Détail vente</h3>
+			</div>
+			
+			<div class="block-description">
+				<p>Nom de l'article</p>
+			</div>
+			
+			<div class="block-description">		
+				<p class="titre-description">Description :</p>
+				
+				<div class="description">
+					<p class="p-description">Description 1</p>
+					<p class="p-description">Description 1</p>
+				</div>
+			</div>
+			
+			<div class="block-description">
+				<p class="titre-description">Meilleur offre :</p>
+				<p class="description">210 pts par jojo</p>
+			</div>
+			
+			<div class="block-description">
+				<p class="titre-description">Catégorie :</p>
+				<p class="description">Informatique</p>
+			</div>
+			
+			<div class="block-description">
+				<p class="titre-description">Meilleure offre :</p>
+				<p class="description">210 pts par Bob</p>
+			</div>
+			
+			<div class="block-description">
+				<p class="titre-description">Mise à prix :</p>
+				<p class="description">185 points</p>
+			</div>
+			
+			<div class="block-description">
+				<p class="titre-description">Fin de l'enchère :</p>
+				<p class="description">09/10/2018</p>
+			</div>
+			
+			<div class="block-description">
+				<p class="titre-description">Retrait :</p>
+				
+				<div class="description">
+				<p class="p-description">5 rue des Pisons</p>
+				<p class="p-description">44000 Nantes</p>
+				</div>
+			</div>
+			
+			<div class="block-description">
+				<p class="titre-description">Vendeur :</p>
+				<p class="description">NinaJea</p>
+			</div>
+			
+			<div class="block-description proposition">
+				<p class="titre-description">Ma proposition : </p>
+				<input type="number">
+				<div class="block-button proposition">
+				<button onclick="window.location.href='/'" class="encherir">Enchérir</button>
+			</div>
+			</div>
+			
+			
+			
+			
+		</div>
+	</div>
 </body>
 </html>
