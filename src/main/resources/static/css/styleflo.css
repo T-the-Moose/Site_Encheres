@@ -7,7 +7,7 @@
 }
 
 
-#form{
+#form_profil{
 	max-width: 400px;
 	margin-left: auto; 
 	margin-right: auto;
@@ -15,15 +15,13 @@
     flex-direction: column;
     align-items: flex-end;
 }
-div{
+#form_profil div{
 	margin-top: 1vh;
 }
-input{
+.form_profil_input{
 	width: 300px;
 }
-.modifier{
-	width: 100px;
-}
+
 .button-profil{
     display: block;
     margin-left: 200px;
