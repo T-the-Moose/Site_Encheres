@@ -11,8 +11,7 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import fr.eni.siteEncheres.bo.ArticleVendu;
-import fr.eni.siteEncheres.bo.Utilisateur;
-import fr.eni.siteEncheres.dal.UtilisateurDaoSqlServerImpl.UtilisateurMapper;
+
 
 @Repository
 public class ArticleVenduDaoSqlServerImpl implements ArticleVenduDAO{
@@ -47,6 +46,7 @@ public class ArticleVenduDaoSqlServerImpl implements ArticleVenduDAO{
 			// Récupération id Utilisateur
 			articleVendu.setUtilisateur(utilisateurDAO.read(rs.getInt("no_utilisateur")));
 			
+
 			// Récupération id Categorie
 			articleVendu.setCategorie(categorieDAO.read(rs.getInt("no_categorie")));
 			
@@ -59,6 +59,7 @@ public class ArticleVenduDaoSqlServerImpl implements ArticleVenduDAO{
 	public List<ArticleVendu> findAll() {
 		List<ArticleVendu> listeArticle = namedParameterJdbcTemplate.query(SELECT_ALL, new ArticleVenduMapper());
 		return listeArticle;
+
 	}
 
 
@@ -69,5 +70,4 @@ public class ArticleVenduDaoSqlServerImpl implements ArticleVenduDAO{
 		return articleVendu;
 	}
 	
-
 }
