@@ -118,7 +118,7 @@ public class EncheresController {
 		return "PageEnchereNonCommencee";
 	}
 	
-	@GetMapping("/encherir")
+	@RequestMapping("/encherir")
 	public String afficherPageEncherir(@RequestParam Integer idArticle, Model model) {
 		
 		ArticleVendu articleVendu = articleVenduService.findById(idArticle);
