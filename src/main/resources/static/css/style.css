@@ -364,10 +364,19 @@ body {
 
 .center-profil {
 	display: flex;
-    align-items: center;
-    flex-direction: column;
+	flex-direction: column;
+	margin-top: 10em;
 }
 
+.form-profil {
+	margin-right: 12em;
+}
+
+.container-profil {
+	margin: 0.5em;
+}
+
+/******     FIN Page Profil   *******/
 
 
 
