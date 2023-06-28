@@ -249,13 +249,15 @@ body {
 	width: 25vh;
 }
 .listes_accueil{
+	display: flex;
+	flex-wrap: wrap;
 	width: 100%;
 }
 .card_accueil{
 	border: 1px black solid;
 	border-radius: 15px;
 	margin: 1.5vh;
-	width: 50%;
+	width: 30%;
 	display: flex;
 }
 .img_accueil{

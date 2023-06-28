@@ -9,5 +9,7 @@ public interface UtilisateurService {
 	List<Utilisateur> getUtilisateur();
 
 	Utilisateur findById(Integer idUtilisateur);
+	
+	void enregistrerUtilisateur(Utilisateur utilisateur);
 
 }

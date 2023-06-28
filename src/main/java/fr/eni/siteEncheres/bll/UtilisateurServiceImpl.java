@@ -24,5 +24,11 @@ public class UtilisateurServiceImpl implements UtilisateurService {
 	public Utilisateur findById(Integer idUtilisateur) {
 		return utilisateurDAO.read(idUtilisateur);
 	}
+
+	@Override
+	public void enregistrerUtilisateur( Utilisateur utilisateur) {
+		
+		utilisateurDAO.insert(utilisateur);		
+	}
 	
 }
