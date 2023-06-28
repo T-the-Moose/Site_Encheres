@@ -7,7 +7,7 @@
 </head>
 <body>
 		<div data-th-replace="~{fragments/header :: header}"></div>
-	<div class="conteneur-block">
+	<div class="conteneur-block" th:object="${article}">
 		<div id="conteneur-img-detail">
 			<img id="img-detail" alt="" src="/img/imagePcTest.jpeg">	
 		</div>
@@ -19,41 +19,36 @@
 			</div>
 			
 			<div class="block-description">
-				<p>Nom de l'article</p>
+				<p data-th-text="*{nomArticle}">Nom de l'article</p>
 			</div>
 			
 			<div class="block-description">		
 				<p class="titre-description">Description :</p>
 				
 				<div class="description">
-					<p class="p-description">Description 1</p>
-					<p class="p-description">Description 1</p>
+					<p class="p-description" data-th-text="*{description}">Description 1</p>
+					<p class="p-description" data-th-text="*{description}">Description 1</p>
 				</div>
 			</div>
 			
 			<div class="block-description">
-				<p class="titre-description">Meilleur offre :</p>
-				<p class="description">210 pts par jojo</p>
-			</div>
-			
-			<div class="block-description">
 				<p class="titre-description">Catégorie :</p>
-				<p class="description">Informatique</p>
+				<p class="description" data-th-text="*{categorie.libelle}">Informatique</p>
 			</div>
 			
 			<div class="block-description">
-				<p class="titre-description">Meilleure offre :</p>
-				<p class="description">210 pts par Bob</p>
+				<p class="titre-description">Meilleur offre :</p>
+				<p class="description" data-th-text="*{'enchere.montantEnchere' +'enchere.idUtilisateur'}">210 pts par jojo</p>
 			</div>
 			
 			<div class="block-description">
 				<p class="titre-description">Mise à prix :</p>
-				<p class="description">185 points</p>
+				<p class="description" data-th-text="*{miseAPrix}">185 points</p>
 			</div>
 			
 			<div class="block-description">
 				<p class="titre-description">Fin de l'enchère :</p>
-				<p class="description">09/10/2018</p>
+				<p class="description" data-th-text="*{dateFinEncheres}">09/10/2018</p>
 			</div>
 			
 			<div class="block-description">
@@ -67,7 +62,7 @@
 			
 			<div class="block-description">
 				<p class="titre-description">Vendeur :</p>
-				<p class="description">NinaJea</p>
+				<p class="description" data-th-text="*{utilisateur.pseudo}">NinaJea</p>
 			</div>
 			
 			<div class="block-description proposition">
