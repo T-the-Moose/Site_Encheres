@@ -11,6 +11,7 @@ import fr.eni.siteEncheres.bll.ArticleVenduService;
 import fr.eni.siteEncheres.bll.CategorieService;
 import fr.eni.siteEncheres.bll.UtilisateurService;
 import fr.eni.siteEncheres.bo.ArticleVendu;
+import fr.eni.siteEncheres.bo.Categorie;
 import fr.eni.siteEncheres.bo.Utilisateur;
 import fr.eni.siteEncheres.dal.UtilisateurDAO;
 
@@ -55,7 +56,12 @@ public class EncheresController {
 	}
 	
 	@GetMapping("/encheres")
-	public String afficherPageEncheres() {
+	public String afficherPageEncheres(Integer idUtilisateur, Model modele) {
+		
+		Utilisateur utilisateur = utilisateurService.findById(2);
+		modele.addAttribute("utilisateur", utilisateur);
+		
+		Categorie categorie = categorieService.findById(1);
 		return "PagesListeEncheresConnecte";
 	}
 	
