@@ -255,10 +255,16 @@ body {
 }
 .card_accueil{
 	border: 1px black solid;
-	border-radius: 15px;
-	margin: 1.5vh;
-	width: 30%;
-	display: flex;
+    border-radius: 15px;
+    margin: 1.5vh;
+    width: 35%;
+    display: flex;
+}
+a#enchere {
+    width: 100%;
+    display: flex;
+    text-decoration: none;
+    color: black;
 }
 .img_accueil{
 	width: 15vh;
