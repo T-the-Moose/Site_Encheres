@@ -45,7 +45,6 @@ public class ArticleVenduDaoSqlServerImpl implements ArticleVenduDAO{
 			
 			// Récupération id Utilisateur
 			articleVendu.setUtilisateur(utilisateurDAO.read(rs.getInt("no_utilisateur")));
-			
 
 			// Récupération id Categorie
 			articleVendu.setCategorie(categorieDAO.read(rs.getInt("no_categorie")));
@@ -59,9 +58,7 @@ public class ArticleVenduDaoSqlServerImpl implements ArticleVenduDAO{
 	public List<ArticleVendu> findAll() {
 		List<ArticleVendu> listeArticle = namedParameterJdbcTemplate.query(SELECT_ALL, new ArticleVenduMapper());
 		return listeArticle;
-
 	}
-
 
 	@Override
 	public ArticleVendu read(Integer idArticle) {
