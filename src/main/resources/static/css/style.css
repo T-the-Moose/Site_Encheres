@@ -118,42 +118,6 @@ body {
 /******  FIN Detail Fin Vente   *******/
 
 
-/******  Mon profil   *******/
-
-.center{
-	max-width: 1024px;
-	margin-left: auto; 
-	margin-right: auto;	
-}
-
-
-#form_profil{
-	max-width: 400px;
-	margin-left: auto; 
-	margin-right: auto;
-	display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-}
-#form_profil div{
-	margin-top: 1vh;
-}
-.form_profil_input{
-	width: 300px;
-}
-
-.button-profil{
-    display: block;
-    margin-left: 200px;
-    margin-right: auto;	
-}
-.profil-modifier{
-	width: 100px;
-}
-
-/******  FIN Mon profil   *******/
-
-
 /******  Inscription   *******/
 
 #h2-creation {
@@ -362,18 +326,46 @@ body {
 
 /******     DEBUT Page Profil   *******/
 
-.center-profil {
+.blod-profil {
+    font-weight: bold;
+}
+
+.conteneur-block-centre-profil {
+	margin: 2vh;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+
+.infos-profil {
 	display: flex;
-	flex-direction: column;
-	margin-top: 10em;
+    margin: 1vh;
+    justify-content: space-evenly;
+    width: 50%;
+}
+
+.titre-description-profil {
+	display: flex;
+    width: 50%;
+    justify-content: space-evenly;
+}
+
+.description-vendre-profil {
+    display: flex;
+    align-content: flex-end;
+    width: 30%;
+    text-align: center;
 }
 
 .form-profil {
-	margin-right: 12em;
+    display: flex;
+    margin: 5vh;
+    justify-content: center;
 }
 
-.container-profil {
-	margin: 0.5em;
+.profil-modifier {
+    padding: 2vh 5vh;
 }
 
 /******     FIN Page Profil   *******/
