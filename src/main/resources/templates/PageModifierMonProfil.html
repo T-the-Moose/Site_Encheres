@@ -12,28 +12,29 @@
 	<main>
 		<h2 id="h2-creation">Mon profil</h2>
 		
-		<form action="/profil/modifier" method="get">
+		<form th:action="@{/profil/modifier}" th:object="${utilisateur}" method="post">
+		<input type="hidden" th:field="*{idUtilisateur}"  />
 			<div class="creationProfil">
 				<div class="block-infos-creation">
 					<div class="infos-creation">
 						<label class="label-infos-creation" for="pseudo">Pseudo : </label>
-						<input type="text" id="creationPseudo" data-th-field="${utilisateur.pseudo}"/>
+						<input type="text" id="creationPseudo" data-th-field="*{pseudo}"/>
 					</div>
 					<div class="infos-creation">
 						<label class="label-infos-creation" for="prenom">Prénom : </label>
-						<input type="text" id="creationPrenom" data-th-field="${utilisateur.prenom}"/>
+						<input type="text" id="creationPrenom" data-th-field="*{prenom}"/>
 					</div>
 					<div class="infos-creation">
 						<label class="label-infos-creation" for="telephone">Téléphone : </label>
-						<input type="text" id="creationTelephone" data-th-field="${utilisateur.telephone}"/>
+						<input type="text" id="creationTelephone" data-th-field="*{telephone}"/>
 					</div>
 					<div class="infos-creation">
 						<label class="label-infos-creation" for="codePostal">Code Postal : </label>
-						<input type="text" id="creationCP" data-th-field="${utilisateur.codePostal}"/>
+						<input type="text" id="creationCP" data-th-field="*{codePostal}"/>
 					</div>
 					<div class="infos-creation">
 						<label class="label-infos-creation" for="motDePasse">Mot de Passe actuel : </label>
-						<input type="password" id="creationMDP"/>
+						<input type="password" id="creationMDP" th:field="*{motDePasse}"/>
 					</div>
 					<div class="infos-creation">
 						<label class="label-infos-creation" for="newMotDePasse">Nouveau Mot de Passe : </label>
@@ -44,19 +45,19 @@
 				<div class="block-infos-creation">
 					<div class="infos-creation">
 						<label class="label-infos-creation" for="nom">Nom  :</label>
-						<input type="text" id="creationNom" data-th-field="${utilisateur.nom}"/>
+						<input type="text" id="creationNom" data-th-field="*{nom}"/>
 					</div>
 					<div class="infos-creation">
 						<label class="label-infos-creation" for="email">Email : </label>
-						<input type="email" id="creationEmail" data-th-field="${utilisateur.email}"/>					
+						<input type="email" id="creationEmail" data-th-field="*{email}"/>					
 					</div>
 					<div class="infos-creation">
 						<label class="label-infos-creation" for="rue">Rue : </label>
-						<input type="text" id="creationRue" data-th-field="${utilisateur.rue}"/>					
+						<input type="text" id="creationRue" data-th-field="*{rue}"/>					
 					</div>
 					<div class="infos-creation">
 						<label class="label-infos-creation" for="ville">Ville : </label>
-						<input type="text" id="creationVille" data-th-field="${utilisateur.ville}"/>					
+						<input type="text" id="creationVille" data-th-field="*{ville}"/>					
 					</div>
 					<div class="infos-creation">
 						<label class="label-infos-creation"></label>

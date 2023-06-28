@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import fr.eni.siteEncheres.bll.ArticleVenduService;
@@ -74,7 +75,7 @@ public class EncheresController {
 	@GetMapping("/profil")
 	public String afficherPageProfil(Integer idUtilisateur, Model modele) {
 		
-		Utilisateur utilisateur = utilisateurService.findById(8);
+		Utilisateur utilisateur = utilisateurService.findById(2);
 		 modele.addAttribute("utilisateur", utilisateur);
 		
 		return "PageMonProfil";
@@ -82,7 +83,7 @@ public class EncheresController {
 	
 	@GetMapping("/modifierProfil")
 	public String afficherPagesModifierMonProfil(Integer idUtilisateur, Model modele) {
-		Utilisateur utilisateur = utilisateurService.findById(8);
+		Utilisateur utilisateur = utilisateurService.findById(2);
 		modele.addAttribute("utilisateur", utilisateur);
 		return "PageModifierMonProfil";
 	}
@@ -109,7 +110,7 @@ public class EncheresController {
 		utilisateurService.enregistrerUtilisateur(utilisateur);
 		System.out.println(utilisateur);
 		
-		return "redirect:/encheres";
+		return "redirect:/accueil";
 	}
 	
 	@GetMapping("/vendre/modif")
