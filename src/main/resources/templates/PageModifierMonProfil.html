@@ -70,7 +70,7 @@
 			
 			<div class="block-infos-creation-credit">
 				<p class="label-infos-creation">Credit : </p>
-				<p>260</p>
+				<p data-th-text="${utilisateur.credit}>1?${utilisateur.credit}+ ' points' :${utilisateur.credit}+ ' point' "></p>
 			</div>
 			
 			<div class="block-creation-choix">
