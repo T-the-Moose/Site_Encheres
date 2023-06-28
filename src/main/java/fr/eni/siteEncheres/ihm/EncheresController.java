@@ -90,8 +90,19 @@ public class EncheresController {
 	
 	@GetMapping("/vendre")
 	public String afficherPageVendre() {
+		
 		return "PageVendreUnArticle";
 	}
+	
+	@PostMapping("/vendre")
+	public String afficherVendreArticle(ArticleVendu articleVendu) {
+		
+		articleVenduService.enregistrerArticleVendu(articleVendu);
+		System.out.println(articleVendu);
+		
+		return "redirect:/encheres";
+	}
+	
 	
 	@PostMapping("/profil/modifier")
 	public String afficherPageProfilModifier(Utilisateur utilisateur) {

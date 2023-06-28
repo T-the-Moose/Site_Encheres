@@ -24,4 +24,9 @@ public class ArticleVenduServiceImpl implements ArticleVenduService {
 		return articleVenduDAO.read(idArticle);
 	}
 
+	@Override
+	public void enregistrerArticleVendu (ArticleVendu articleVendu) {
+		articleVenduDAO.save(articleVendu);
+	}
+	
 }

@@ -69,11 +69,32 @@ public class ArticleVenduDaoSqlServerImpl implements ArticleVenduDAO{
 		System.out.println("voici = "+articleVendu);
 		return articleVendu;
 	}
-	
-    public void save(Utilisateur utilisateur ) {
+
+    public void save(ArticleVendu articleVendu ) {
+    	t = namedParameterJdbcTemplate;
         t.getJdbcOperations().update(
-            " INSERT INTO utilisateurs ( pseudo, nom, prenom , email, telephone, rue, code_postal, ville, mot_de_passe, credit, administrateur ) " +
-            " VALUES ( ? , ? , ? , ? , ? , ? , ? , ? , ? , 0 , 0 )", utilisateur.getPseudo(), utilisateur.getNom(), utilisateur.getPrenom(), utilisateur.getEmail(),utilisateur.getTelephone(), utilisateur.getRue(), utilisateur.getCodePostal(), utilisateur.getVille(), utilisateur.getMotDePasse());
+        	" INSERT INTO ARTICLES_VENDUS (nom_article, description, no_categorie, prix_initial, date_debut_encheres, date_fin_encheres, no_utilisateur" +
+        	" VALUES (?, ?, ?, ?, ?, ?, ?)",  
+        	articleVendu.getNomArticle(), 
+        	articleVendu.getDescription(), 
+        	articleVendu.getCategorie().getIdCategorie(),
+        	articleVendu.getMiseAPrix(), 
+        	articleVendu.getDateDebutEncheres(), 
+        	articleVendu.getDateFinEncheres()); 
+        
+//        	Décommenter la ligne ci-dessous quand connexion user OK
+//        	articleVendu.getUtilisateur().getIdUtilisateur());
     }
-	
 }
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    

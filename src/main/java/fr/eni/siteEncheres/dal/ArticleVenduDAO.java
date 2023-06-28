@@ -10,4 +10,5 @@ public interface ArticleVenduDAO {
 
 	ArticleVendu read(Integer idArticle);
 
+	void save(ArticleVendu articleVendu);
 }
