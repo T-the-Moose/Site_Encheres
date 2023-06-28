@@ -64,6 +64,7 @@ public class EncheresController {
 		modele.addAttribute("utilisateur", utilisateur);
 		
 		Categorie categorie = categorieService.findById(1);
+		  modele.addAttribute("categorie", categorie);
 		return "PagesListeEncheresConnecte";
 	}
 	

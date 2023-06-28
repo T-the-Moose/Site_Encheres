@@ -12,16 +12,20 @@
 	
 	<main>
 		<div class="conteneur-block-articleavendre">
-			<div id="conteneur-img-detail">
-				<img id="img-detail" alt="" src="/img/imagePcTest.jpeg">	
+			<div th:switch="*{categorie}">
+        		<p th:case="'1'"><img alt="Informatique" src="/img/1.png"></p>
+                <p th:case="'2'"><img alt="Ameublement" src="/img/2.png"></p>
+                <p th:case="'3'"><img alt="Vêtement" src="/img/3.png"></p>
+                <p th:case="'4'"><img alt="Sport&Loisir" src="/img/4.png"></p>
 			</div>
+			
 			<div class="conteneur-block-centre-vendre">
 				<div class="h2-vendre">
 					<h2>Nouvelle vente</h2>
 				</div>
 				
-				<form class="block-detail-vendre" action="/vendre" method="POST">
-					<div class="block-conteneur-infos-vendre">
+				<form class="block-detail-vendre" data-th-action="@{/vendre}" data-th-object="${articleVendu}" method="POST">
+					<div  class="block-conteneur-infos-vendre">
 						<div class="infos-vendre">
 							<label class="titre-description" for="article">Article :</label>
 							<input class="description-vendre" type="text" id="article"/>
