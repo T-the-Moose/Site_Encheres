@@ -118,7 +118,11 @@ public class EncheresController {
 	}
 	
 	@GetMapping("/encherir")
-	public String afficherPageEncherir() {
+	public String afficherPageEncherir(@RequestParam Integer idArticle, Model model) {
+		
+		ArticleVendu articleVendu = articleVenduService.findById(idArticle);
+		model.addAttribute("articleVendu", articleVendu);
+		
 		return "PageEncherir";
 	}
 	
