@@ -11,6 +11,7 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import fr.eni.siteEncheres.bo.ArticleVendu;
+import fr.eni.siteEncheres.bo.Utilisateur;
 
 
 @Repository
@@ -18,6 +19,8 @@ public class ArticleVenduDaoSqlServerImpl implements ArticleVenduDAO{
 
 	private final static String SELECT_ALL = "SELECT no_article, nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial, prix_vente, no_utilisateur, no_categorie FROM ARTICLES_VENDUS";
 	private final static String FIND_BY_ID = "SELECT * FROM ARTICLES_VENDUS WHERE id=:no_article";
+	NamedParameterJdbcTemplate t;
+	
 	
 	@Autowired
 	private UtilisateurDAO utilisateurDAO;
@@ -66,5 +69,12 @@ public class ArticleVenduDaoSqlServerImpl implements ArticleVenduDAO{
 		ArticleVendu articleVendu = namedParameterJdbcTemplate.queryForObject(FIND_BY_ID, paramSrc, new ArticleVenduMapper());
 		return articleVendu;
 	}
+	
+    public void save(Utilisateur utilisateur ) {
+    	t = namedParameterJdbcTemplate;
+        t.getJdbcOperations().update(
+            " INSERT INTO utilisateurs ( pseudo, nom, prenom , email, telephone, rue, code_postal, ville, mot_de_passe, credit, administrateur ) " +
+            " VALUES ( ? , ? , ? , ? , ? , ? , ? , ? , ? , 0 , 0 )", utilisateur.getPseudo(), utilisateur.getNom(), utilisateur.getPrenom(), utilisateur.getEmail(),utilisateur.getTelephone(), utilisateur.getRue(), utilisateur.getCodePostal(), utilisateur.getVille(), utilisateur.getMotDePasse());
+    }
 	
 }
