@@ -60,10 +60,11 @@ public class UtilisateurDaoSqlServerImpl implements UtilisateurDAO {
 	}
 	
 	
-    public void insert( Utilisateur utilisateur ) {
+    public void insert(Utilisateur utilisateur ) {
+    	t = namedParameterJdbcTemplate;
         t.getJdbcOperations().update(
-            " INSERT INTO utilisateurs ( pseudo , mot_de_passe , nom , prenom , email , telephone , rue , code_postal , ville , credit , administrateur ) " +
-            " VALUES ( ? , ? , 'n' , 'p' , 'e' , NULL , 'r' , 0 , 'v' , 100 , 0 )", utilisateur.getPseudo(), utilisateur.getMotDePasse() );
+            " INSERT INTO utilisateurs ( pseudo, nom, prenom , email, telephone, rue, code_postal, ville, mot_de_passe, credit, administrateur ) " +
+            " VALUES ( ? , ? , ? , ? , ? , ? , ? , ? , ? , 0 , 0 )", utilisateur.getPseudo(), utilisateur.getNom(), utilisateur.getPrenom(), utilisateur.getEmail(),utilisateur.getTelephone(), utilisateur.getRue(), utilisateur.getCodePostal(), utilisateur.getVille(), utilisateur.getMotDePasse());
     }
 	
 //	@Override

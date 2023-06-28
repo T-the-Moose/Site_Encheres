@@ -6,6 +6,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import fr.eni.siteEncheres.bll.ArticleVenduService;
 import fr.eni.siteEncheres.bll.CategorieService;
@@ -49,10 +51,9 @@ public class EncheresController {
 	
 	@GetMapping("/inscription")
 	public String afficherPageInscription(@ModelAttribute Utilisateur utilisateur) {
-//		utilisateur.setMotDePasse( "{noop}" + utilisateur.getMotDePasse() );
-//		utilisateurDAO.insert(utilisateur);
 		return "PageCreerCompte";
 	}
+	
 	
 	@GetMapping("/encheres")
 	public String afficherPageEncheres() {
@@ -85,9 +86,13 @@ public class EncheresController {
 		return "PageVendreUnArticle";
 	}
 	
-	@GetMapping("/profil/modifier")
-	public String afficherPageProfilModifier() {
-		return "PageModifierMonProfil";
+	@PostMapping("/profil/modifier")
+	public String afficherPageProfilModifier(Utilisateur utilisateur) {
+		
+		utilisateurService.enregistrerUtilisateur(utilisateur);
+		System.out.println(utilisateur);
+		
+		return "redirect:/encheres";
 	}
 	
 	@GetMapping("/vendre/modif")
