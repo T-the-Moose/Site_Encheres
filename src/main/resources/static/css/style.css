@@ -196,8 +196,13 @@ body {
 }
 
 .boutton-vendre-choix {
-   padding: 1vh 5vh;
-   margin: 2vh 2vh 2vh 0;
+	padding: 1vh 5vh;
+	margin: 2vh 2vh 2vh 0;
+}
+
+.boutton-vendre {
+	display: flex;
+    justify-content: space-between;
 }
 
 /******   FIN Vendre un article   *******/

@@ -20,7 +20,7 @@
 					<h2>Nouvelle vente</h2>
 				</div>
 				
-				<form class="block-detail-vendre" action="/PageVendreUnArticle" method="POST">
+				<form class="block-detail-vendre" action="/vendre" method="POST">
 					<div class="block-conteneur-infos-vendre">
 						<div class="infos-vendre">
 							<label class="titre-description" for="article">Article :</label>
@@ -64,11 +64,11 @@
 						</div>
 						
 					</div>
-				</form>
+
 				
 				<fieldset class="block-detail-vendre">
 				<legend>Retrait</legend>
-					<form>			
+		
 						<div class="infos-vendre">
 							<label class="titre-description" for="rue">Rue :</label>
 							<input class="description-vendre" type="text" id="rueNouvelleArticle"/>
@@ -83,13 +83,14 @@
 							<label class="titre-description" for="ville">Ville :</label>
 							<input class="description-vendre" type="text" id="villeNouvelArticle"/>
 						</div>
-					</form>
 				</fieldset>
+						<div class="boutton-vendre">
+							<button class="boutton-vendre-choix" type="submit">Enregistrer</button>
+							<button class="boutton-vendre-choix" type="reset">Annuler</button>
+						</div>
+					</form>
 				
-				<div class="boutton-vendre">
-					<button class="boutton-vendre-choix" type="submit">Enregistrer</button>
-					<button class="boutton-vendre-choix" type="reset">Annuler</button>
-				</div>
+
 			</div>
 		</div>
 	</main>

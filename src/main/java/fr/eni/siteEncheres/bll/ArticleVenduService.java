@@ -10,4 +10,6 @@ public interface ArticleVenduService {
 	
 	ArticleVendu findById(Integer idArticle);
 
+	void enregistrerArticleVendu(ArticleVendu articleVendu);
+
 }
