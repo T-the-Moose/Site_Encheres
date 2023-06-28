@@ -9,7 +9,9 @@
 	<h1>ENI-Enchères</h1>
 
 	<div class="block-connexion">
-		<form action="/accueil" method="post">
+		<div th:if="${param.error}">Mots de passe ou Identifiant incorrect.</div>
+		<div th:if="${param.logout}">Vous avez été déconnecté.</div>
+		<form th:action="@{/connexion}" method="post">
 			<div class="conteneur-input">
 				<label for="name">Identifiant : </label> 
 				<input type="text" id="name" name="user_name">
