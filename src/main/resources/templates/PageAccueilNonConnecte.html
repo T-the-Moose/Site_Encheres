@@ -41,16 +41,15 @@
 			</div>
 			</form>
 			<div class="listes_accueil">
-				<div class="card_accueil">
+				<div data-th-each="article : ${articleVendu}" class="card_accueil">
 					<div class="img_card_accueil">
 						<img alt="" src="/img/imagePcTest.jpeg" class="img_accueil">
 					</div>
 					<div class="description_accueil">
-						<p>Encadré des enchères en cours</p>
-						<p>Info du produit</p>
-						<p>Prix du produit</p>
-						<p>Fin de l'enchère : date</p>
-						<p>Vendeur</p>
+						<p data-th-text="${article.nomArticle}"></p>
+						<p>Prix : <span data-th-text="${article.miseAPrix}+ ' ' + points"></span></p>
+						<p> Fin de l'enchère : <span data-th-text="${article.dateFinEncheres}"></span></p>
+						<p>Vendeur : <span data-th-text="${article.utilisateur.pseudo}"></span>Vendeur</p>
 					</div>
 				
 				</div>
