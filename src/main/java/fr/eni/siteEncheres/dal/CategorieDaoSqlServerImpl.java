@@ -16,7 +16,7 @@ import fr.eni.siteEncheres.bo.Categorie;
 public class CategorieDaoSqlServerImpl implements CategorieDAO{
 
 	private final static String SELECT_ALL = "SELECT no_categorie, libelle FROM CATEGORIES";
-	private final static String FIND_BY_ID = "SELECT * FROM CATEGORIES WHERE id=:no_categorie";
+	private final static String FIND_BY_ID = "SELECT * FROM CATEGORIES WHERE no_categorie=:no_categorie";
 	
 	
 	@Autowired
