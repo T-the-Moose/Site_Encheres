@@ -94,7 +94,7 @@ public class EncheresController {
 	}
 	
 	@PostMapping("/vendre")
-	public String afficherVendreArticle(@ModelAttribute ArticleVendu articleVendu) {
+	public String afficherVendreArticle(ArticleVendu articleVendu) {
 		
 		articleVenduService.enregistrerArticleVendu(articleVendu);
 		System.out.println(articleVendu);

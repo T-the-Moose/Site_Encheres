@@ -74,7 +74,7 @@ public class ArticleVenduDaoSqlServerImpl implements ArticleVenduDAO{
     	t = namedParameterJdbcTemplate;
         t.getJdbcOperations().update(
         	" INSERT INTO ARTICLES_VENDUS (nom_article, description, no_categorie, prix_initial, date_debut_encheres, date_fin_encheres, no_utilisateur" +
-        	" VALUES (?, ?, ?, ?, ?, ?, 1)",  
+        	" VALUES (?, ?, ?, ?, ?, ?, ?)",  
         	articleVendu.getNomArticle(), 
         	articleVendu.getDescription(), 
         	articleVendu.getCategorie().getIdCategorie(),
