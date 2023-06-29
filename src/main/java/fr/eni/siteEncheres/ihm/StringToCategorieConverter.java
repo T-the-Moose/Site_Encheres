@@ -19,8 +19,11 @@ public class StringToCategorieConverter implements Converter<String, Categorie>{
 	
 	@Override
 	public Categorie convert(String idCateogire) {
+
 		Integer theid = Integer.parseInt(idCateogire);
 		return service.findById(theid);
+
+
 	}
 	
 }
