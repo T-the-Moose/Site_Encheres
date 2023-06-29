@@ -2,9 +2,9 @@ package fr.eni.siteEncheres.bo;
 
 import java.sql.Date;
 
-import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 public class ArticleVendu {
 	
@@ -16,10 +16,7 @@ public class ArticleVendu {
 	@NotBlank
 	private String description;
 	
-	@Future
 	private Date dateDebutEncheres;
-	
-	@Future
 	private Date dateFinEncheres;
 	
 	@Min(1)
@@ -30,7 +27,10 @@ public class ArticleVendu {
 	private boolean etatVente;
 	
 	private Utilisateur utilisateur;
+	
+//	@NotNull
 	private Categorie categorie;
+	
 	private Retrait retrait;
 	
 	public ArticleVendu() {

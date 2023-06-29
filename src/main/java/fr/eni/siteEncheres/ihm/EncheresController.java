@@ -98,7 +98,10 @@ public class EncheresController {
 	}
 	
 	@GetMapping("/vendre")
-	public String afficherPageVendre() {
+	public String afficherPageVendre(Model modele) {
+		
+		ArticleVendu articleVendu  = new ArticleVendu();
+		modele.addAttribute("articleVendu", articleVendu );
 	    
 		return "PageVendreUnArticle";
 	}

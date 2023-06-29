@@ -29,25 +29,27 @@
 						</div>
 						
 						<div class="infos-vendre">
-							<label class="titre-description" for="article">Article :</label>
-							<input class="description-vendre" type="text" id="article" th:field="*{nomArticle}"/>
-							<span th:if="${#fields.hasErrors('nomArticle')}" th:each="erreur: ${#fields.errors('nomArticle')}" th:text="${erreur}"></span>
+						   	<label class="titre-description" for="nomArticle">Nom de l'article:</label>
+    						<input class="description-vendre" type="text" id="nomArticle" name="nomArticle" th:field="*{nomArticle}" />
+   							<span class="error-message" th:if="${#fields.hasErrors('nomArticle')}" th:errors="*{nomArticle}"></span>
 						</div>
 						
 						<div class="infos-vendre">
 							<label class="titre-description" for="article">Description :</label>
-							<textarea class="description-vendre" id="descriptionArticle"/></textarea>
+							<textarea class="description-vendre" id="descriptionArticle" th:field="*{description}"/></textarea>
+							<span class="error-message" th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></span>
 						</div>
 						
 						<div class="infos-vendre">
 							<label class="titre-description" for="categorie">Catégorie :</label>
-								<select name="categories" id="categories">
+								<select name="categories" id="categories" th:field="*{categorie}">
 									<option value="choisirCategorie">-- Choisir une catégorie --</option>
 									<option value="1">Informatique</option>
 									<option value="2">Ameublement</option>
 									<option value="3">Vêtement</option>
 									<option value="4">Sport & Loisirs</option>
 								</select>
+							<span class="error-message" th:if="${#fields.hasErrors('categorie')}" th:errors="*{categorie}"></span>
 						</div>
 						
 						<div class="infos-vendre">
@@ -57,22 +59,21 @@
 						
 						<div class="infos-vendre">
 							<label class="titre-description" for="prixArticle">Mise à prix :</label>
-							<input class="description-vendre" type="number" id="prixArticle"/>
+							<input class="description-vendre" type="number" id="prixArticle" min="1" th:field="*{miseAPrix}"/>
+							<span class="error-message" th:if="${#fields.hasErrors('miseAPrix')}" th:errors="*{miseAPrix}"></span>
 						</div>				
 						
 						<div class="infos-vendre">
 							<label class="titre-description" for="debutEnchere">Début de l'enchère :</label>
-							<input class="description-vendre" type="date" id="debutEnchere"/>
+							<input class="description-vendre" type="date" value="2023-06-29" min="2023-06-29" id="debutEnchere"/>
 						</div>		
 						
 						<div class="infos-vendre">
-							<label  class="titre-description" for="finEnchere">Fin de l'enchère :</label>
-							<input  class="description-vendre" type="date" id="finEnchere"/>
+							<label class="titre-description" for="finEnchere">Fin de l'enchère :</label>
+							<input class="description-vendre" type="date" value="2023-06-29" min="2023-06-29" id="finEnchere" />
 						</div>
-						
 					</div>
 
-				
 				<fieldset class="block-detail-vendre">
 				<legend>Retrait</legend>
 		
