@@ -114,16 +114,11 @@ public class EncheresController {
 		return "PageVendreUnArticle";
 	}
 	
-	@PostMapping("/vendre")
-	public String afficherVendreArticle(@Valid @ModelAttribute ArticleVendu articleVendu, 
-			BindingResult validationResultat) {
+	@PostMapping("/vendre/valider")
+	public String afficherVendreArticle( ArticleVendu articleVendu, Integer idUtilisateur) {
 		
-		if(validationResultat.hasErrors()) {
-			return "PageVendreUnArticle";
-		}
 
-		articleVenduService.enregistrerArticleVendu(articleVendu);
-		System.out.println(articleVendu);
+		articleVenduService.enregistrerArticleVendu(articleVendu, 2);
 		
 		return "redirect:/encheres";
 	}

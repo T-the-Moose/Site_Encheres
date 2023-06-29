@@ -72,25 +72,44 @@ public class ArticleVenduDaoSqlServerImpl implements ArticleVenduDAO{
 	public ArticleVendu read(Integer idArticle) {
 		t = namedParameterJdbcTemplate;
 		ArticleVendu articleVendu = t.getJdbcOperations().queryForObject(FIND_BY_ID,new ArticleVenduMapper(), idArticle);
-		System.out.println("voici = "+articleVendu);
+		System.out.println("voici = " + articleVendu);
 		return articleVendu;
 	}
 
-    public void save(ArticleVendu articleVendu ) {
-    	t = namedParameterJdbcTemplate;
-        t.getJdbcOperations().update(
-        	" INSERT INTO ARTICLES_VENDUS (nom_article, description, no_categorie, prix_initial, date_debut_encheres, date_fin_encheres, no_utilisateur" +
-        	" VALUES (?, ?, ?, ?, ?, ?, ?)",  
-        	articleVendu.getNomArticle(), 
-        	articleVendu.getDescription(), 
-        	articleVendu.getCategorie().getIdCategorie(),
-        	articleVendu.getMiseAPrix(), 
-        	articleVendu.getDateDebutEncheres(), 
-        	articleVendu.getDateFinEncheres()); 
+//    public void save(ArticleVendu articleVendu ) {
+//    	t = namedParameterJdbcTemplate;
+//        t.getJdbcOperations().update(
+//        	" INSERT INTO ARTICLES_VENDUS (nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial, prix_vente, no_utilisateur, no_categorie" +
+//        	" VALUES (?, ?, ?, ?, ?, ?, ?, ?)",  
+//        	articleVendu.getNomArticle(), 
+//        	articleVendu.getDescription(),
+//        	articleVendu.getDateDebutEncheres(), 
+//        	articleVendu.getDateFinEncheres(),
+//        	articleVendu.getMiseAPrix(),
+//        	articleVendu.getPrixVente(),
+//        	articleVendu.getUtilisateur(),
+//        	articleVendu.getCategorie().getIdCategorie()); 
         
 //        	Décommenter la ligne ci-dessous quand connexion user OK
 //        	articleVendu.getUtilisateur().getIdUtilisateur());
-    }
+//    }
+
+	@Override
+	public void save(ArticleVendu articleVendu, Integer IdUtilisateur) {
+		t = namedParameterJdbcTemplate;
+        t.getJdbcOperations().update(
+        	" INSERT INTO ARTICLES_VENDUS (nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial, prix_vente, no_utilisateur, no_categorie" +
+        	" VALUES (?, ?, ?, ?, ?, ?, ?, ?)",  
+        	articleVendu.getNomArticle(), 
+        	articleVendu.getDescription(),
+        	articleVendu.getDateDebutEncheres(), 
+        	articleVendu.getDateFinEncheres(),
+        	articleVendu.getMiseAPrix(),
+        	articleVendu.getPrixVente(),
+        	articleVendu.getUtilisateur(),
+        	articleVendu.getCategorie().getIdCategorie()); 
+		
+	}
 }
 
     

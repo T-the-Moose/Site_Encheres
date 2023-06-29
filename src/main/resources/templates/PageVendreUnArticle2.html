@@ -20,38 +20,47 @@
 					<h2>Nouvelle vente</h2>
 				</div>
 				
-				<form class="block-detail-vendre" data-th-action="@{/vendre/valider}" data-th-object="${articleVendu}" method="post">
+				<form class="block-detail-vendre" data-th-action="@{/vendre}" data-th-object="${articleVendu}" method="POST">
 				<input type="hidden" th:field="*{idArticle}"  />
 					<div  class="block-conteneur-infos-vendre">
 					
-						
+						<!-- <div th:if="${#fields.hasErrors('*')}" >
+							<p th:text="#{PageVendreUnArticle.erreurs}">Message d'erreur</p>
+						</div>-->
 						
 						<div class="infos-vendre">
 						   	<label class="titre-description" for="nomArticle">Nom de l'article:</label>
     						<input class="description-vendre" type="text" id="nomArticle" name="nomArticle" th:field="*{nomArticle}" />
-   							
+   							<!--<span class="error-message" th:if="${#fields.hasErrors('nomArticle')}" th:errors="*{nomArticle}"></span>-->
 						</div>
 						
 						<div class="infos-vendre">
 							<label class="titre-description" for="article">Description :</label>
 							<textarea class="description-vendre" id="descriptionArticle" th:field="*{description}"/></textarea>
-							
+							<!-- <span class="error-message" th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></span>-->
 						</div>
 						
 						<div class="infos-vendre">
 							<label class="titre-description" for="categorie">Catégorie :</label>
 								<select name="categories" id="categories" th:field="*{categorie}">
-									<option th:each="categorie: ${@categorieService.getCategorie()}" th:value="${categorie.idCategorie}" th:text= "${categorie.libelle}"></option>
+									<option value="choisirCategorie">-- Choisir une catégorie --</option>
+									<option value="1">Informatique</option>
+									<option value="2">Ameublement</option>
+									<option value="3">Vêtement</option>
+									<option value="4">Sport & Loisirs</option>
 								</select>
-							
+							<!--<span class="error-message" th:if="${#fields.hasErrors('categorie')}" th:errors="*{categorie}"></span>-->
 						</div>
 						
-							
+						<div class="infos-vendre">
+							<label class="titre-description" for="telechargerImage">Photo de l'article :</label>
+							<input class="description-vendre" type="file"/>
+						</div>			
 						
 						<div class="infos-vendre">
 							<label class="titre-description" for="prixArticle">Mise à prix :</label>
 							<input class="description-vendre" type="number" id="prixArticle" min="1" th:field="*{miseAPrix}"/>
-							
+							<!-- <span class="error-message" th:if="${#fields.hasErrors('miseAPrix')}" th:errors="*{miseAPrix}"></span>-->
 						</div>				
 						
 						<div class="infos-vendre">

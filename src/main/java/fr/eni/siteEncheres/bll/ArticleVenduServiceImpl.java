@@ -25,8 +25,8 @@ public class ArticleVenduServiceImpl implements ArticleVenduService {
 	}
 
 	@Override
-	public void enregistrerArticleVendu (ArticleVendu articleVendu) {
-		articleVenduDAO.save(articleVendu);
+	public void enregistrerArticleVendu (ArticleVendu articleVendu, Integer IdUtilisateur) {
+		articleVenduDAO.save(articleVendu, IdUtilisateur);
 	}
 	
 }

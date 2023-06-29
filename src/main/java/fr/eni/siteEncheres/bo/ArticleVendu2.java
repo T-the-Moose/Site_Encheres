@@ -2,22 +2,23 @@ package fr.eni.siteEncheres.bo;
 
 import java.sql.Date;
 
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
 
-
-public class ArticleVendu {
+public class ArticleVendu2 {
 	
 	private Integer idArticle;
 	
-
+	@NotBlank
 	private String nomArticle;
 	
-
+	@NotBlank
 	private String description;
 	
 	private Date dateDebutEncheres;
 	private Date dateFinEncheres;
 	
-
+	@Min(1)
 	private Integer miseAPrix;
 	
 	private Integer prixVente;
@@ -26,18 +27,18 @@ public class ArticleVendu {
 	
 	private Utilisateur utilisateur;
 	
-
+//	@NotNull
 	private Categorie categorie;
 	
 	private Retrait retrait;
 	
 	private Enchere enchere;
 	
-	public ArticleVendu() {
+	public ArticleVendu2() {
 	}
 
 	// Constructeur sans étatVente
-	public ArticleVendu(Integer idArticle, String nomArticle, String description, Date dateDebutEncheres,
+	public ArticleVendu2(Integer idArticle, String nomArticle, String description, Date dateDebutEncheres,
 			Date dateFinEncheres, Integer miseAPrix, Integer prixVente, Utilisateur utilisateur,
 			Categorie categorie) {
 		super();
@@ -52,7 +53,7 @@ public class ArticleVendu {
 		this.categorie = categorie;
 	}
 	
-	public ArticleVendu(Integer idArticle, String nomArticle, String description, Date dateDebutEncheres,
+	public ArticleVendu2(Integer idArticle, String nomArticle, String description, Date dateDebutEncheres,
 			Date dateFinEncheres, Integer miseAPrix, Integer prixVente, boolean etatVente, Utilisateur utilisateur,
 			Categorie categorie) {
 		this.idArticle = idArticle;
@@ -67,7 +68,7 @@ public class ArticleVendu {
 		this.categorie = categorie;
 	}
 	
-	public ArticleVendu(Integer idArticle, String nomArticle, String description, Date dateDebutEncheres,
+	public ArticleVendu2(Integer idArticle, String nomArticle, String description, Date dateDebutEncheres,
 			Date dateFinEncheres, Integer miseAPrix, Integer prixVente, boolean etatVente, Utilisateur utilisateur,
 			Categorie categorie, Retrait retrait, Enchere enchere) {
 		this.idArticle = idArticle;
@@ -84,7 +85,7 @@ public class ArticleVendu {
 		this.enchere = enchere;
 	}
 	
-	public ArticleVendu(Integer idArticle, String nomArticle, String description, Date dateDebutEncheres,
+	public ArticleVendu2(Integer idArticle, String nomArticle, String description, Date dateDebutEncheres,
 			Date dateFinEncheres, Integer miseAPrix, Integer prixVente, boolean etatVente, Utilisateur utilisateur,
 			Categorie categorie, Retrait retrait) {
 		this.idArticle = idArticle;
