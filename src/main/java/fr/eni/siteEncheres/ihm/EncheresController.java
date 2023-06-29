@@ -64,6 +64,7 @@ public class EncheresController {
 		modele.addAttribute("utilisateur", utilisateur);
 		
 		Categorie categorie = categorieService.findById(1);
+		  modele.addAttribute("categorie", categorie);
 		return "PagesListeEncheresConnecte";
 	}
 	
@@ -96,7 +97,7 @@ public class EncheresController {
 	
 	@GetMapping("/vendre")
 	public String afficherPageVendre() {
-		
+	    
 		return "PageVendreUnArticle";
 	}
 	
@@ -125,7 +126,7 @@ public class EncheresController {
 	}
 	
 	@RequestMapping("/encherir")
-	public String afficherPageEncherir(@RequestParam Integer idArticle, Model model) {
+	public String afficherPageEncherir(@RequestParam("idArticle") Integer idArticle, Model model) {
 		
 		ArticleVendu articleVendu = articleVenduService.findById(idArticle);
 		model.addAttribute("articleVendu", articleVendu);

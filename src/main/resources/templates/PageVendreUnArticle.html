@@ -12,16 +12,17 @@
 	
 	<main>
 		<div class="conteneur-block-articleavendre">
-			<div id="conteneur-img-detail">
-				<img id="img-detail" alt="" src="/img/imagePcTest.jpeg">	
-			</div>
+			<div>
+        		<img  class="img-articleavendre" alt="Informatique" src="/img/1.jpg">
+			</div>	
+			
 			<div class="conteneur-block-centre-vendre">
 				<div class="h2-vendre">
 					<h2>Nouvelle vente</h2>
 				</div>
 				
-				<form class="block-detail-vendre" action="/vendre" method="POST">
-					<div class="block-conteneur-infos-vendre">
+				<form class="block-detail-vendre" data-th-action="@{/vendre}" data-th-object="${articleVendu}" method="POST">
+					<div  class="block-conteneur-infos-vendre">
 						<div class="infos-vendre">
 							<label class="titre-description" for="article">Article :</label>
 							<input class="description-vendre" type="text" id="article"/>
@@ -35,12 +36,12 @@
 						<div class="infos-vendre">
 							<label class="titre-description" for="categorie">Catégorie :</label>
 								<select name="categories" id="categories">
-								<option value="choisirCategorie">-- Choisir une catégorie --</option>
-								<option value="informatique">Informatique</option>
-								<option value="ameublement">Ameublement</option>
-								<option value="vetement">Vêtement</option>
-								<option value="sport&Loisirs">Sport & Loisirs</option>
-							</select>
+									<option value="choisirCategorie">-- Choisir une catégorie --</option>
+									<option value="1">Informatique</option>
+									<option value="2">Ameublement</option>
+									<option value="3">Vêtement</option>
+									<option value="4">Sport & Loisirs</option>
+								</select>
 						</div>
 						
 						<div class="infos-vendre">

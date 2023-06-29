@@ -168,6 +168,11 @@ body {
     width: 55%;
 }
 
+.img-articleavendre {
+	width: 35em;
+	height: 30em;
+}
+
 .h2-vendre {
     display: flex;
     justify-content: center;
