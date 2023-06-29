@@ -12,12 +12,9 @@
 	
 	<main>
 		<div class="conteneur-block-articleavendre">
-			<div th:switch="*{categorie}">
-        		<p th:case="'1'"><img alt="Informatique" src="/img/1.png"></p>
-                <p th:case="'2'"><img alt="Ameublement" src="/img/2.png"></p>
-                <p th:case="'3'"><img alt="Vêtement" src="/img/3.png"></p>
-                <p th:case="'4'"><img alt="Sport&Loisir" src="/img/4.png"></p>
-			</div>
+			<div>
+        		<img  class="img-articleavendre" alt="Informatique" src="/img/1.jpg">
+			</div>	
 			
 			<div class="conteneur-block-centre-vendre">
 				<div class="h2-vendre">
@@ -39,12 +36,12 @@
 						<div class="infos-vendre">
 							<label class="titre-description" for="categorie">Catégorie :</label>
 								<select name="categories" id="categories">
-								<option value="choisirCategorie">-- Choisir une catégorie --</option>
-								<option value="informatique">Informatique</option>
-								<option value="ameublement">Ameublement</option>
-								<option value="vetement">Vêtement</option>
-								<option value="sport&Loisirs">Sport & Loisirs</option>
-							</select>
+									<option value="choisirCategorie">-- Choisir une catégorie --</option>
+									<option value="1">Informatique</option>
+									<option value="2">Ameublement</option>
+									<option value="3">Vêtement</option>
+									<option value="4">Sport & Loisirs</option>
+								</select>
 						</div>
 						
 						<div class="infos-vendre">
