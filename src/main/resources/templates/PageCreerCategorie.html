@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link href="/css/style.css" rel="stylesheet">
+<title>Création de votre compte</title>
+<script src="https://kit.fontawesome.com/dc547d252d.js"></script>
+</head>
+<body>
+
+	<header>
+		<h1>ENI - Enchères</h1>
+	</header>
+	
+	<main>
+		<h2 id="h2-creation">Création Catégorie</h2>
+		
+		<div class="creationProfil" data-th-each="item : ${categorie}">
+			<div class="infos-creation">
+				<label class="label-infos-creation" for="pseudo">Catégories Existante : </label>
+				<input type="text" id="creationPseudo" th:text="${item.libelle}"/>
+			</div>
+		</div>
+				
+		
+		<form th:action="@{/profil/modifier}" method="post">
+			<div class="block-infos-creation">
+				<div class="infos-creation">
+					<label class="label-infos-creation" for="nom">Nom  :</label>
+					<input type="text" id="creationNom"/>
+				</div>
+			</div>
+			<div class="block-creation-choix">
+			
+				<div class="creation-choix">
+					<button class="boutton-creation-choix" type="submit">Créer</button>
+				</div>
+			</div>
+		</form>
+	</main>
+</body>
+</html>
