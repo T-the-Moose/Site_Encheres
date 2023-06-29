@@ -14,6 +14,7 @@ public class Utilisateur {
 	private String motDePasse;
 	private Integer credit;
 	private boolean administrateur;
+	private boolean active;
 	
 	
 	public Utilisateur() {
@@ -34,8 +35,16 @@ public class Utilisateur {
 		this.credit = credit;
 	}
 	
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
+	}
+
 	public Utilisateur(Integer idUtilisateur, String pseudo, String nom, String prenom, String email, String telephone,
-			String rue, String codePostal, String ville, String motDePasse, Integer credit, boolean administrateur) {
+			String rue, String codePostal, String ville, String motDePasse, Integer credit, boolean administrateur, boolean active) {
 		this.idUtilisateur = idUtilisateur;
 		this.pseudo = pseudo;
 		this.nom = nom;
@@ -48,6 +57,7 @@ public class Utilisateur {
 		this.motDePasse = motDePasse;
 		this.credit = credit;
 		this.administrateur = administrateur;
+		this.active = active;
 	}
 
 	public Integer getIdUtilisateur() {
@@ -152,7 +162,7 @@ public class Utilisateur {
 		return "Utilisateur [idUtilisateur=" + idUtilisateur + ", pseudo=" + pseudo + ", nom=" + nom + ", prenom="
 				+ prenom + ", email=" + email + ", telephone=" + telephone + ", rue=" + rue + ", codePostal="
 				+ codePostal + ", ville=" + ville + ", motDePasse=" + motDePasse + ", credit=" + credit
-				+ ", administrateur=" + administrateur + "]";
+				+ ", administrateur=" + administrateur + ",active=" + active + "]";
 	}
 
 	

@@ -12,7 +12,7 @@
 	<main>
 		<h2 id="h2-creation">Mon profil</h2>
 		
-		<form th:action="@{/profil/modifier}" th:object="${utilisateur}" method="post">
+		<form th:action="@{/submit}" th:object="${utilisateur}" method="post">
 		<input type="hidden" th:field="*{idUtilisateur}"  />
 			<div class="creationProfil">
 				<div class="block-infos-creation">
@@ -77,11 +77,11 @@
 			<div class="block-creation-choix">
 			
 				<div class="creation-choix">
-					<button class="boutton-creation-choix" type="submit">Enregistrer</button>
+					<button class="boutton-creation-choix" type="submit" name="buttonAction" value="profil/modifier" th:attr="formaction=@{/profil/modifier}">Enregistrer</button>
 				</div>
 				
 				<div class="creation-choix">
-			       <button class="boutton-creation-choix" type="reset">Supprimer</button> 
+			       <button class="boutton-creation-choix" name="buttonAction" value="supprimerProfil" th:attr="formaction=@{/supprimerProfil}" type="submit">Supprimer</button> 
 				</div>
 				
 			</div>

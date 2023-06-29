@@ -30,5 +30,11 @@ public class UtilisateurServiceImpl implements UtilisateurService {
 		
 		utilisateurDAO.insert(utilisateur);		
 	}
+
+	@Override
+	public void supprimerUtilisateur(Utilisateur utilisateur) {
+		utilisateurDAO.delete(utilisateur);
+		
+	}
 	
 }
