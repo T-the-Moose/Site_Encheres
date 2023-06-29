@@ -6,12 +6,10 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.RowMapper;
-import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import fr.eni.siteEncheres.bo.ArticleVendu;
-import fr.eni.siteEncheres.bo.Utilisateur;
 
 
 @Repository
@@ -27,6 +25,9 @@ public class ArticleVenduDaoSqlServerImpl implements ArticleVenduDAO{
 	
 	@Autowired
 	private CategorieDAO categorieDAO;
+	
+//	@Autowired
+//	private RetraitDAO retraitDAO;
 	
 	@Autowired
 	private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
@@ -51,6 +52,10 @@ public class ArticleVenduDaoSqlServerImpl implements ArticleVenduDAO{
 
 			// Récupération id Categorie
 			articleVendu.setCategorie(categorieDAO.read(rs.getInt("no_categorie")));
+			
+//			articleVendu.setRetrait(retraitDAO.read(rs.getString("rue"));
+//			articleVendu.setRetrait(retraitDAO.read(rs.getString("code_postal"));
+//			articleVendu.setRetrait(retraitDAO.read(rs.getDate("ville"));
 			
 			return articleVendu;
 		}

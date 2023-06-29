@@ -78,7 +78,7 @@ public class EncheresController {
 	@GetMapping("/profil")
 	public String afficherPageProfil(Integer idUtilisateur, Model modele) {
 		
-		Utilisateur utilisateur = utilisateurService.findById(2);
+		Utilisateur utilisateur = utilisateurService.findById(4);
 		 modele.addAttribute("utilisateur", utilisateur);
 		
 		return "PageMonProfil";
@@ -86,9 +86,15 @@ public class EncheresController {
 	
 	@GetMapping("/modifierProfil")
 	public String afficherPagesModifierMonProfil(Integer idUtilisateur, Model modele) {
-		Utilisateur utilisateur = utilisateurService.findById(2);
+		Utilisateur utilisateur = utilisateurService.findById(4);
 		modele.addAttribute("utilisateur", utilisateur);
 		return "PageModifierMonProfil";
+	}
+	@PostMapping("/supprimerProfil")
+	public String supprimerProfilUtilisateur(@RequestParam Integer idUtilisateur, Model modele) {
+		Utilisateur utilisateur = utilisateurService.findById(4);
+		utilisateurService.supprimerUtilisateur(utilisateur);		
+		return "redirect:/";
 	}
 	
 	@GetMapping("/vendre")
