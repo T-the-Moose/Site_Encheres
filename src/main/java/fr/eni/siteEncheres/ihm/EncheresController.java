@@ -90,10 +90,7 @@ public class EncheresController {
 	}
 	
 	@GetMapping("/vendre")
-	public String afficherPageVendre(Model modele) {
-		
-		List<Categorie> listeCategorie = categorieService.getCategorie();
-		modele.addAttribute("categorie", listeCategorie);
+	public String afficherPageVendre() {
 	    
 		return "PageVendreUnArticle";
 	}
