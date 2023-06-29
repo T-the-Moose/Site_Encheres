@@ -2,15 +2,31 @@ package fr.eni.siteEncheres.bo;
 
 import java.sql.Date;
 
+import jakarta.validation.constraints.Future;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+
 public class ArticleVendu {
 	
 	private Integer idArticle;
+	
+	@NotBlank
 	private String nomArticle;
+	
+	@NotBlank
 	private String description;
+	
+	@Future
 	private Date dateDebutEncheres;
+	
+	@Future
 	private Date dateFinEncheres;
+	
+	@Min(1)
 	private Integer miseAPrix;
+	
 	private Integer prixVente;
+	
 	private boolean etatVente;
 	
 	private Utilisateur utilisateur;

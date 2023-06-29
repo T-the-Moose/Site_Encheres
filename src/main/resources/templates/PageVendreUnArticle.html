@@ -23,9 +23,15 @@
 				
 				<form class="block-detail-vendre" data-th-action="@{/vendre}" data-th-object="${articleVendu}" method="POST">
 					<div  class="block-conteneur-infos-vendre">
+					
+						<div th:if="${#fields.hasErrors('*')}" >
+							<p th:text="#{PageVendreUnArticle.erreurs}">Message d'erreur</p>
+						</div>
+						
 						<div class="infos-vendre">
 							<label class="titre-description" for="article">Article :</label>
-							<input class="description-vendre" type="text" id="article"/>
+							<input class="description-vendre" type="text" id="article" th:field="*{nomArticle}"/>
+							<span th:if="${#fields.hasErrors('nomArticle')}" th:each="erreur: ${#fields.errors('nomArticle')}" th:text="${erreur}"></span>
 						</div>
 						
 						<div class="infos-vendre">
