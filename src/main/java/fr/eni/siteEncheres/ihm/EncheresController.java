@@ -63,7 +63,6 @@ public class EncheresController {
 		return "redirect:/inscription";
 	}
 	
-	
 	@GetMapping("/encheres")
 	public String afficherPageEncheres(Integer idUtilisateur, Model modele) {
 		
