@@ -18,7 +18,7 @@ import fr.eni.siteEncheres.bo.Utilisateur;
 public class ArticleVenduDaoSqlServerImpl implements ArticleVenduDAO{
 
 	private final static String SELECT_ALL = "SELECT no_article, nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial, prix_vente, no_utilisateur, no_categorie FROM ARTICLES_VENDUS";
-	private final static String FIND_BY_ID = "SELECT * FROM ARTICLES_VENDUS WHERE id=?";
+	private final static String FIND_BY_ID = "SELECT * FROM ARTICLES_VENDUS WHERE no_article=?";
 	NamedParameterJdbcTemplate t;
 	
 	
@@ -65,6 +65,7 @@ public class ArticleVenduDaoSqlServerImpl implements ArticleVenduDAO{
 
 	@Override
 	public ArticleVendu read(Integer idArticle) {
+		t = namedParameterJdbcTemplate;
 		ArticleVendu articleVendu = t.getJdbcOperations().queryForObject(FIND_BY_ID,new ArticleVenduMapper(), idArticle);
 		System.out.println("voici = "+articleVendu);
 		return articleVendu;

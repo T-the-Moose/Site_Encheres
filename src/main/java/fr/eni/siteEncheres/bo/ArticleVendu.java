@@ -1,7 +1,6 @@
 package fr.eni.siteEncheres.bo;
 
 import java.sql.Date;
-import java.time.LocalDate;
 
 public class ArticleVendu {
 	
@@ -16,6 +15,7 @@ public class ArticleVendu {
 	
 	private Utilisateur utilisateur;
 	private Categorie categorie;
+	private Retrait retrait;
 	
 	public ArticleVendu() {
 	}
