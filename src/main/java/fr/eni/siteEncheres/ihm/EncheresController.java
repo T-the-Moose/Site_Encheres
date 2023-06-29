@@ -54,8 +54,13 @@ public class EncheresController {
 	}
 	
 	@GetMapping("/inscription")
-	public String afficherPageInscription(@ModelAttribute Utilisateur utilisateur) {
-		return "PageCreerCompte";
+	public String afficherPageInscription(@Valid @ModelAttribute Utilisateur utilisateur,
+			BindingResult validationResultat) {
+		
+		if(validationResultat.hasErrors()) {
+			return "PageCreerCompte";
+		}
+		return "redirect:/inscription";
 	}
 	
 	
@@ -78,7 +83,7 @@ public class EncheresController {
 	@GetMapping("/profil")
 	public String afficherPageProfil(Integer idUtilisateur, Model modele) {
 		
-		Utilisateur utilisateur = utilisateurService.findById(4);
+		Utilisateur utilisateur = utilisateurService.findById(1);
 		 modele.addAttribute("utilisateur", utilisateur);
 		
 		return "PageMonProfil";
@@ -86,10 +91,13 @@ public class EncheresController {
 	
 	@GetMapping("/modifierProfil")
 	public String afficherPagesModifierMonProfil(Integer idUtilisateur, Model modele) {
-		Utilisateur utilisateur = utilisateurService.findById(4);
+		
+		Utilisateur utilisateur = utilisateurService.findById(1);
 		modele.addAttribute("utilisateur", utilisateur);
 		return "PageModifierMonProfil";
 	}
+	
+	
 	@PostMapping("/supprimerProfil")
 	public String supprimerProfilUtilisateur(@RequestParam Integer idUtilisateur, Model modele) {
 		Utilisateur utilisateur = utilisateurService.findById(4);

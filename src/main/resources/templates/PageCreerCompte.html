@@ -18,26 +18,37 @@
 		<form th:action="@{/profil/modifier}" th:object="${utilisateur}" method="post">
 			<input type="hidden" th:field="*{idUtilisateur}"  />
 			<div class="creationProfil">
+			
+				<div th:if="${#fields.hasErrors('*')}" >
+					<p th:text="#{PageCreerCompte.erreurs}">Message d'erreur</p>
+				</div>
+			
+			
 				<div class="block-infos-creation">
 					<div class="infos-creation">
 						<label class="label-infos-creation" for="pseudo">Pseudo : </label>
 						<input type="text" id="creationPseudo" th:field="*{pseudo}"/>
+						<span class="error-message" th:if="${#fields.hasErrors('pseudo')}" th:errors="*{pseudo}"></span>
 					</div>
 					<div class="infos-creation">
 						<label class="label-infos-creation" for="prenom">Prénom : </label>
 						<input type="text" id="creationPrenom" th:field="*{prenom}"/>
+						<span class="error-message" th:if="${#fields.hasErrors('prenom')}" th:errors="*{prenom}"></span>
 					</div>
 					<div class="infos-creation">
 						<label class="label-infos-creation" for="telephone">Téléphone : </label>
 						<input type="text" id="creationTelephone" th:field="*{telephone}"/>
+						<span class="error-message" th:if="${#fields.hasErrors('telephone')}" th:errors="*{telephone}"></span>
 					</div>
 					<div class="infos-creation">
 						<label class="label-infos-creation" for="codePostal">Code Postal : </label>
 						<input type="text" id="creationCP" th:field="*{codePostal}"/>
+						<span class="error-message" th:if="${#fields.hasErrors('codePostal')}" th:errors="*{codePostal}"></span>
 					</div>
 					<div class="infos-creation">
 						<label class="label-infos-creation" for="motDePasse">Mot de Passe : </label>
 						<input type="password" id="creationMDP" th:field="*{motDePasse}"/>
+						<span class="error-message" th:if="${#fields.hasErrors('motDePasse')}" th:errors="*{motDePasse}"></span>
 					</div>
 				</div>
 				
@@ -45,18 +56,22 @@
 					<div class="infos-creation">
 						<label class="label-infos-creation" for="nom">Nom  :</label>
 						<input type="text" id="creationNom" th:field="*{nom}"/>
+						<span class="error-message" th:if="${#fields.hasErrors('nom')}" th:errors="*{nom}"></span>
 					</div>
 					<div class="infos-creation">
 						<label class="label-infos-creation" for="email">Email : </label>
-						<input type="email" id="creationEmail" th:field="*{email}"/>					
+						<input type="email" id="creationEmail" th:field="*{email}"/>	
+						<span class="error-message" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>				
 					</div>
 					<div class="infos-creation">
 						<label class="label-infos-creation" for="rue">Rue : </label>
-						<input type="text" id="creationRue" th:field="*{rue}"/>					
+						<input type="text" id="creationRue" th:field="*{rue}"/>
+						<span class="error-message" th:if="${#fields.hasErrors('rue')}" th:errors="*{rue}"></span>			
 					</div>
 					<div class="infos-creation">
 						<label class="label-infos-creation" for="ville">Ville : </label>
-						<input type="text" id="creationVille" th:field="*{ville}"/>					
+						<input type="text" id="creationVille" th:field="*{ville}"/>		
+						<span class="error-message" th:if="${#fields.hasErrors('ville')}" th:errors="*{ville}"></span>			
 					</div>
 					<div class="infos-creation">
 						<label class="label-infos-creation" for="confMDP"> Confirmation : </label>

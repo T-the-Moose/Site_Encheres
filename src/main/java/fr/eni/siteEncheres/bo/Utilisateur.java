@@ -1,17 +1,38 @@
 package fr.eni.siteEncheres.bo;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+
 public class Utilisateur {
 	
 	private Integer idUtilisateur;
+	@NotBlank
 	private String pseudo;
+	
+	@NotBlank
 	private String nom;
+	
+	@NotBlank
 	private String prenom;
+	
+	@Email
 	private String email;
+	
+	@NotBlank
 	private String telephone;
+	
+	@NotBlank
 	private String rue;
+	
+	@NotBlank
 	private String codePostal;
+	
+	@NotBlank
 	private String ville;
+	
+	@NotBlank
 	private String motDePasse;
+	
 	private Integer credit;
 	private boolean administrateur;
 	private boolean active;
