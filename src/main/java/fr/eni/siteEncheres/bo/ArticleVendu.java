@@ -50,6 +50,22 @@ public class ArticleVendu {
 		this.utilisateur = utilisateur;
 		this.categorie = categorie;
 	}
+	
+	public ArticleVendu(Integer idArticle, String nomArticle, String description, Date dateDebutEncheres,
+			Date dateFinEncheres, Integer miseAPrix, Integer prixVente, boolean etatVente, Utilisateur utilisateur,
+			Categorie categorie, Retrait retrait) {
+		this.idArticle = idArticle;
+		this.nomArticle = nomArticle;
+		this.description = description;
+		this.dateDebutEncheres = dateDebutEncheres;
+		this.dateFinEncheres = dateFinEncheres;
+		this.miseAPrix = miseAPrix;
+		this.prixVente = prixVente;
+		this.etatVente = etatVente;
+		this.utilisateur = utilisateur;
+		this.categorie = categorie;
+		this.retrait = retrait;
+	}
 
 	public Integer getIdArticle() {
 		return idArticle;
@@ -131,12 +147,20 @@ public class ArticleVendu {
 		this.categorie = categorie;
 	}
 
+	public Retrait getRetrait() {
+		return retrait;
+	}
+
+	public void setRetrait(Retrait retrait) {
+		this.retrait = retrait;
+	}
+
 	@Override
 	public String toString() {
 		return "ArticleVendu [idArticle=" + idArticle + ", nomArticle=" + nomArticle + ", description=" + description
 				+ ", dateDebutEncheres=" + dateDebutEncheres + ", dateFinEncheres=" + dateFinEncheres + ", miseAPrix="
 				+ miseAPrix + ", prixVente=" + prixVente + ", etatVente=" + etatVente + ", utilisateur=" + utilisateur
-				+ ", categorie=" + categorie + "]";
+				+ ", categorie=" + categorie + ", retrait =" + retrait +"]";
 	}
 	
 
