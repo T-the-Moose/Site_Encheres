@@ -33,6 +33,8 @@ public class ArticleVendu {
 	private Categorie categorie;
 	private Retrait retrait;
 	
+	private Enchere enchere;
+	
 	public ArticleVendu() {
 	}
 
@@ -65,6 +67,23 @@ public class ArticleVendu {
 		this.etatVente = etatVente;
 		this.utilisateur = utilisateur;
 		this.categorie = categorie;
+	}
+	
+	public ArticleVendu(Integer idArticle, String nomArticle, String description, Date dateDebutEncheres,
+			Date dateFinEncheres, Integer miseAPrix, Integer prixVente, boolean etatVente, Utilisateur utilisateur,
+			Categorie categorie, Retrait retrait, Enchere enchere) {
+		this.idArticle = idArticle;
+		this.nomArticle = nomArticle;
+		this.description = description;
+		this.dateDebutEncheres = dateDebutEncheres;
+		this.dateFinEncheres = dateFinEncheres;
+		this.miseAPrix = miseAPrix;
+		this.prixVente = prixVente;
+		this.etatVente = etatVente;
+		this.utilisateur = utilisateur;
+		this.categorie = categorie;
+		this.retrait = retrait;
+		this.enchere = enchere;
 	}
 	
 	public ArticleVendu(Integer idArticle, String nomArticle, String description, Date dateDebutEncheres,
@@ -169,6 +188,14 @@ public class ArticleVendu {
 
 	public void setRetrait(Retrait retrait) {
 		this.retrait = retrait;
+	}
+
+	public Enchere getEnchere() {
+		return enchere;
+	}
+
+	public void setEnchere(Enchere enchere) {
+		this.enchere = enchere;
 	}
 
 	@Override
