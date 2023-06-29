@@ -6,18 +6,15 @@ public class Retrait {
 	private String code_Postal; // variable code_Postal car déjà existante dans la bo Utilisateur (codePostal)
 	private String ville;
 	
-	private ArticleVendu articleVendu;
-	
 	
 	public Retrait() {
 	}
 
-	public Retrait(String rue, String code_Postal, String ville, ArticleVendu articleVendu) {
+	public Retrait(String rue, String code_Postal, String ville) {
 		super();
 		this.rue = rue;
 		this.code_Postal = code_Postal;
 		this.ville = ville;
-		this.articleVendu = articleVendu;
 	}
 
 	public String getRue() {
@@ -51,8 +48,7 @@ public class Retrait {
 
 	@Override
 	public String toString() {
-		return "Retrait [rue=" + rue + ", code_Postal=" + code_Postal + ", ville=" + ville + ", articleVendu="
-				+ articleVendu + "]";
+		return "Retrait [rue=" + rue + ", code_Postal=" + code_Postal + ", ville=" + ville + "]";
 	}
 
 	
