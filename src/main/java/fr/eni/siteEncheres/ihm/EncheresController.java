@@ -41,11 +41,7 @@ public class EncheresController {
 	@GetMapping({"/", "/accueil"})
 	public String afficherAccueil(Model modele) {
 		
-		List<Categorie> listeCategorie = categorieService.getCategorie();
-		modele.addAttribute("categorie", listeCategorie);
-		
 		List<ArticleVendu> listeArticle = articleVenduService.getArticleVendu();
-		
 		modele.addAttribute("articleVendu", listeArticle);
 		
 		return "PageAccueilNonConnecte";
@@ -56,9 +52,10 @@ public class EncheresController {
 	public String afficherAccueilParCategorie(@RequestParam Integer idCategorie, Model modele) {
 
 	    List<ArticleVendu> listeArticle = articleVenduService.getArticleVenduParCategorie(idCategorie);
-	    
 	    modele.addAttribute("articleVendu", listeArticle);
-
+	    
+	    System.out.println("L id de la catégorie est :" + idCategorie);
+	    
 	    return "redirect:/accueil";
 	}
 	

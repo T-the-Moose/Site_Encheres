@@ -29,9 +29,9 @@
 				
 				<div class="div_label_categorie_accueil">
 				<label class="titre-description" for="categorie">Catégorie :</label>
-					<select name="idCategorie" id="categories" th:fields="${idCategorie}" >
-							<option th:each="categorie: ${@categorieService.getCategorie()}" th:value="${categorie.idCategorie}" th:text= "${categorie.libelle}"></option>
-					</select>
+					<select name="idCategorie" id="idCategorie">
+   						<option th:each="categorie: ${@categorieService.getCategorie()}" th:value="${categorie.idCategorie}" th:text="${categorie.libelle}"></option>
+   					</select>
 				</div>
 			</div >
 			<div class="rechercher_accueil">
@@ -48,9 +48,9 @@
 					<div class="description_accueil">
 						<p data-th-text="${article.nomArticle}"></p>
 						<p>Prix : <span data-th-text="${article.miseAPrix}+ ' ' + points"></span></p>
-						<p> Fin de l'enchère : <span data-th-text="${article.dateFinEncheres}"></span></p>
+						<p>Fin de l'enchère : <span data-th-text="${article.dateFinEncheres}"></span></p>
 						<p>Vendeur : <span data-th-text="${article.utilisateur.pseudo}"></span>Vendeur</p>
-						<p>Id de l'article : <span data-th-text="${article.idArticle}"></span></p>
+						<p>Id de la catégorie : <span data-th-text="${article.categorie.idCategorie}"></span></p>
 					</div>
 				</div>
 			</a></div>
