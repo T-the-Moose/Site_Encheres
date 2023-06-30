@@ -45,6 +45,7 @@ public class EncheresController {
 		modele.addAttribute("categorie", listeCategorie);
 		
 		List<ArticleVendu> listeArticle = articleVenduService.getArticleVendu();
+		
 		modele.addAttribute("articleVendu", listeArticle);
 		
 		return "PageAccueilNonConnecte";
@@ -53,11 +54,12 @@ public class EncheresController {
 	
 	@PostMapping("/accueil/articleParCategorie")
 	public String afficherAccueilParCategorie(@RequestParam Integer idCategorie, Model modele) {
-		
-		List<ArticleVendu> listeArticle = articleVenduService.getArticleVenduParCategorie(idCategorie);
-		modele.addAttribute("articleVendu", listeArticle);
-		
-		return "PageAccueilNonConnecte";
+
+	    List<ArticleVendu> listeArticle = articleVenduService.getArticleVenduParCategorie(idCategorie);
+	    
+	    modele.addAttribute("articleVendu", listeArticle);
+
+	    return "redirect:/accueil";
 	}
 	
 	
@@ -106,7 +108,7 @@ public class EncheresController {
 		
 		Utilisateur utilisateur = utilisateurService.findById(1);
 		modele.addAttribute("utilisateur", utilisateur);
-		return "redirect:/accueil";
+		return "PageModifierMonProfil";
 	}
 	
 	

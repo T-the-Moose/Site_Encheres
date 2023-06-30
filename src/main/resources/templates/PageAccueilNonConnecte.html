@@ -29,7 +29,7 @@
 				
 				<div class="div_label_categorie_accueil">
 				<label class="titre-description" for="categorie">Catégorie :</label>
-					<select name="idCategorie" id="categories" >
+					<select name="idCategorie" id="categories" th:fields="${idCategorie}" >
 							<option th:each="categorie: ${@categorieService.getCategorie()}" th:value="${categorie.idCategorie}" th:text= "${categorie.libelle}"></option>
 					</select>
 				</div>
