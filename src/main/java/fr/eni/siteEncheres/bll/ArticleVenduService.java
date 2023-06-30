@@ -3,6 +3,7 @@ package fr.eni.siteEncheres.bll;
 import java.util.List;
 
 import fr.eni.siteEncheres.bo.ArticleVendu;
+import fr.eni.siteEncheres.bo.Utilisateur;
 import jakarta.validation.Valid;
 
 public interface ArticleVenduService {
@@ -11,7 +12,7 @@ public interface ArticleVenduService {
 	
 	ArticleVendu findById(Integer idArticle);
 
-	void enregistrerArticleVendu(ArticleVendu articleVendu, Integer idUtilisateur);
+	void enregistrerArticleVendu(ArticleVendu articleVendu, Utilisateur utilisateur);
 
 
 }

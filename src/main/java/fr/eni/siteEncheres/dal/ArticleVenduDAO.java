@@ -3,6 +3,7 @@ package fr.eni.siteEncheres.dal;
 import java.util.List;
 
 import fr.eni.siteEncheres.bo.ArticleVendu;
+import fr.eni.siteEncheres.bo.Utilisateur;
 
 public interface ArticleVenduDAO {
 
@@ -10,5 +11,5 @@ public interface ArticleVenduDAO {
 
 	ArticleVendu read(Integer idArticle);
 
-	void save(ArticleVendu articleVendu, Integer IdUtilisateur);
+	void save(ArticleVendu articleVendu, Utilisateur utilisateur);
 }

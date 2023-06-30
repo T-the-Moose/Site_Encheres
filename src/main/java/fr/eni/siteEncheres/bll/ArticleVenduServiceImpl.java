@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import fr.eni.siteEncheres.bo.ArticleVendu;
+import fr.eni.siteEncheres.bo.Utilisateur;
 import fr.eni.siteEncheres.dal.ArticleVenduDAO;
 
 @Service("articleVenduService")
@@ -25,8 +26,8 @@ public class ArticleVenduServiceImpl implements ArticleVenduService {
 	}
 
 	@Override
-	public void enregistrerArticleVendu (ArticleVendu articleVendu, Integer IdUtilisateur) {
-		articleVenduDAO.save(articleVendu, IdUtilisateur);
+	public void enregistrerArticleVendu (ArticleVendu articleVendu, Utilisateur utilisateur) {
+		articleVenduDAO.save(articleVendu, utilisateur);
 	}
 	
 }
