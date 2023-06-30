@@ -18,7 +18,7 @@
 
 	<main>
 		<h2 class="h2_accueil">Liste des enchères</h2>
-			<form data-th-action="@{/PageAccueilNonConnecte}" data-th-object="${articleVendu}" method="POST" class="form_accueil">
+			<form data-th-action="@{/PageAccueilNonConnecte}"  method="POST" class="form_accueil">
 			<div class="gauche_accueil">
 				<div class="div_label_filtre_accueil">
 					<label for="filtres" class="label_filtre_accueil">Filtres : </label>
@@ -26,9 +26,9 @@
 				</div>
 				
 				<div class="div_label_categorie_accueil">
-				<label for="categories">Catégories : </label>
+				<label class="titre-description" for="categorie">Catégorie :</label>
 					<select name="categories" id="categories" th:field="*{categorie}">
-						<option th:each="categorie: ${categorie.libelle}" th:value="${categorie.idCategorie}" th:text= "${categorie.libelle}"></option>
+							<option th:each="categorie: ${@categorieService.getCategorie()}" th:value="${categorie.idCategorie}" th:text= "${categorie.libelle}"></option>
 					</select>
 				</div>
 			</div >
