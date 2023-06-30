@@ -29,5 +29,11 @@ public class ArticleVenduServiceImpl implements ArticleVenduService {
 	public void enregistrerArticleVendu (ArticleVendu articleVendu, Utilisateur utilisateur) {
 		articleVenduDAO.save(articleVendu, utilisateur);
 	}
+
+	@Override
+	public List<ArticleVendu> getArticleVenduParCategorie(Integer idCategorie) {
+		return articleVenduDAO.findAllArticleParCat(idCategorie);
+	}
+
 	
 }

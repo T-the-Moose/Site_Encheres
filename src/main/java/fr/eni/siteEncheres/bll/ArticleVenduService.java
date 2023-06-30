@@ -14,5 +14,6 @@ public interface ArticleVenduService {
 
 	void enregistrerArticleVendu(ArticleVendu articleVendu, Utilisateur utilisateur);
 
+	List<ArticleVendu> getArticleVenduParCategorie(Integer idCategorie);
 
 }

@@ -12,4 +12,7 @@ public interface ArticleVenduDAO {
 	ArticleVendu read(Integer idArticle);
 
 	void save(ArticleVendu articleVendu, Utilisateur utilisateur);
+
+	List<ArticleVendu> findAllArticleParCat(Integer idCategorie);
+
 }

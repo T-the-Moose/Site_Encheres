@@ -68,6 +68,14 @@ public class ArticleVenduDaoSqlServerImpl implements ArticleVenduDAO{
 		List<ArticleVendu> listeArticle = namedParameterJdbcTemplate.query(SELECT_ALL, new ArticleVenduMapper());
 		return listeArticle;
 	}
+	
+
+	@Override
+	public List<ArticleVendu> findAllArticleParCat(Integer idCategorie) {
+		List<ArticleVendu> listeArticleParCat = namedParameterJdbcTemplate.query(SELECT_ALL, new ArticleVenduMapper());
+		return listeArticleParCat;
+	}
+	
 
 	@Override
 	public ArticleVendu read(Integer idArticle) {
@@ -94,6 +102,7 @@ public class ArticleVenduDaoSqlServerImpl implements ArticleVenduDAO{
         	articleVendu.getCategorie().getIdCategorie()); 
 		
 	}
+
 }
 
     

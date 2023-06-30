@@ -51,6 +51,16 @@ public class EncheresController {
 	}
 	
 	
+	@PostMapping("/accueil/articleParCategorie")
+	public String afficherAccueilParCategorie(@RequestParam Integer idCategorie, Model modele) {
+		
+		List<ArticleVendu> listeArticle = articleVenduService.getArticleVenduParCategorie(idCategorie);
+		modele.addAttribute("articleVendu", listeArticle);
+		
+		return "PageAccueilNonConnecte";
+	}
+	
+	
 	@GetMapping("/connexion")
 	public String afficherPageConnexion() {
 		return "PageConnexion";
@@ -96,7 +106,7 @@ public class EncheresController {
 		
 		Utilisateur utilisateur = utilisateurService.findById(1);
 		modele.addAttribute("utilisateur", utilisateur);
-		return "PageModifierMonProfil";
+		return "redirect:/accueil";
 	}
 	
 	

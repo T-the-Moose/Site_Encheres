@@ -19,7 +19,7 @@
 	<main>
 		<h2 class="h2_accueil">Liste des enchères</h2>
 
-			<form action="/PageAccueilNonConnecte" method="POST" class="form_accueil">
+			<form data-th-action="@{/accueil/articleParCategorie}" data-th-object="${articleVendu}" method="POST" class="form_accueil">
 
 			<div class="gauche_accueil">
 				<div class="div_label_filtre_accueil">
@@ -29,7 +29,7 @@
 				
 				<div class="div_label_categorie_accueil">
 				<label class="titre-description" for="categorie">Catégorie :</label>
-					<select name="categories" id="categories" th:field="*{categorie}">
+					<select name="idCategorie" id="categories" >
 							<option th:each="categorie: ${@categorieService.getCategorie()}" th:value="${categorie.idCategorie}" th:text= "${categorie.libelle}"></option>
 					</select>
 				</div>
@@ -38,6 +38,8 @@
 				<button type="submit" class="button_rechercher_accueil">Rechercher</button>
 			</div>
 			</form>
+			
+			
 			<div class="listes_accueil" data-th-each="article : ${articleVendu}">
 				<div class="card_accueil"><a class="block-enchere" id="article" th:href="@{/encherir(idArticle=${article.idArticle})}">
 					<div class="img_card_accueil">
@@ -48,6 +50,7 @@
 						<p>Prix : <span data-th-text="${article.miseAPrix}+ ' ' + points"></span></p>
 						<p> Fin de l'enchère : <span data-th-text="${article.dateFinEncheres}"></span></p>
 						<p>Vendeur : <span data-th-text="${article.utilisateur.pseudo}"></span>Vendeur</p>
+						<p>Id de l'article : <span data-th-text="${article.idArticle}"></span></p>
 					</div>
 				</div>
 			</a></div>
