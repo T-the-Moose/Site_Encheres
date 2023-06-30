@@ -36,3 +36,18 @@ function activerCheckbox() {
 
 // Appeler la fonction pour activer le gestionnaire d'événements
 activerCheckbox();
+
+function afficherApercuImage(event) {
+  var input = event.target;
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+
+    reader.onload = function(e) {
+      var apercu = document.getElementById("apercuImage");
+      apercu.src = e.target.result;
+      apercu.style.display = "block";
+    };
+
+    reader.readAsDataURL(input.files[0]);
+  }
+}

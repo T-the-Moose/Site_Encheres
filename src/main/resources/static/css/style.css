@@ -166,11 +166,14 @@ body {
     display: flex;
     flex-direction: column;
     width: 55%;
+    margin-left: 4em;
 }
 
+
+
 .img-articleavendre {
-	width: 35em;
-	height: 30em;
+	max-width: 35em;
+	width: 100%;	
 }
 
 .h2-vendre {

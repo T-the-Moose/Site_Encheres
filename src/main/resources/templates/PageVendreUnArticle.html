@@ -11,8 +11,8 @@
 	
 	<main>
 		<div class="conteneur-block-articleavendre">
-			<div>
-        		<img  class="img-articleavendre" alt="Informatique" src="/img/1.jpg">
+			<div class="div-img-articleavendre">
+        		<img id="apercuImage" class="img-articleavendre" alt="Aperçu de l'image" src="#" style="display: hidden;">
 			</div>	
 			
 			<div class="conteneur-block-centre-vendre">
@@ -45,7 +45,10 @@
 								</select>
 						</div>
 						
-							
+						<div class="infos-vendre">
+							<label class="titre-description" for="telechargerImage">Photo de l'article :</label>
+							<input class="description-vendre" type="file" id="imageInput" onchange="afficherApercuImage(event)"/>
+						</div>		
 						
 						<div class="infos-vendre">
 							<label class="titre-description" for="prixArticle">Mise à prix :</label>
@@ -92,6 +95,6 @@
 			</div>
 		</div>
 	</main>
-
+	<script type="text/javascript" src="/script/script.js"></script>
 </body>
 </html>
