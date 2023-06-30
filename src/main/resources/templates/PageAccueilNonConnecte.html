@@ -18,7 +18,9 @@
 
 	<main>
 		<h2 class="h2_accueil">Liste des enchères</h2>
-			<form data-th-action="@{/PageAccueilNonConnecte}"  method="POST" class="form_accueil">
+
+			<form action="/PageAccueilNonConnecte" method="POST" class="form_accueil">
+
 			<div class="gauche_accueil">
 				<div class="div_label_filtre_accueil">
 					<label for="filtres" class="label_filtre_accueil">Filtres : </label>
@@ -32,8 +34,6 @@
 					</select>
 				</div>
 			</div >
-			
-			
 			<div class="rechercher_accueil">
 				<button type="submit" class="button_rechercher_accueil">Rechercher</button>
 			</div>
