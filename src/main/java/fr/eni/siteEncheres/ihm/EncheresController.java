@@ -86,6 +86,9 @@ public class EncheresController {
 		
 		Categorie categorie = categorieService.findById(1);
 		  modele.addAttribute("categorie", categorie);
+		List<ArticleVendu> listeArticle = articleVenduService.getArticleVendu();	
+		modele.addAttribute("articleVendu", listeArticle);  
+		  
 		return "PagesListeEncheresConnecte";
 	}
 	
