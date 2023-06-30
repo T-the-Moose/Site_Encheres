@@ -10,6 +10,7 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import fr.eni.siteEncheres.bo.ArticleVendu;
+import fr.eni.siteEncheres.bo.Utilisateur;
 
 
 @Repository
@@ -76,29 +77,12 @@ public class ArticleVenduDaoSqlServerImpl implements ArticleVenduDAO{
 		return articleVendu;
 	}
 
-//    public void save(ArticleVendu articleVendu ) {
-//    	t = namedParameterJdbcTemplate;
-//        t.getJdbcOperations().update(
-//        	" INSERT INTO ARTICLES_VENDUS (nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial, prix_vente, no_utilisateur, no_categorie" +
-//        	" VALUES (?, ?, ?, ?, ?, ?, ?, ?)",  
-//        	articleVendu.getNomArticle(), 
-//        	articleVendu.getDescription(),
-//        	articleVendu.getDateDebutEncheres(), 
-//        	articleVendu.getDateFinEncheres(),
-//        	articleVendu.getMiseAPrix(),
-//        	articleVendu.getPrixVente(),
-//        	articleVendu.getUtilisateur(),
-//        	articleVendu.getCategorie().getIdCategorie()); 
-        
-//        	Décommenter la ligne ci-dessous quand connexion user OK
-//        	articleVendu.getUtilisateur().getIdUtilisateur());
-//    }
 
 	@Override
-	public void save(ArticleVendu articleVendu, Integer IdUtilisateur) {
+	public void save(ArticleVendu articleVendu, Utilisateur utilisateur) {
 		t = namedParameterJdbcTemplate;
         t.getJdbcOperations().update(
-        	" INSERT INTO ARTICLES_VENDUS (nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial, prix_vente, no_utilisateur, no_categorie" +
+        	" INSERT INTO articles_vendus (nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial, prix_vente, no_utilisateur, no_categorie) " +
         	" VALUES (?, ?, ?, ?, ?, ?, ?, ?)",  
         	articleVendu.getNomArticle(), 
         	articleVendu.getDescription(),
@@ -106,7 +90,7 @@ public class ArticleVenduDaoSqlServerImpl implements ArticleVenduDAO{
         	articleVendu.getDateFinEncheres(),
         	articleVendu.getMiseAPrix(),
         	articleVendu.getPrixVente(),
-        	articleVendu.getUtilisateur(),
+        	utilisateur.getIdUtilisateur(),
         	articleVendu.getCategorie().getIdCategorie()); 
 		
 	}

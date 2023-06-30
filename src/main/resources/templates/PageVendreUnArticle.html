@@ -55,12 +55,12 @@
 						
 						<div class="infos-vendre">
 							<label class="titre-description" for="debutEnchere">Début de l'enchère :</label>
-							<input class="description-vendre" type="date" value="2023-06-29" min="2023-06-29" id="debutEnchere"/>
+							<input class="description-vendre" type="date" value="2023-06-29" min="2023-06-29" th:field="*{dateDebutEncheres}"  id="debutEnchere"/>
 						</div>		
 						
 						<div class="infos-vendre">
 							<label class="titre-description" for="finEnchere">Fin de l'enchère :</label>
-							<input class="description-vendre" type="date" value="2023-06-29" min="2023-06-29" id="finEnchere" />
+							<input class="description-vendre" type="date" value="2023-06-29" min="2023-06-29" th:field="*{dateFinEncheres}"  id="finEnchere" />
 						</div>
 					</div>
 

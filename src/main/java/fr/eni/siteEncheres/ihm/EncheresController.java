@@ -117,9 +117,10 @@ public class EncheresController {
 	}
 	
 	@PostMapping("/vendre/valider")
-	public String afficherVendreArticle( ArticleVendu articleVendu, Integer idUtilisateur) {
+	public String afficherVendreArticle( ArticleVendu articleVendu, Utilisateur utilisateur) {
+		utilisateur = utilisateurService.findById(2); // temporaire en attente de connexion
 
-		articleVenduService.enregistrerArticleVendu(articleVendu, 2);
+		articleVenduService.enregistrerArticleVendu(articleVendu, utilisateur);
 		
 		return "redirect:/encheres";
 	}
