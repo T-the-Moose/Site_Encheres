@@ -41,12 +41,17 @@ public class EncheresController {
 	@GetMapping({"/", "/accueil"})
 	public String afficherAccueil(Model modele) {
 		
-		// Pas sûr de la récup de tout les articles pour afficher nomArticle/miseAPrix/dateFinEncheres/utilisateur
 		List<ArticleVendu> listeArticle = articleVenduService.getArticleVendu();
 		modele.addAttribute("articleVendu", listeArticle);
 		
 		return "PageAccueilNonConnecte";
 	}
+	
+	@PostMapping("/accueil/articleParCategorie") 
+	public String afficherAccueilParCategorie() {
+	
+	return "redirect:/accueil";
+}
 	
 	@GetMapping("/connexion")
 	public String afficherPageConnexion() {
@@ -115,7 +120,6 @@ public class EncheresController {
 	
 	@PostMapping("/vendre/valider")
 	public String afficherVendreArticle( ArticleVendu articleVendu, Integer idUtilisateur) {
-		
 
 		articleVenduService.enregistrerArticleVendu(articleVendu, 2);
 		

@@ -43,7 +43,6 @@
 								<select name="categories" id="categories" th:field="*{categorie}">
 									<option th:each="categorie: ${@categorieService.getCategorie()}" th:value="${categorie.idCategorie}" th:text= "${categorie.libelle}"></option>
 								</select>
-							
 						</div>
 						
 							
