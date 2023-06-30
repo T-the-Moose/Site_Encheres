@@ -51,5 +51,18 @@ function afficherApercuImage(event) {
     reader.readAsDataURL(input.files[0]);
   }
 }
+// date 
+
+ document.addEventListener("DOMContentLoaded", function() {
+        var date1Input = document.getElementById("debutEnchere");
+        var date2Input = document.getElementById("finEnchere");
+
+        // Set the minimum value for date2 based on date1
+        date1Input.addEventListener("change", function() {
+            var date1 = new Date(date1Input.value);
+            var date2Min = new Date(date1.getTime() + (24 * 60 * 60 * 1000)); // Add one day (24 hours)
+            date2Input.min = date2Min.toISOString().split("T")[0];
+        });
+    });
 
 
