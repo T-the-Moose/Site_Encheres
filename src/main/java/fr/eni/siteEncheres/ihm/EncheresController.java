@@ -134,6 +134,8 @@ public class EncheresController {
 
 		articleVenduService.enregistrerArticleVendu(articleVendu, utilisateur);
 		
+		
+		
 		return "redirect:/encheres";
 	}
 	
@@ -170,7 +172,6 @@ public class EncheresController {
 	public String afficherPageMaFinVente() {
 		return "PageDetailMaVenteFinEnchere";
 	}
-
 
 
 }

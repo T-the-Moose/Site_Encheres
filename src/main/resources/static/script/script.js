@@ -51,3 +51,5 @@ function afficherApercuImage(event) {
     reader.readAsDataURL(input.files[0]);
   }
 }
+
+
