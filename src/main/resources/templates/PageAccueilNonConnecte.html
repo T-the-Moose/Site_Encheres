@@ -18,29 +18,26 @@
 
 	<main>
 		<h2 class="h2_accueil">Liste des enchères</h2>
-			<form data-th-action="@{/accueil/articleParCategorie}" data-th-object="${articleVendu}" method="POST" class="form_accueil">
+			<form data-th-action="@{/PageAccueilNonConnecte}" data-th-object="${articleVendu}" method="POST" class="form_accueil">
 			<div class="gauche_accueil">
-			
 				<div class="div_label_filtre_accueil">
 					<label for="filtres" class="label_filtre_accueil">Filtres : </label>
 					<input type="text" id="filtres" placeholder="🔍 Le nom de l'article contient" class="filtre_accueil"/>
 				</div>
 				
 				<div class="div_label_categorie_accueil">
-					<div class="infos-vendre">
-						<label class="titre-description" for="categorie">Catégorie :</label>
-							<select name="categorie" id="categorie" th:field="*{categorie}">
-								<option th:each="categorie: ${@categorieService.getCategorie()}" th:value="${categorie.idCategorie}" th:text= "${categorie.libelle}"></option>
-							</select>
-					</div>
+				<label for="categories">Catégories : </label>
+					<select name="categories" id="categories" th:field="*{categorie}">
+						<option th:each="categorie: ${categorie.libelle}" th:value="${categorie.idCategorie}" th:text= "${categorie.libelle}"></option>
+					</select>
 				</div>
-				
 			</div >
+			
+			
 			<div class="rechercher_accueil">
 				<button type="submit" class="button_rechercher_accueil">Rechercher</button>
 			</div>
 			</form>
-			
 			<div class="listes_accueil" data-th-each="article : ${articleVendu}">
 				<div class="card_accueil"><a class="block-enchere" id="article" th:href="@{/encherir(idArticle=${article.idArticle})}">
 					<div class="img_card_accueil">

@@ -41,17 +41,15 @@ public class EncheresController {
 	@GetMapping({"/", "/accueil"})
 	public String afficherAccueil(Model modele) {
 		
+		List<Categorie> listeCategorie = categorieService.getCategorie();
+		modele.addAttribute("categorie", listeCategorie);
+		
 		List<ArticleVendu> listeArticle = articleVenduService.getArticleVendu();
 		modele.addAttribute("articleVendu", listeArticle);
 		
 		return "PageAccueilNonConnecte";
 	}
 	
-	@PostMapping("/accueil/articleParCategorie") 
-	public String afficherAccueilParCategorie() {
-	
-	return "redirect:/accueil";
-}
 	
 	@GetMapping("/connexion")
 	public String afficherPageConnexion() {
@@ -113,7 +111,7 @@ public class EncheresController {
 	public String afficherPageVendre(Model modele) {
 		
 		ArticleVendu articleVendu  = new ArticleVendu();
-		modele.addAttribute("articleVendu", articleVendu );
+		modele.addAttribute("articleVendu", articleVendu);
 	    
 		return "PageVendreUnArticle";
 	}
