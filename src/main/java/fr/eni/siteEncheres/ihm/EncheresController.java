@@ -48,15 +48,15 @@ public class EncheresController {
 	}
 	
 	
-	@PostMapping("/accueil/articleParCategorie")
+	@GetMapping("/accueil/articleParCategorie")
 	public String afficherAccueilParCategorie(@RequestParam Integer idCategorie, Model modele) {
-
+		
 	    List<ArticleVendu> listeArticle = articleVenduService.getArticleVenduParCategorie(idCategorie);
 	    modele.addAttribute("articleVendu", listeArticle);
 	    
-	    System.out.println("L id de la catégorie est :" + idCategorie);
+	    System.out.println("L id de la catégorie est :" + listeArticle);
 	    
-	    return "redirect:/accueil";
+	    return "PageAccueilNonConnecte";
 	}
 	
 	
@@ -133,8 +133,6 @@ public class EncheresController {
 		utilisateur = utilisateurService.findById(2); // temporaire en attente de connexion
 
 		articleVenduService.enregistrerArticleVendu(articleVendu, utilisateur);
-		
-		
 		
 		return "redirect:/encheres";
 	}

@@ -17,7 +17,7 @@ import fr.eni.siteEncheres.bo.Utilisateur;
 public class ArticleVenduDaoSqlServerImpl implements ArticleVenduDAO{
 
 	private final static String SELECT_ALL = "SELECT no_article, nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial, prix_vente, no_utilisateur, no_categorie FROM ARTICLES_VENDUS";
-	private final static String SELECT_ALL_BY_CAT = "SELECT * FROM ARTICLES_VENDUS WHERE no_categorie = 1";
+	private final static String SELECT_ALL_BY_CAT = "SELECT * FROM ARTICLES_VENDUS WHERE no_categorie = ?"; // Problème de requête SQL 
 	private final static String FIND_BY_ID = "SELECT * FROM ARTICLES_VENDUS WHERE no_article=?";
 	NamedParameterJdbcTemplate t;
 	
@@ -73,11 +73,11 @@ public class ArticleVenduDaoSqlServerImpl implements ArticleVenduDAO{
 
 	@Override
 	public List<ArticleVendu> findAllArticleParCat(Integer idCategorie) {
-		List<ArticleVendu> listeArticleParCat = namedParameterJdbcTemplate.query(SELECT_ALL_BY_CAT, new ArticleVenduMapper());
+		List<ArticleVendu> listeArticleParCat = namedParameterJdbcTemplate.getJdbcOperations().query(SELECT_ALL_BY_CAT, new ArticleVenduMapper(), idCategorie);
 		return listeArticleParCat;
 	}
 	
-
+	
 	@Override
 	public ArticleVendu read(Integer idArticle) {
 		t = namedParameterJdbcTemplate;
