@@ -71,15 +71,10 @@ public class EncheresController {
 	}
 	
 	@GetMapping("/inscription")
-	public String afficherPageInscription(@Valid @ModelAttribute Utilisateur utilisateur,
-			BindingResult validationResultat) {
-		
-		if(validationResultat.hasErrors()) {
+	public String afficherPageInscription(@ModelAttribute Utilisateur utilisateur) {
 			return "PageCreerCompte";
-		}
-		return "redirect:/inscription";
+
 	}
-	
 	
 	
 	@GetMapping("/encheres")
@@ -157,13 +152,19 @@ public class EncheresController {
 	
 	
 	@PostMapping("/profil/modifier")
-	public String afficherPageProfilModifier(Utilisateur utilisateur) {
+	public String afficherPageProfilModifier(@Valid @ModelAttribute Utilisateur utilisateur,
+			BindingResult validationResultat) {
+		
+		if(validationResultat.hasErrors()) {
+			return "PageCreerCompte";
+		}
 		
 		utilisateurService.enregistrerUtilisateur(utilisateur);
 		System.out.println(utilisateur);
 		
-		return "redirect:/accueil";
+		return "redirect:/connexion";
 	}
+	
 	
 	@GetMapping("/vendre/modif")
 	public String afficherPageEnchereNonCommencee() {
