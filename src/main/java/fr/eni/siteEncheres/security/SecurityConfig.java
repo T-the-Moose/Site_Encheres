@@ -53,6 +53,8 @@ public class SecurityConfig {
 					.requestMatchers(HttpMethod.GET, "/connexion").permitAll()
 					//Permettre aux visiteurs d'accéder a la page inscription
 					.requestMatchers(HttpMethod.GET, "/inscription").permitAll()
+					//Permettre aux visiteurs d'accéder a la page inscription
+					.requestMatchers(HttpMethod.POST, "/profil/modifier").permitAll()
 					//Permettre aux visiteurs d'accéder au détail d'un film
 //					.requestMatchers(HttpMethod.GET, "/creer").hasRole("MEMBRE")
 //					// Accès à la vue principale

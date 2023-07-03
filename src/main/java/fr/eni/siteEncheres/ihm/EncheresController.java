@@ -3,7 +3,6 @@ package fr.eni.siteEncheres.ihm;
 import java.security.Principal;
 import java.util.List;
 
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -20,9 +19,6 @@ import fr.eni.siteEncheres.bo.ArticleVendu;
 import fr.eni.siteEncheres.bo.Categorie;
 import fr.eni.siteEncheres.bo.Utilisateur;
 import fr.eni.siteEncheres.dal.UtilisateurDAO;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 
 @Controller
@@ -77,14 +73,11 @@ public class EncheresController {
 	}
 	
 	@GetMapping("/inscription")
-	public String afficherPageInscription(@Valid @ModelAttribute Utilisateur utilisateur,
-			BindingResult validationResultat) {
-		
-		if(validationResultat.hasErrors()) {
+	public String afficherPageInscription(@ModelAttribute Utilisateur utilisateur) {
 			return "PageCreerCompte";
-		}
-		return "redirect:/inscription";
+
 	}
+	
 	
 	@GetMapping("/encheres")
 	public String afficherPageEncheres(Utilisateur utilisateur, Model modele) {
@@ -162,13 +155,19 @@ public class EncheresController {
 	
 	
 	@PostMapping("/profil/modifier")
-	public String afficherPageProfilModifier(Utilisateur utilisateur) {
+	public String afficherPageProfilModifier(@Valid @ModelAttribute Utilisateur utilisateur,
+			BindingResult validationResultat) {
+		
+		if(validationResultat.hasErrors()) {
+			return "PageCreerCompte";
+		}
 		
 		utilisateurService.enregistrerUtilisateur(utilisateur);
 		System.out.println(utilisateur);
 		
-		return "redirect:/accueil";
+		return "redirect:/connexion";
 	}
+	
 	
 	@GetMapping("/vendre/modif")
 	public String afficherPageEnchereNonCommencee() {

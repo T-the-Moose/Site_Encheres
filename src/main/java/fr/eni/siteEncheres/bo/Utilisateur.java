@@ -16,8 +16,9 @@ public class Utilisateur {
 	private String prenom;
 	
 	@Email
+	@NotBlank
 	private String email;
-	
+
 	@NotBlank
 	private String telephone;
 	
