@@ -19,7 +19,7 @@
 				<h3>Détail vente</h3>
 			</div>
 			
-			<div class="block-description">
+			<div class="block-description-article">
 				<h4 data-th-text="*{nomArticle}"></h4>
 			</div>
 			
@@ -43,7 +43,7 @@
 			
 			<div class="block-description">
 				<p class="titre-description">Mise à prix :</p>
-				<p class="description" data-th-text="*{miseAPrix}"></p>
+				<p class="description" data-th-text="*{miseAPrix} + ' ' + points"></p>
 			</div>
 			
 			<div class="block-description">
@@ -61,7 +61,7 @@
 			</div>
 			
 			<div class="block-description">
-				<p class="titescription">Vendeur :</p>
+				<p class="titre-description">Vendeur :</p>
 				<p class="description" data-th-text="*{utilisateur.pseudo}"></p>
 			</div>
 			
