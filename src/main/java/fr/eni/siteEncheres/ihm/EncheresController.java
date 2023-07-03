@@ -2,6 +2,7 @@ package fr.eni.siteEncheres.ihm;
 
 import java.util.List;
 
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -18,6 +19,9 @@ import fr.eni.siteEncheres.bo.ArticleVendu;
 import fr.eni.siteEncheres.bo.Categorie;
 import fr.eni.siteEncheres.bo.Utilisateur;
 import fr.eni.siteEncheres.dal.UtilisateurDAO;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 
 @Controller

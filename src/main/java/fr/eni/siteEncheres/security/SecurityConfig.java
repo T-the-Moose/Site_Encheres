@@ -33,7 +33,8 @@ public class SecurityConfig {
     public void configureGlobal( AuthenticationManagerBuilder auth ) throws Exception {
         auth.jdbcAuthentication()
                 .dataSource( dataSource )
-                .usersByUsernameQuery( "SELECT pseudo, mot_de_passe, 1 FROM utilisateurs WHERE pseudo = ? IN ( pseudo , email )" )
+//                .usersByUsernameQuery( "SELECT pseudo, mot_de_passe, 1 FROM utilisateurs WHERE pseudo = ? IN ( pseudo , email )" )
+                .usersByUsernameQuery( "SELECT pseudo, mot_de_passe, 1 FROM utilisateurs WHERE pseudo = ?" )
                 .authoritiesByUsernameQuery( "SELECT ?, 'admin' " )
                 ;
     }
@@ -62,7 +63,7 @@ public class SecurityConfig {
 					.anyRequest().authenticated();
 			
 					// Tout ouvert
-//					.anyRequest().permitAll();
+					//.anyRequest().permitAll();
 		});
 		
 //		//formulaire de connexion par défaut
@@ -72,7 +73,7 @@ public class SecurityConfig {
 		// Customiser le formulaire
 			http.formLogin(form -> {
 				form.loginPage("/connexion").permitAll();
-				form.defaultSuccessUrl("/encheres").permitAll();
+				form.defaultSuccessUrl("/encheres", true).permitAll();
 			});
 
 		// /logout --> vider la session et le contexte de sécurité
@@ -82,22 +83,22 @@ public class SecurityConfig {
 					.clearAuthentication(true)
 					.deleteCookies("JSESSIONID")
 					.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-					.logoutSuccessUrl("/").permitAll());
+					.logoutSuccessUrl("/connexion?logout").permitAll());
 
 		return http.build();
 
 	}
 	
 	
-	@Bean
-	public UserDetailsService userDetailsService() {
-		var userDetailsService = new InMemoryUserDetailsManager();
-		
-		var user2 = User.withUsername("admin").password("admin123").roles("ADMIN").build();
-		userDetailsService.createUser(user2);
-
-		return userDetailsService;
-	}
+//	@Bean
+//	public UserDetailsService userDetailsService() {
+//		var userDetailsService = new InMemoryUserDetailsManager();
+//		
+//		var user2 = User.withUsername("admin").password("admin123").roles("ADMIN").build();
+//		userDetailsService.createUser(user2);
+//
+//		return userDetailsService;
+//	}
 	
 	@Bean
 	JdbcUserDetailsManager users(DataSource dataSource, PasswordEncoder passwordEncoder) {
@@ -108,7 +109,7 @@ public class SecurityConfig {
 
 	@Bean
 	public PasswordEncoder passwordEncoder() {
-		//return NoOpPasswordEncoder.getInstance();
-		return new BCryptPasswordEncoder();
+		return NoOpPasswordEncoder.getInstance();
+		//return new BCryptPasswordEncoder();
 	}
 }
