@@ -15,4 +15,6 @@ public interface ArticleVenduDAO {
 
 	List<ArticleVendu> findAllArticleParCat(Integer idCategorie);
 
+	List<ArticleVendu> findAllArticleParCatEtFiltre(Integer idCategorie, String filtre);
+
 }

@@ -4,7 +4,6 @@ import java.util.List;
 
 import fr.eni.siteEncheres.bo.ArticleVendu;
 import fr.eni.siteEncheres.bo.Utilisateur;
-import jakarta.validation.Valid;
 
 public interface ArticleVenduService {
 	
@@ -15,5 +14,7 @@ public interface ArticleVenduService {
 	void enregistrerArticleVendu(ArticleVendu articleVendu, Utilisateur utilisateur);
 
 	List<ArticleVendu> getArticleVenduParCategorie(Integer idCategorie);
+	
+	List<ArticleVendu> getArticleVenduParCategorieEtFiltre(Integer idCategorie, String filtre);
 
 }

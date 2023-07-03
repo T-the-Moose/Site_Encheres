@@ -49,12 +49,17 @@ public class EncheresController {
 	
 	
 	@GetMapping("/accueil/articleParCategorie")
-	public String afficherAccueilParCategorie(@RequestParam Integer idCategorie, Model modele) {
+	public String afficherAccueilParCategorie(@RequestParam Integer idCategorie, String filtre, Model modele) {
 		
-	    List<ArticleVendu> listeArticle = articleVenduService.getArticleVenduParCategorie(idCategorie);
-	    modele.addAttribute("articleVendu", listeArticle);
+	    List<ArticleVendu> listeArticle;
 	    
-	    System.out.println("L id de la catégorie est :" + listeArticle);
+	    if (filtre != null && !filtre.isEmpty()) {
+	        listeArticle = articleVenduService.getArticleVenduParCategorieEtFiltre(idCategorie, filtre);
+	    } else {
+	        listeArticle = articleVenduService.getArticleVenduParCategorie(idCategorie);
+	    }
+	  
+	    modele.addAttribute("articleVendu", listeArticle);
 	    
 	    return "PageAccueilNonConnecte";
 	}
@@ -90,8 +95,19 @@ public class EncheresController {
 	}
 	
 	@GetMapping("/liste-encheres/mes-ventes")
-	public String afficherPageMesVentes() {
-		return "PageListeEncheresMesVentes";
+	public String afficherPageMesVentes(@RequestParam Integer idCategorie, String filtre, Model modele) {
+		
+	    List<ArticleVendu> listeArticle;
+	    
+	    if (filtre != null && !filtre.isEmpty()) {
+	        listeArticle = articleVenduService.getArticleVenduParCategorieEtFiltre(idCategorie, filtre);
+	    } else {
+	        listeArticle = articleVenduService.getArticleVenduParCategorie(idCategorie);
+	    }
+	  
+	    modele.addAttribute("articleVendu", listeArticle);
+		
+		return "PagesListeEncheresConnecte";
 	}
 	
 	@GetMapping("/profil")
