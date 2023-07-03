@@ -1,5 +1,6 @@
 package fr.eni.siteEncheres.ihm;
 
+import java.security.Principal;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
@@ -21,6 +22,7 @@ import fr.eni.siteEncheres.dal.UtilisateurDAO;
 import jakarta.validation.Valid;
 
 @Controller
+
 public class EncheresController {
 	
 	private UtilisateurService utilisateurService;
@@ -77,9 +79,8 @@ public class EncheresController {
 	}
 	
 	@GetMapping("/encheres")
-	public String afficherPageEncheres(Integer idUtilisateur, Model modele) {
+	public String afficherPageEncheres(Utilisateur utilisateur, Model modele) {
 		
-		Utilisateur utilisateur = utilisateurService.findById(2);
 		modele.addAttribute("utilisateur", utilisateur);
 		
 		Categorie categorie = categorieService.findById(1);
@@ -107,9 +108,11 @@ public class EncheresController {
 	}
 	
 	@GetMapping("/profil")
-	public String afficherPageProfil(Integer idUtilisateur, Model modele) {
+	public String afficherPageProfil(Utilisateur utilisateur, Model modele, Principal principal) {
 		
-		Utilisateur utilisateur = utilisateurService.findById(1);
+		String username = principal.getName();
+		
+		utilisateur = utilisateurService.findByUserName(username);
 		 modele.addAttribute("utilisateur", utilisateur);
 		
 		return "PageMonProfil";
@@ -126,7 +129,7 @@ public class EncheresController {
 	
 	@PostMapping("/supprimerProfil")
 	public String supprimerProfilUtilisateur(@RequestParam Integer idUtilisateur, Model modele) {
-		Utilisateur utilisateur = utilisateurService.findById(4);
+		Utilisateur utilisateur = utilisateurService.findById(1);
 		utilisateurService.supprimerUtilisateur(utilisateur);		
 		return "redirect:/";
 	}

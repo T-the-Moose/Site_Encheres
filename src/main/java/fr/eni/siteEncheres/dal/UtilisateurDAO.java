@@ -14,4 +14,8 @@ public interface UtilisateurDAO {
 
 	void delete(Utilisateur utilisateur);
 
+	Utilisateur findUser(String username);
+
+	
+
 }
