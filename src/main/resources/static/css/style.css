@@ -103,6 +103,13 @@ body {
     width: 45%;
 }
 
+.block-description-article {
+	display: flex;
+    justify-content: center;
+    font-size: 2em;
+        text-transform: uppercase;
+}
+
 .block-description {
     display: flex;
     width: 100%;
@@ -115,9 +122,6 @@ body {
     align-content: flex-end;
 }
 
-.p-description {
-	margin: 0;
-}
 
 .block-button {
     margin-top: 5vh;

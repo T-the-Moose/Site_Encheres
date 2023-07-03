@@ -28,8 +28,8 @@ public class ArticleVenduDaoSqlServerImpl implements ArticleVenduDAO{
 	@Autowired
 	private CategorieDAO categorieDAO;
 	
-//	@Autowired
-//	private RetraitDAO retraitDAO;
+	@Autowired
+	private RetraitDAO retraitDAO;
 	
 	@Autowired
 	private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
@@ -55,9 +55,9 @@ public class ArticleVenduDaoSqlServerImpl implements ArticleVenduDAO{
 			// Récupération id Categorie
 			articleVendu.setCategorie(categorieDAO.read(rs.getInt("no_categorie")));
 			
-//			articleVendu.setRetrait(retraitDAO.read(rs.getString("rue"));
-//			articleVendu.setRetrait(retraitDAO.read(rs.getString("code_postal"));
-//			articleVendu.setRetrait(retraitDAO.read(rs.getDate("ville"));
+//			articleVendu.setRetrait(retraitDAO.read(rs.getString("rue")));
+//			articleVendu.setRetrait(retraitDAO.read(rs.getString("code_postal")));
+//			articleVendu.setRetrait(retraitDAO.read(rs.getDate("ville")));
 			
 			return articleVendu;
 		}

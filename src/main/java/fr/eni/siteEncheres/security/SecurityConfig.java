@@ -33,8 +33,8 @@ public class SecurityConfig {
     public void configureGlobal( AuthenticationManagerBuilder auth ) throws Exception {
         auth.jdbcAuthentication()
                 .dataSource( dataSource )
-//                .usersByUsernameQuery( "SELECT pseudo, mot_de_passe, 1 FROM utilisateurs WHERE pseudo = ? IN ( pseudo , email )" )
-                .usersByUsernameQuery( "SELECT pseudo, mot_de_passe, 1 FROM utilisateurs WHERE pseudo = ?" )
+                .usersByUsernameQuery( "SELECT pseudo, mot_de_passe, 1 FROM utilisateurs WHERE ? IN ( pseudo , email )" )
+//                .usersByUsernameQuery( "SELECT pseudo, mot_de_passe, 1 FROM utilisateurs WHERE pseudo = ?" )
                 .authoritiesByUsernameQuery( "SELECT ?, 'admin' " )
                 ;
     }
