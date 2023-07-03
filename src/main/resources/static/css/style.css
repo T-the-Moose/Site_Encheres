@@ -420,8 +420,20 @@ a#article {
 }
 
 /******     FIN Page Profil   *******/
+/******     Page 404   *******/
+.div-404{
+    display: flex;
+    justify-content: space-around;
+    
+}
 
 
+.h1-404 {
+	font-size: 20vh;
+	color: red;
+	height: 10vh;
+	text-shadow: 0px 5px 15px #797272;
+}
 
 
 
