@@ -13,12 +13,12 @@
 		<div th:if="${param.logout}">Vous avez été déconnecté.</div>
 		<form th:action="@{/connexion}" method="post">
 			<div class="conteneur-input">
-				<label for="name">Identifiant : </label> 
-				<input type="text" id="name" name="user_name">
+				<label for="username">Identifiant : </label> 
+				<input type="text" id="name" name="username" required/>
 			</div>
 			<div class="conteneur-input">
-				<label for="mdp">Mot de passe : </label>
-				<input type="password" id="mdp" name="mdp">
+				<label for="password">Mot de passe : </label>
+				<input type="password" id="mdp" name="password" required/>
 			</div>
 			
 			<div id="block-conteneur-choix">

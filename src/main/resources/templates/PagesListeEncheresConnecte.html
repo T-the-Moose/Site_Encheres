@@ -8,6 +8,7 @@
 <body>
 	<div data-th-replace="~{fragments/header :: header}"></div>
 		<h2 class="h2_accueil">Liste des enchères</h2>
+		<h1>Bonjour, <span th:text="${#authentication.name}"></span> !</h1>
 		<form data-th-action="@{/liste-encheres/mes-ventes}" method="GET" class="form_accueil">
 			<div class="gauche_accueil">
 				<div class="div_label_filtre_accueil">
