@@ -35,5 +35,10 @@ public class ArticleVenduServiceImpl implements ArticleVenduService {
 		return articleVenduDAO.findAllArticleParCat(idCategorie);
 	}
 
+	@Override
+	public List<ArticleVendu> getArticleVenduParCategorieEtFiltre(Integer idCategorie, String filtre) {
+		return articleVenduDAO.findAllArticleParCatEtFiltre(idCategorie, filtre);
+	}
+
 	
 }

@@ -77,6 +77,17 @@ public class ArticleVenduDaoSqlServerImpl implements ArticleVenduDAO{
 		return listeArticleParCat;
 	}
 	
+	@Override
+	public List<ArticleVendu> findAllArticleParCatEtFiltre (Integer idCategorie, String filtre) {
+		String requeteFiltree = SELECT_ALL_BY_CAT;
+		if (filtre != null && !filtre.isEmpty()) {
+			requeteFiltree += " AND nom_article LIKE '%" + filtre + "%'";
+		}
+		List<ArticleVendu> listeArticleParCat = namedParameterJdbcTemplate.getJdbcOperations().query(requeteFiltree, new ArticleVenduMapper(), idCategorie);
+		
+		return listeArticleParCat;
+	}
+	
 	
 	@Override
 	public ArticleVendu read(Integer idArticle) {
