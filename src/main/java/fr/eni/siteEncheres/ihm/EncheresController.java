@@ -78,7 +78,6 @@ public class EncheresController {
 
 	}
 	
-	
 	@GetMapping("/encheres")
 	public String afficherPageEncheres(Utilisateur utilisateur, Model modele) {
 		
