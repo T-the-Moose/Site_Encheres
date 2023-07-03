@@ -45,7 +45,7 @@ public class UtilisateurDaoSqlServerImpl implements UtilisateurDAO {
 			utilisateur.setVille(rs.getString("ville"));
 			utilisateur.setCredit(rs.getInt("credit"));
 			
-			System.out.println(utilisateur);
+			
 			
 			return utilisateur;
 		}
@@ -56,9 +56,7 @@ public class UtilisateurDaoSqlServerImpl implements UtilisateurDAO {
 	
 	public Utilisateur read (Integer idUtilisateur) {
 		t = namedParameterJdbcTemplate;
-	    
-	    System.out.println("L id de l uilisateur est " + idUtilisateur);
-	    
+	    	    
 	    Utilisateur utilisateur = t.getJdbcOperations().queryForObject(FIND_BY_ID, new UtilisateurMapper(), idUtilisateur );
 	    
 		return utilisateur;

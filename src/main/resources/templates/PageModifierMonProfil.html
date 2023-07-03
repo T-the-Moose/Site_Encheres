@@ -34,7 +34,7 @@
 					</div>
 					<div class="infos-creation">
 						<label class="label-infos-creation" for="motDePasse">Mot de Passe actuel : </label>
-						<input type="password" id="creationMDP" th:field="*{motDePasse}"/>
+						<input type="password" id="creationMDP" data-th-field="*{motDePasse}"/>
 					</div>
 					<div class="infos-creation">
 						<label class="label-infos-creation" for="newMotDePasse">Nouveau Mot de Passe : </label>
@@ -77,7 +77,7 @@
 			<div class="block-creation-choix">
 			
 				<div class="creation-choix">
-					<button class="boutton-creation-choix" type="submit" name="buttonAction" value="profil/modifier" th:attr="formaction=@{/profil/modifier}">Enregistrer</button>
+					<button class="boutton-creation-choix" type="submit" name="buttonAction" value="profil/modifier" th:attr="formaction=@{/modifierProfil}">Enregistrer</button>
 				</div>
 				
 				<div class="creation-choix">
