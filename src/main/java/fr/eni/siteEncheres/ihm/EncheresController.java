@@ -64,15 +64,6 @@ public class EncheresController {
 	    return "PageAccueilNonConnecte";
 	}
 	
-//	@GetMapping("/accueil/articleParCategorie")
-//	public String afficherAccueilParCategorie(@RequestParam Integer idCategorie, String filtre, Model modele) {
-//		
-//	    List<ArticleVendu> listeArticle = articleVenduService.getArticleVenduParCategorie(idCategorie);
-//	    
-//	    modele.addAttribute("articleVendu", listeArticle);
-//	    
-//	    return "PageAccueilNonConnecte";
-	
 	
 	@GetMapping("/connexion")
 	public String afficherPageConnexion() {
@@ -104,8 +95,19 @@ public class EncheresController {
 	}
 	
 	@GetMapping("/liste-encheres/mes-ventes")
-	public String afficherPageMesVentes() {
-		return "PageListeEncheresMesVentes";
+	public String afficherPageMesVentes(@RequestParam Integer idCategorie, String filtre, Model modele) {
+		
+	    List<ArticleVendu> listeArticle;
+	    
+	    if (filtre != null && !filtre.isEmpty()) {
+	        listeArticle = articleVenduService.getArticleVenduParCategorieEtFiltre(idCategorie, filtre);
+	    } else {
+	        listeArticle = articleVenduService.getArticleVenduParCategorie(idCategorie);
+	    }
+	  
+	    modele.addAttribute("articleVendu", listeArticle);
+		
+		return "PagesListeEncheresConnecte";
 	}
 	
 	@GetMapping("/profil")

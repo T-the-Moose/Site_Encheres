@@ -8,17 +8,17 @@
 <body>
 	<div data-th-replace="~{fragments/header :: header}"></div>
 		<h2 class="h2_accueil">Liste des enchères</h2>
-		<form action="/PagesListesEncheresConnecte" method="post" class="form_accueil">
+		<form data-th-action="@{/liste-encheres/mes-ventes}" method="GET" class="form_accueil">
 			<div class="gauche_accueil">
 				<div class="div_label_filtre_accueil">
 					<label class="label_filtre_accueil">Filtres : </label>
-					<input type="text" id="filtres" placeholder="🔍 Le nom de l'article">
+					<input type="text" name="filtre" id="filtre" placeholder="🔍 Le nom de l'article">
 				</div>
-				<div class="div_label_categorie_accueil" >
-					<label class="titre-description" for="categorie">Catégorie :</label>
-						<select name="categories" id="categories" th:field="*{categorie}">
-							<option th:each="categorie: ${@categorieService.getCategorie()}" th:value="${categorie.idCategorie}" th:text= "${categorie.libelle}"></option>
-						</select>
+				<div class="div_label_categorie_accueil">
+				<label class="titre-description" for="categorie">Catégorie :</label>
+					<select name="idCategorie" id="idCategorie">
+   						<option th:each="categorie: ${@categorieService.getCategorie()}" th:value="${categorie.idCategorie}" th:text="${categorie.libelle}"></option>
+   					</select>
 				</div>
 				<div class="general_radio_enchere">
 					<div class="radio_enchere">
