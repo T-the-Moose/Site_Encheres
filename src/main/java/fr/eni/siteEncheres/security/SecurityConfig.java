@@ -23,7 +23,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
-//@EnableMethodSecurity
+@EnableMethodSecurity
 public class SecurityConfig {
 	
 	@Autowired
@@ -43,21 +43,26 @@ public class SecurityConfig {
 	SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		http.authorizeHttpRequests(auth -> {
 			auth
-//					//Permettre aux visiteurs d'accéder à la liste des films
-					//.requestMatchers(HttpMethod.GET, "/profil").authenticated()
-//					//Permettre aux visiteurs d'accéder au détail d'un film
-//					.requestMatchers(HttpMethod.GET, "/films/film").permitAll()	
-//					//Permettre aux visiteurs d'accéder au détail d'un film
+					
+					//Permettre aux visiteurs d'accéder à l'accueil
+					.requestMatchers(HttpMethod.GET, "/").permitAll()
+					.requestMatchers(HttpMethod.GET, "/accueil").permitAll()		
+					.requestMatchers(HttpMethod.GET, "/accueil/*").permitAll()					
+					//Permettre aux visiteurs d'accéder a la page de connexion
+					.requestMatchers(HttpMethod.GET, "/connexion").permitAll()
+					//Permettre aux visiteurs d'accéder a la page inscription
+					.requestMatchers(HttpMethod.GET, "/inscription").permitAll()
+					//Permettre aux visiteurs d'accéder au détail d'un film
 //					.requestMatchers(HttpMethod.GET, "/creer").hasRole("MEMBRE")
 //					// Accès à la vue principale
 //					.requestMatchers("/").permitAll()
 //					// Permettre à tous d'afficher correctement les images et CSS
-//					.requestMatchers("/css/*").permitAll().requestMatchers("/images/*").permitAll().requestMatchers("/js/*").permitAll()
+					.requestMatchers("/css/*").permitAll().requestMatchers("/img/*").permitAll().requestMatchers("/script/*").permitAll()
 //					// Il faut être connecté pour toutes autres URLs
-//					.anyRequest().authenticated();
+					.anyRequest().authenticated();
 			
 					// Tout ouvert
-					.anyRequest().permitAll();
+//					.anyRequest().permitAll();
 		});
 		
 //		//formulaire de connexion par défaut
@@ -84,15 +89,15 @@ public class SecurityConfig {
 	}
 	
 	
-//	@Bean
-//	public UserDetailsService userDetailsService() {
-//		var userDetailsService = new InMemoryUserDetailsManager();
-//		
-//		var user2 = User.withUsername("admin").password("admin123").roles("ADMIN").build();
-//		userDetailsService.createUser(user2);
-//
-//		return userDetailsService;
-//	}
+	@Bean
+	public UserDetailsService userDetailsService() {
+		var userDetailsService = new InMemoryUserDetailsManager();
+		
+		var user2 = User.withUsername("admin").password("admin123").roles("ADMIN").build();
+		userDetailsService.createUser(user2);
+
+		return userDetailsService;
+	}
 	
 	@Bean
 	JdbcUserDetailsManager users(DataSource dataSource, PasswordEncoder passwordEncoder) {
