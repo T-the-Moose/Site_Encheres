@@ -70,6 +70,10 @@
 			</div>
 		</div>
 	</div>
+	
+		<div data-th-if="${articleVendu.isEmpty()}">
+			<p class="erreur-vente">Aucun article en vente pour cette recherche</p>
+		</div>
 	<script type="text/javascript" src="/script/script.js"></script>
 </body>
 </html>
