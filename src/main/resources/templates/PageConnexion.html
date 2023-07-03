@@ -6,7 +6,7 @@
 <title>Page Connexion</title>
 </head>
 <body>
-	<h1>ENI-Enchères</h1>
+	<div data-th-replace="~{fragments/header :: header}"></div>
 
 	<div class="block-connexion">
 		<div th:if="${param.error}">Mots de passe ou Identifiant incorrect.</div>

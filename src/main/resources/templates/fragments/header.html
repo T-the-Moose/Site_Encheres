@@ -2,10 +2,23 @@
 	<div class="div_header">
 	<h1 class="titre_nav_accueil"><a class="lien_accueil" data-th-href="@{/accueil}">ENI - Encheres</a></h1>
 		<nav class="general_nav">
-		<a href="/encheres">Enchères</a>
-		<a href="/vendre">Vendre un article</a>
-		<a href="/profil">Mon profil</a>
-		<a href="/logout">Déconnexion</a>
+		<!-- Si l'utilisateur est authentifié -->
+		<div th:if="${#authentication.name ne 'anonymousUser'}">
+			<a href="/encheres">Enchères</a>
+			<a href="/vendre">Vendre un article</a>
+			<a href="/profil">Mon profil</a>
+		    <a href="/logout">Déconnexion</a>
+		</div>
+		
+		<!-- Si l'utilisateur n'est pas authentifié -->
+		<div th:unless="${#authentication.name ne 'anonymousUser'}">
+			<a href="/accueil">Accueil</a>
+		    <a href="/connexion">Connexion</a>
+		</div>
+		
+		<!--<p>Statut de l'authentification : <span th:text="${#authentication.isAuthenticated()}"></span></p>
+		<p>Statut de l'authentification : <span th:text="${#authentication.name ne 'anonymousUser'}"></span></p>
+		!-->
 		</nav>
 	</div>
 	

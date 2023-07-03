@@ -60,10 +60,10 @@ public class SecurityConfig {
 //					// Permettre à tous d'afficher correctement les images et CSS
 					.requestMatchers("/css/*").permitAll().requestMatchers("/img/*").permitAll().requestMatchers("/script/*").permitAll()
 //					// Il faut être connecté pour toutes autres URLs
-//					.anyRequest().authenticated();
+					.anyRequest().authenticated();
 			
 					// Tout ouvert
-					.anyRequest().permitAll();
+					//.anyRequest().permitAll();
 		});
 		
 //		//formulaire de connexion par défaut
@@ -83,7 +83,7 @@ public class SecurityConfig {
 					.clearAuthentication(true)
 					.deleteCookies("JSESSIONID")
 					.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-					.logoutSuccessUrl("/").permitAll());
+					.logoutSuccessUrl("/connexion?logout").permitAll());
 
 		return http.build();
 
