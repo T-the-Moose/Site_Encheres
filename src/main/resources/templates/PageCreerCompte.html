@@ -9,7 +9,7 @@
 <body>
 
 	<header>
-		<h1>ENI - Enchères</h1>
+		<h1 class="titre_nav_accueil_inscription"><a class="lien_accueil_inscription" data-th-href="@{/accueil}">ENI - Encheres</a></h1>
 	</header>
 	
 	<main>
@@ -28,7 +28,7 @@
 					<div class="infos-creation">
 						<label class="label-infos-creation" for="pseudo">Pseudo : </label>
 						<input type="text" id="creationPseudo" th:field="*{pseudo}"/>
-						<span class="error-message" th:if="${#fields.hasErrors('pseudo')}" th:errors="*{pseudo}"></span>
+						<span th:if="${#fields.hasErrors('pseudo')}" th:errors="*{pseudo}"></span>
 					</div>
 					<div class="infos-creation">
 						<label class="label-infos-creation" for="prenom">Prénom : </label>
@@ -93,6 +93,6 @@
 		</form>
 	</main>
 	
-	
 </body>
+
 </html>

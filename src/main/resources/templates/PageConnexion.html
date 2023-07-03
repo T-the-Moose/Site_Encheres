@@ -6,7 +6,9 @@
 <title>Page Connexion</title>
 </head>
 <body>
-	<h1>ENI-Enchères</h1>
+	<header>
+		<h1 class="titre_nav_accueil_inscription"><a class="lien_accueil_inscription" data-th-href="@{/accueil}">ENI - Encheres</a></h1>
+	</header>
 
 	<div class="block-connexion">
 		<div th:if="${param.error}">Mots de passe ou Identifiant incorrect.</div>
