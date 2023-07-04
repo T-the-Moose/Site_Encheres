@@ -78,6 +78,22 @@ public class EncheresController {
 
 	}
 	
+	@PostMapping("/profil/modifier")
+	public String afficherPageInscriptionErreur(@Valid @ModelAttribute Utilisateur utilisateur,
+			BindingResult validationResultat) {
+		
+		if(validationResultat.hasErrors()) {
+			return "PageCreerCompte";
+		}
+		
+		utilisateurService.enregistrerUtilisateur(utilisateur);
+		System.out.println(utilisateur);
+		
+		return "redirect:/connexion";
+	}
+	
+	
+
 	@GetMapping("/encheres")
 	public String afficherPageEncheres(Utilisateur utilisateur, Model modele) {
 		
@@ -108,22 +124,36 @@ public class EncheresController {
 	}
 	
 	@GetMapping("/profil")
-	public String afficherPageProfil(Utilisateur utilisateur, Model modele, Principal principal) {
+	public String afficherPageProfil(Model modele, Principal principal) {
 		
 		String username = principal.getName();
 		
-		utilisateur = utilisateurService.findByUserName(username);
+		Utilisateur utilisateur = utilisateurService.findByUserName(username);
 		 modele.addAttribute("utilisateur", utilisateur);
 		
 		return "PageMonProfil";
 	}
 	
 	@GetMapping("/modifierProfil")
-	public String afficherPagesModifierMonProfil(Integer idUtilisateur, Model modele) {
+	public String afficherPagesModifierMonProfil(Model modele, Principal principal) {
+		String username = principal.getName();	
+		Utilisateur utilisateur = utilisateurService.findByUserName(username);
+		 modele.addAttribute("utilisateur", utilisateur);
 		
-		Utilisateur utilisateur = utilisateurService.findById(1);
-		modele.addAttribute("utilisateur", utilisateur);
 		return "PageModifierMonProfil";
+	}
+	
+	@PostMapping("/modifierProfil")
+	public String afficherPageProfilModifier(Model modele, Principal principal) {
+		
+		String username = principal.getName();	
+		Utilisateur utilisateur = utilisateurService.findByUserName(username);
+		modele.addAttribute("utilisateur", utilisateur);
+		System.out.println(utilisateur);
+		utilisateurService.enregistrerUtilisateur(utilisateur);
+		
+		
+		return "redirect:/connexion";
 	}
 	
 	
@@ -151,22 +181,6 @@ public class EncheresController {
 		
 		return "redirect:/encheres";
 	}
-	
-	
-	@PostMapping("/profil/modifier")
-	public String afficherPageProfilModifier(@Valid @ModelAttribute Utilisateur utilisateur,
-			BindingResult validationResultat) {
-		
-		if(validationResultat.hasErrors()) {
-			return "PageCreerCompte";
-		}
-		
-		utilisateurService.enregistrerUtilisateur(utilisateur);
-		System.out.println(utilisateur);
-		
-		return "redirect:/connexion";
-	}
-	
 	
 	@GetMapping("/vendre/modif")
 	public String afficherPageEnchereNonCommencee() {
