@@ -19,62 +19,64 @@
 				<h3>Détail vente</h3>
 			</div>
 			
-			<div class="block-description-article">
-				<h4 data-th-text="*{nomArticle}"></h4>
-			</div>
-			
-			<div class="block-description">		
-				<p class="titre-description">Description :</p>
-				
-				<div class="description">
-					<p class="p-description" data-th-text="*{description}"></p>
+			<form th:action="@{/encherir}">
+				<div class="block-description-article">
+					<h4 data-th-text="*{nomArticle}"></h4>
 				</div>
-			</div>
-			
-			<div class="block-description">
-				<p class="titre-description">Catégorie :</p>
-				<p class="description" data-th-text="*{categorie.libelle}"></p>
-			</div>
-			
-			<div class="block-description">
-				<p class="titre-description">Meilleur offre :</p>
-				<p class="description" data-th-text="*{'enchere.montantEnchere'}"></p>
-			</div>
-			
-			<div class="block-description">
-				<p class="titre-description">Mise à prix :</p>
-				<p class="description" data-th-text="*{miseAPrix} + ' ' + points"></p>
-			</div>
-			
-			<div class="block-description">
-				<p class="titre-description">Fin de l'enchère :</p>
-				<p class="description" data-th-text="*{dateFinEncheres}"></p>
-			</div>
-			
-			<div class="block-description-retrait">
-				<p class="titre-description">Retrait :</p>
 				
-				<div class="description">
-					<p class="p-description" data-th-text="*{utilisateur.rue} + ' '"></p>
-					<div>
-						<span class="p-description" data-th-text="*{utilisateur.codePostal} + ' '"></span>
-						<span class="p-description" data-th-text="*{utilisateur.ville}"></span>
+				<div class="block-description">		
+					<p class="titre-description">Description :</p>
+					
+					<div class="description">
+						<p class="p-description" data-th-text="*{description}"></p>
 					</div>
 				</div>
-			</div>
-			
-			<div class="block-description">
-				<p class="titre-description">Vendeur :</p>
-				<p class="description" data-th-text="*{utilisateur.pseudo}"></p>
-			</div>
-			
-			<div class="block-description proposition">
-				<p class="titre-description">Ma proposition : </p>
-				<input type="number">
-				<div class="block-button proposition">
-					<button onclick="window.location.href='/'" class="encherir">Enchérir</button>
+				
+				<div class="block-description">
+					<p class="titre-description">Catégorie :</p>
+					<p class="description" data-th-text="*{categorie.libelle}"></p>
 				</div>
-			</div>			
+				
+				<div class="block-description">
+					<p class="titre-description">Meilleur offre :</p>
+					<p class="description" data-th-text="*{'enchere.montantEnchere'}"></p>
+				</div>
+				
+				<div class="block-description">
+					<p class="titre-description">Mise à prix :</p>
+					<p class="description" data-th-text="*{miseAPrix} + ' ' + points"></p>
+				</div>
+				
+				<div class="block-description">
+					<p class="titre-description">Fin de l'enchère :</p>
+					<p class="description" data-th-text="*{dateFinEncheres}"></p>
+				</div>
+				
+				<div class="block-description-retrait">
+					<p class="titre-description">Retrait :</p>
+					
+					<div class="description">
+						<p class="p-description" data-th-text="*{utilisateur.rue} + ' '"></p>
+						<div>
+							<span class="p-description" data-th-text="*{utilisateur.codePostal} + ' '"></span>
+							<span class="p-description" data-th-text="*{utilisateur.ville}"></span>
+						</div>
+					</div>
+				</div>
+				
+				<div class="block-description">
+					<p class="titre-description">Vendeur :</p>
+					<p class="description" data-th-text="*{utilisateur.pseudo}"></p>
+				</div>
+				
+				<div class="block-description proposition">
+					<p class="titre-description">Ma proposition : </p>
+					<input type="number" name="prixEnchere" data-th-field="*{enchere.montantEnchere}">
+					<div class="block-button proposition">
+						<button class="encherir" type="submit">Enchérir</button>
+					</div>
+				</div>
+			</form>
 		</div>
 	</div>
 </body>
