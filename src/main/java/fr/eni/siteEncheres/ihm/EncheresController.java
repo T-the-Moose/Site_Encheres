@@ -17,6 +17,7 @@ import fr.eni.siteEncheres.bll.CategorieService;
 import fr.eni.siteEncheres.bll.UtilisateurService;
 import fr.eni.siteEncheres.bo.ArticleVendu;
 import fr.eni.siteEncheres.bo.Categorie;
+import fr.eni.siteEncheres.bo.Retrait;
 import fr.eni.siteEncheres.bo.Utilisateur;
 import fr.eni.siteEncheres.dal.UtilisateurDAO;
 import jakarta.validation.Valid;
@@ -195,10 +196,25 @@ public class EncheresController {
 	
 	@GetMapping("/vendre")
 	public String afficherPageVendre(Model modele, Principal principal) {
+
+		
+		// Récupération des infos utilisateur pour affichage de retrait 
+		String username = principal.getName();
+		Utilisateur utilisateur = utilisateurService.findByUserName(username);
+		modele.addAttribute("utilisateur", utilisateur);
+
 		
 		ArticleVendu articleVendu  = new ArticleVendu();
 		modele.addAttribute("articleVendu", articleVendu);
 		
+
+		Retrait articleRetrait = new Retrait();
+		articleRetrait.setRue(utilisateur.getRue());
+		articleRetrait.setVille(utilisateur.getVille());
+		articleRetrait.setCode_Postal(utilisateur.getCodePostal());
+		
+		modele.addAttribute("retrait", articleRetrait);
+
 		// Pour l'affichage des points dans le header
 		String username = principal.getName();
 		Utilisateur utilisateur = utilisateurService.findByUserName(username);
@@ -207,6 +223,7 @@ public class EncheresController {
 	    
 		return "PageVendreUnArticle";
 	}
+	
 	
 	@PostMapping("/vendre/valider")
 	public String afficherVendreArticle( ArticleVendu articleVendu, Utilisateur utilisateur, Model modele ,Principal principal) {

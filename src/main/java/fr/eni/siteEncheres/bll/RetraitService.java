@@ -1,5 +1,7 @@
 package fr.eni.siteEncheres.bll;
 
-public interface RetraitService {
+import fr.eni.siteEncheres.bo.Retrait;
 
+public interface RetraitService {
+	
 }

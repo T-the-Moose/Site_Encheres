@@ -26,7 +26,6 @@ public class ArticleVendu {
 	
 	private Utilisateur utilisateur;
 	
-
 	private Categorie categorie;
 	
 	private Retrait retrait;

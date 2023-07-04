@@ -67,30 +67,32 @@
 						</div>
 					</div>
 
+				<div th:object="${retrait}">
 				<fieldset class="block-detail-vendre">
 				<legend>Retrait</legend>
 		
 						<div class="infos-vendre">
 							<label class="titre-description" for="rue">Rue :</label>
-							<input class="description-vendre" type="text" id="rueNouvelleArticle" th:field="*{retrait.rue}"/>
+							<input class="description-vendre" type="text" id="rueNouvelleArticle" th:name="rue" data-th-field="*{rue}" data-th-value="${utilisateur.rue}"/>
 						</div>
 						
 						<div class="infos-vendre">
 							<label class="titre-description" for="codePostal">Code postal :</label>
-							<input class="description-vendre" type="text" id="codePostalNouvelArticle" th:field="*{retrait.code_Postal}"/>
+							<input class="description-vendre" type="text" id="codePostalNouvelArticle" th:name="codePostal" data-th-field="*{code_Postal}" data-th-value="${utilisateur.codePostal}"/>
 						</div>
 						
 						<div class="infos-vendre">
 							<label class="titre-description" for="ville">Ville :</label>
-							<input class="description-vendre" type="text" id="villeNouvelArticle" th:field="*{retrait.ville}"/>
+							<input class="description-vendre" type="text" id="villeNouvelArticle" th:name="utilisateur.ville"  data-th-field="*{ville}" data-th-value="${utilisateur.ville}"/>
 						</div>
 				</fieldset>
 						<div class="boutton-vendre">
 							<button class="boutton-vendre-choix" type="submit" onclick="saveFile()">Enregistrer</button>
 							<button class="boutton-vendre-choix" type="reset">Annuler</button>
 						</div>
+					</div>
 					</form>
-				
+
 
 			</div>
 		</div>

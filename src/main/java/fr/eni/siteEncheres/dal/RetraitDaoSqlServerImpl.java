@@ -3,15 +3,18 @@ package fr.eni.siteEncheres.dal;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import fr.eni.siteEncheres.bo.Retrait;
+import fr.eni.siteEncheres.bo.Utilisateur;
 
 @Repository
 public class RetraitDaoSqlServerImpl implements RetraitDAO{
 	
+	private final static String SELECT_ALL = "SELECT * FROM RETRAIT";
 	private final static String FIND_BY_ID = "SELECT * FROM RETRAITS WHERE no_article=?";
 	
 	private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
@@ -40,8 +43,8 @@ public class RetraitDaoSqlServerImpl implements RetraitDAO{
 	}
 	@Override
 	public void save(Retrait retrait) {
-		
-		
+	
 	}
+
 
 }

@@ -40,12 +40,12 @@ public class UtilisateurDaoSqlServerImpl implements UtilisateurDAO {
 			utilisateur.setPrenom(rs.getString("prenom"));
 			utilisateur.setEmail(rs.getString("email"));
 			utilisateur.setTelephone(rs.getString("telephone"));
+			
 			utilisateur.setRue(rs.getString("rue"));
 			utilisateur.setCodePostal(rs.getString("code_postal"));
 			utilisateur.setVille(rs.getString("ville"));
+			
 			utilisateur.setCredit(rs.getInt("credit"));
-			
-			
 			
 			return utilisateur;
 		}
