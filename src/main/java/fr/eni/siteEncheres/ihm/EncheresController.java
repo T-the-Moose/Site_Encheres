@@ -190,8 +190,10 @@ public class EncheresController {
 	
 	
 	@PostMapping("/supprimerProfil")
-	public String supprimerProfilUtilisateur(@RequestParam Integer idUtilisateur, Model modele) {
-		Utilisateur utilisateur = utilisateurService.findById(1);
+	public String supprimerProfilUtilisateur(Model modele, Principal principal) {
+		String username = principal.getName();	
+		Utilisateur utilisateur = utilisateurService.findByUserName(username);
+		System.out.println(utilisateur);
 		utilisateurService.supprimerUtilisateur(utilisateur);		
 		return "redirect:/";
 	}
