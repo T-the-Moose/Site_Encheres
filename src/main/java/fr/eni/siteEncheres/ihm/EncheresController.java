@@ -253,12 +253,12 @@ public class EncheresController {
 		ArticleVendu articleVendu = articleVenduService.findById(idArticle);
 		model.addAttribute("articleVendu", articleVendu);
 		
-		
 		// Pour l'affichage des points dans le header
 		String username = principal.getName();
 		utilisateur = utilisateurService.findByUserName(username);
 		model.addAttribute("utilisateur", utilisateur);
-		//System.out.println(utilisateur);
+		
+		
 		
 		return "PageEncherir";
 	}
