@@ -3,6 +3,7 @@ package fr.eni.siteEncheres.bll;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import fr.eni.siteEncheres.bo.Utilisateur;
@@ -14,7 +15,13 @@ public class UtilisateurServiceImpl implements UtilisateurService {
 	@Autowired
 	private UtilisateurDAO utilisateurDAO;
 	
+	private PasswordEncoder passwordEncoder;
 	
+	public UtilisateurServiceImpl(UtilisateurDAO utilisateurDAO, PasswordEncoder passwordEncoder) {
+		this.utilisateurDAO = utilisateurDAO;
+		this.passwordEncoder = passwordEncoder;
+	}
+
 	@Override
 	public List<Utilisateur> getUtilisateur() {
 		return utilisateurDAO.findAll();
@@ -27,7 +34,7 @@ public class UtilisateurServiceImpl implements UtilisateurService {
 
 	@Override
 	public void enregistrerUtilisateur( Utilisateur utilisateur) {
-		
+		utilisateur.setMotDePasse( passwordEncoder.encode( utilisateur.getMotDePasse()) );
 		utilisateurDAO.insert(utilisateur);		
 	}
 

@@ -6,17 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
-import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
@@ -29,10 +24,24 @@ public class SecurityConfig {
 	@Autowired
 	private DataSource dataSource;
 	
+	private final PasswordEncoder passwordEncoder  = new BCryptPasswordEncoder() ;
+
+	@Bean
+	public PasswordEncoder passwordEncoder() {
+		return passwordEncoder;
+	}
+	
+//	@Bean
+//	public PasswordEncoder passwordEncoder() {
+//		//return NoOpPasswordEncoder.getInstance();
+//		return new BCryptPasswordEncoder();
+//	}
+	
     @Autowired
     public void configureGlobal( AuthenticationManagerBuilder auth ) throws Exception {
         auth.jdbcAuthentication()
                 .dataSource( dataSource )
+                .passwordEncoder( passwordEncoder )
                 .usersByUsernameQuery( "SELECT pseudo, mot_de_passe, 1 FROM utilisateurs WHERE ? IN ( pseudo , email )" )
 //                .usersByUsernameQuery( "SELECT pseudo, mot_de_passe, 1 FROM utilisateurs WHERE pseudo = ?" )
                 .authoritiesByUsernameQuery( "SELECT ?, 'admin' " )
@@ -75,7 +84,7 @@ public class SecurityConfig {
 		// Customiser le formulaire
 			http.formLogin(form -> {
 				form.loginPage("/connexion").permitAll();
-				form.defaultSuccessUrl("/encheres", true).permitAll();
+				form.defaultSuccessUrl("/encheres").permitAll();
 			});
 
 		// /logout --> vider la session et le contexte de sécurité
@@ -106,12 +115,5 @@ public class SecurityConfig {
 	JdbcUserDetailsManager users(DataSource dataSource, PasswordEncoder passwordEncoder) {
 		JdbcUserDetailsManager jdbcUserDetailsManager = new JdbcUserDetailsManager(dataSource);
 		return jdbcUserDetailsManager;
-	}
-	
-
-	@Bean
-	public PasswordEncoder passwordEncoder() {
-		return NoOpPasswordEncoder.getInstance();
-		//return new BCryptPasswordEncoder();
 	}
 }
