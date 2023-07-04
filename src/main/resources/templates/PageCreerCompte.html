@@ -27,27 +27,27 @@
 				<div class="block-infos-creation">
 					<div class="infos-creation">
 						<label class="label-infos-creation" for="pseudo">Pseudo : </label>
-						<input type="text" id="creationPseudo" th:field="*{pseudo}"/>
+						<input type="text" id="creationPseudo" th:field="*{pseudo}" required/>
 						<span class="error-message" th:if="${#fields.hasErrors('pseudo')}" th:each="erreur: ${#fields.errors('pseudo')}" th:text="${erreur}"></span>
 					</div>
 					<div class="infos-creation">
 						<label class="label-infos-creation" for="prenom">Prénom : </label>
-						<input type="text" id="creationPrenom" th:field="*{prenom}"/>
+						<input type="text" id="creationPrenom" th:field="*{prenom}" required/>
 						<span class="error-message" th:if="${#fields.hasErrors('prenom')}" th:each="erreur: ${#fields.errors('prenom')}" th:text="${erreur}"></span>
 					</div>
 					<div class="infos-creation">
 						<label class="label-infos-creation" for="telephone">Téléphone : </label>
-						<input type="text" id="creationTelephone" th:field="*{telephone}"/>
+						<input type="text" id="creationTelephone" th:field="*{telephone}" required/>
 						<span class="error-message" th:if="${#fields.hasErrors('telephone')}" th:each="erreur: ${#fields.errors('telephone')}" th:text="${erreur}"></span>
 					</div>
 					<div class="infos-creation">
 						<label class="label-infos-creation" for="codePostal">Code Postal : </label>
-						<input type="text" id="creationCP" th:field="*{codePostal}"/>
+						<input type="text" id="creationCP" th:field="*{codePostal}" required/>
 						<span class="error-message" th:if="${#fields.hasErrors('codePostal')}" th:each="erreur: ${#fields.errors('codePostal')}" th:text="${erreur}"></span>
 					</div>
 					<div class="infos-creation">
 						<label class="label-infos-creation" for="motDePasse">Mot de Passe : </label>
-						<input type="password" id="creationMDP" th:field="*{motDePasse}"/>
+						<input type="password" id="creationMDP" th:field="*{motDePasse}" required/>
 						<span class="error-message" th:if="${#fields.hasErrors('motDePasse')}" th:each="erreur: ${#fields.errors('motDePasse')}" th:text="${erreur}"></span>
 					</div>
 				</div>
@@ -55,27 +55,27 @@
 				<div class="block-infos-creation">
 					<div class="infos-creation">
 						<label class="label-infos-creation" for="nom">Nom  :</label>
-						<input type="text" id="creationNom" th:field="*{nom}"/>
+						<input type="text" id="creationNom" th:field="*{nom}" required/>
 						<span class="error-message" th:if="${#fields.hasErrors('nom')}" th:each="erreur: ${#fields.errors('nom')}" th:text="${erreur}"></span>
 					</div>
 					<div class="infos-creation">
 						<label class="label-infos-creation" for="email">Email : </label>
-						<input type="email" id="creationEmail" th:field="*{email}"/>	
+						<input type="email" id="creationEmail" th:field="*{email}" required/>	
 						<span class="error-message" th:if="${#fields.hasErrors('email')}" th:each="erreur: ${#fields.errors('email')}" th:text="${erreur}"></span>				
 					</div>
 					<div class="infos-creation">
 						<label class="label-infos-creation" for="rue">Rue : </label>
-						<input type="text" id="creationRue" th:field="*{rue}"/>
+						<input type="text" id="creationRue" th:field="*{rue}" required/>
 						<span class="error-message" th:if="${#fields.hasErrors('rue')}" th:each="erreur: ${#fields.errors('rue')}" th:text="${erreur}"></span>			
 					</div>
 					<div class="infos-creation">
 						<label class="label-infos-creation" for="ville">Ville : </label>
-						<input type="text" id="creationVille" th:field="*{ville}"/>		
+						<input type="text" id="creationVille" th:field="*{ville}" required/>		
 						<span class="error-message" th:if="${#fields.hasErrors('ville')}" th:each="erreur: ${#fields.errors('ville')}" th:text="${erreur}"></span>			
 					</div>
 					<div class="infos-creation">
 						<label class="label-infos-creation" for="motDePasse"> Confirmation : </label>
-						<input type="password" id="creationConfMDP" th:fields="*{motDePasse}" />
+						<input type="password" id="creationConfMDP" th:fields="*{motDePasse}" required/>
 						<span class="error-message" th:if="${#fields.hasErrors('motDePasse')}" th:each="erreur: ${#fields.errors('motDePasse')}" th:text="${erreur}"></span>
 					</div>
 				</div>
@@ -83,7 +83,7 @@
 			<div class="block-creation-choix">
 			
 				<div class="creation-choix">
-					<button class="boutton-creation-choix" type="submit">Créer</button>
+					<button id="envoiBtn" class="boutton-creation-choix" type="submit">Créer</button>
 				</div>
 				
 				<div class="creation-choix">
@@ -93,7 +93,6 @@
 			</div>
 		</form>
 	</main>
-	
 </body>
 
 </html>
