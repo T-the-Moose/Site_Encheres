@@ -214,12 +214,6 @@ public class EncheresController {
 		articleRetrait.setCode_Postal(utilisateur.getCodePostal());
 		
 		modele.addAttribute("retrait", articleRetrait);
-
-		// Pour l'affichage des points dans le header
-		String username = principal.getName();
-		Utilisateur utilisateur = utilisateurService.findByUserName(username);
-		modele.addAttribute("utilisateur", utilisateur);
-		//System.out.println(utilisateur);
 	    
 		return "PageVendreUnArticle";
 	}
