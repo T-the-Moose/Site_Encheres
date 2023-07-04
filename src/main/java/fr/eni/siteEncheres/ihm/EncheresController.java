@@ -221,12 +221,14 @@ public class EncheresController {
 	public String afficherVendreArticle( ArticleVendu articleVendu, Utilisateur utilisateur, Model modele ,Principal principal) {
 		utilisateur = utilisateurService.findById(2); // temporaire en attente de connexion
 
+		// Pour l'affichage des points dans le header
+				String username = principal.getName();
+				utilisateur = utilisateurService.findByUserName(username);
+				modele.addAttribute("utilisateur", utilisateur);
+				
 		articleVenduService.enregistrerArticleVendu(articleVendu, utilisateur);
 		
-		// Pour l'affichage des points dans le header
-		String username = principal.getName();
-		utilisateur = utilisateurService.findByUserName(username);
-		modele.addAttribute("utilisateur", utilisateur);
+		
 		//System.out.println(utilisateur);
 		
 		return "redirect:/encheres";
