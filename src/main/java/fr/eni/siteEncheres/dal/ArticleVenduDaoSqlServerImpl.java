@@ -10,7 +10,6 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import fr.eni.siteEncheres.bo.ArticleVendu;
-import fr.eni.siteEncheres.bo.Retrait;
 import fr.eni.siteEncheres.bo.Utilisateur;
 
 
