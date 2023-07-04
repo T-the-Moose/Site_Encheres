@@ -41,16 +41,10 @@ public class EncheresController {
 	
 	
 	@GetMapping({"/", "/accueil"})
-	public String afficherAccueil(Model modele, Principal principal) {
+	public String afficherAccueil(Model modele) {
 		
 		List<ArticleVendu> listeArticle = articleVenduService.getArticleVendu();
 		modele.addAttribute("articleVendu", listeArticle);
-		
-		// Pour l'affichage des points dans le header
-		String username = principal.getName();
-		Utilisateur utilisateur = utilisateurService.findByUserName(username);
-		modele.addAttribute("utilisateur", utilisateur);
-		//System.out.println(utilisateur);
 		
 		return "PageAccueilNonConnecte";
 	}
