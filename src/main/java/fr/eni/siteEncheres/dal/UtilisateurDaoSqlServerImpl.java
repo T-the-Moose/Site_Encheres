@@ -72,7 +72,7 @@ public class UtilisateurDaoSqlServerImpl implements UtilisateurDAO {
     		t = namedParameterJdbcTemplate;
             t.getJdbcOperations().update(
                 " INSERT INTO utilisateurs ( pseudo, nom, prenom , email, telephone, rue, code_postal, ville, mot_de_passe, credit, administrateur, activer ) " +
-                " VALUES ( ? , ? , ? , ? , ? , ? , ? , ? , ? , 0 , 0 , 0)",
+                " VALUES ( ? , ? , ? , ? , ? , ? , ? , ? , ? , 0 , 0 , 1)",
                 utilisateur.getPseudo(),
                 utilisateur.getNom(),
                 utilisateur.getPrenom(),

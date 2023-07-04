@@ -195,8 +195,9 @@ public class EncheresController {
 		Utilisateur utilisateur = utilisateurService.findByUserName(username);
 		System.out.println(utilisateur);
 		utilisateurService.supprimerUtilisateur(utilisateur);		
-		return "redirect:/";
+		return "redirect:/logout";
 	}
+	
 	
 	@GetMapping("/vendre")
 	public String afficherPageVendre(Model modele, Principal principal) {
