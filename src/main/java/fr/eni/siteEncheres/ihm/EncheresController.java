@@ -41,17 +41,23 @@ public class EncheresController {
 	
 	
 	@GetMapping({"/", "/accueil"})
-	public String afficherAccueil(Model modele) {
+	public String afficherAccueil(Model modele, Principal principal) {
 		
 		List<ArticleVendu> listeArticle = articleVenduService.getArticleVendu();
 		modele.addAttribute("articleVendu", listeArticle);
+		
+		// Pour l'affichage des points dans le header
+		String username = principal.getName();
+		Utilisateur utilisateur = utilisateurService.findByUserName(username);
+		modele.addAttribute("utilisateur", utilisateur);
+		//System.out.println(utilisateur);
 		
 		return "PageAccueilNonConnecte";
 	}
 	
 	
 	@GetMapping("/accueil/articleParCategorie")
-	public String afficherAccueilParCategorie(@RequestParam Integer idCategorie, String filtre, Model modele) {
+	public String afficherAccueilParCategorie(@RequestParam Integer idCategorie, String filtre, Model modele, Principal principal) {
 		
 	    List<ArticleVendu> listeArticle;
 	    
@@ -62,6 +68,12 @@ public class EncheresController {
 	    }
 	  
 	    modele.addAttribute("articleVendu", listeArticle);
+	    
+		// Pour l'affichage des points dans le header
+		String username = principal.getName();
+		Utilisateur utilisateur = utilisateurService.findByUserName(username);
+		modele.addAttribute("utilisateur", utilisateur);
+		//System.out.println(utilisateur);
 	    
 	    return "PageAccueilNonConnecte";
 	}
@@ -80,7 +92,7 @@ public class EncheresController {
 	
 	@PostMapping("/profil/modifier")
 	public String afficherPageInscriptionErreur(@Valid @ModelAttribute Utilisateur utilisateur,
-			BindingResult validationResultat) {
+			BindingResult validationResultat, Model modele ,Principal principal) {
 		
 		if(validationResultat.hasErrors()) {
 			return "PageCreerCompte";
@@ -89,13 +101,19 @@ public class EncheresController {
 		utilisateurService.enregistrerUtilisateur(utilisateur);
 		System.out.println(utilisateur);
 		
+		// Pour l'affichage des points dans le header
+		String username = principal.getName();
+		utilisateur = utilisateurService.findByUserName(username);
+		modele.addAttribute("utilisateur", utilisateur);
+		//System.out.println(utilisateur);
+		
 		return "redirect:/connexion";
 	}
 	
 	
 
 	@GetMapping("/encheres")
-	public String afficherPageEncheres(Utilisateur utilisateur, Model modele) {
+	public String afficherPageEncheres(Utilisateur utilisateur, Model modele, Principal principal) {
 		
 		modele.addAttribute("utilisateur", utilisateur);
 		
@@ -103,12 +121,19 @@ public class EncheresController {
 		  modele.addAttribute("categorie", categorie);
 		List<ArticleVendu> listeArticle = articleVenduService.getArticleVendu();	
 		modele.addAttribute("articleVendu", listeArticle);  
+		
+		
+		// Pour l'affichage des points dans le header
+		String username = principal.getName();
+		utilisateur = utilisateurService.findByUserName(username);
+		modele.addAttribute("utilisateur", utilisateur);
+		//System.out.println(utilisateur);
 		  
 		return "PagesListeEncheresConnecte";
 	}
 	
 	@GetMapping("/liste-encheres/mes-ventes")
-	public String afficherPageMesVentes(@RequestParam Integer idCategorie, String filtre, Model modele) {
+	public String afficherPageMesVentes(@RequestParam Integer idCategorie, String filtre, Model modele, Principal principal) {
 		
 	    List<ArticleVendu> listeArticle;
 	    
@@ -119,6 +144,13 @@ public class EncheresController {
 	    }
 	  
 	    modele.addAttribute("articleVendu", listeArticle);
+	    
+	    
+		// Pour l'affichage des points dans le header
+		String username = principal.getName();
+		Utilisateur utilisateur = utilisateurService.findByUserName(username);
+		modele.addAttribute("utilisateur", utilisateur);
+		//System.out.println(utilisateur);
 		
 		return "PagesListeEncheresConnecte";
 	}
@@ -165,33 +197,60 @@ public class EncheresController {
 	}
 	
 	@GetMapping("/vendre")
-	public String afficherPageVendre(Model modele) {
+	public String afficherPageVendre(Model modele, Principal principal) {
 		
 		ArticleVendu articleVendu  = new ArticleVendu();
 		modele.addAttribute("articleVendu", articleVendu);
+		
+		// Pour l'affichage des points dans le header
+		String username = principal.getName();
+		Utilisateur utilisateur = utilisateurService.findByUserName(username);
+		modele.addAttribute("utilisateur", utilisateur);
+		//System.out.println(utilisateur);
 	    
 		return "PageVendreUnArticle";
 	}
 	
 	@PostMapping("/vendre/valider")
-	public String afficherVendreArticle( ArticleVendu articleVendu, Utilisateur utilisateur) {
+	public String afficherVendreArticle( ArticleVendu articleVendu, Utilisateur utilisateur, Model modele ,Principal principal) {
 		utilisateur = utilisateurService.findById(2); // temporaire en attente de connexion
 
 		articleVenduService.enregistrerArticleVendu(articleVendu, utilisateur);
+		
+		// Pour l'affichage des points dans le header
+		String username = principal.getName();
+		utilisateur = utilisateurService.findByUserName(username);
+		modele.addAttribute("utilisateur", utilisateur);
+		//System.out.println(utilisateur);
 		
 		return "redirect:/encheres";
 	}
 	
 	@GetMapping("/vendre/modif")
-	public String afficherPageEnchereNonCommencee() {
+	public String afficherPageEnchereNonCommencee(Utilisateur utilisateur, Model modele ,Principal principal) {
+		
+		
+		// Pour l'affichage des points dans le header
+		String username = principal.getName();
+		utilisateur = utilisateurService.findByUserName(username);
+		modele.addAttribute("utilisateur", utilisateur);
+		//System.out.println(utilisateur);
+		
 		return "PageEnchereNonCommencee";
 	}
 	
 	@RequestMapping("/encherir")
-	public String afficherPageEncherir(@RequestParam("idArticle") Integer idArticle, Model model) {
+	public String afficherPageEncherir(@RequestParam("idArticle") Integer idArticle, Utilisateur utilisateur, Model model, Principal principal) {
 		
 		ArticleVendu articleVendu = articleVenduService.findById(idArticle);
 		model.addAttribute("articleVendu", articleVendu);
+		
+		
+		// Pour l'affichage des points dans le header
+		String username = principal.getName();
+		utilisateur = utilisateurService.findByUserName(username);
+		model.addAttribute("utilisateur", utilisateur);
+		//System.out.println(utilisateur);
 		
 		return "PageEncherir";
 	}
