@@ -81,8 +81,8 @@ public class EncheresController {
 	@GetMapping("/inscription")
 	public String afficherPageInscription(@ModelAttribute Utilisateur utilisateur) {
 			return "PageCreerCompte";
-
 	}
+	
 	
 	@PostMapping("/profil/modifier")
 	public String afficherPageInscriptionErreur(@Valid @ModelAttribute Utilisateur utilisateur,
@@ -94,7 +94,6 @@ public class EncheresController {
 		
 		utilisateurService.enregistrerUtilisateur(utilisateur);
 	
-		
 		// Pour l'affichage des points dans le header
 		String username = principal.getName();
 		utilisateur = utilisateurService.findByUserName(username);
@@ -104,7 +103,6 @@ public class EncheresController {
 		return "redirect:/connexion";
 	}
 	
-
 
 	@RequestMapping("/encheres")
 	public String afficherPageEncheres(Utilisateur utilisateur, Model modele, Principal principal) {
@@ -124,6 +122,7 @@ public class EncheresController {
 		return "PagesListeEncheresConnecte";
 	}
 	
+	
 	@GetMapping("/liste-encheres/mes-ventes")
 	public String afficherPageMesVentes(@RequestParam Integer idCategorie, String filtre, Model modele, Principal principal) {
 		
@@ -137,7 +136,6 @@ public class EncheresController {
 	  
 	    modele.addAttribute("articleVendu", listeArticle);
 	    
-	    
 		// Pour l'affichage des points dans le header
 		String username = principal.getName();
 		Utilisateur utilisateur = utilisateurService.findByUserName(username);
@@ -146,6 +144,7 @@ public class EncheresController {
 		
 		return "PagesListeEncheresConnecte";
 	}
+	
 	
 	@GetMapping("/profil")
 	public String afficherPageProfil(Model model, Principal principal) {
@@ -158,6 +157,7 @@ public class EncheresController {
 		return "PageMonProfil";
 	}
 	
+	
 	@GetMapping("/modifierProfil")
 	public String afficherPagesModifierMonProfil(Model model, Principal principal) {
 		String username = principal.getName();	
@@ -166,6 +166,7 @@ public class EncheresController {
 		
 		return "PageModifierMonProfil";
 	}
+
 	
 	@PostMapping("/profilModifier")
 	public String afficherPageProfilModifier(@Valid @ModelAttribute Utilisateur utilisateur , BindingResult validationResultat ) {
@@ -174,12 +175,8 @@ public class EncheresController {
 						
 			return "redirect:/modifierProfil";
 		}
-		
 		utilisateurService.enregistrerUtilisateur(utilisateur);
-		
-		
 		return "redirect:/encheres";
-		
 	}
 	
 	
@@ -195,7 +192,7 @@ public class EncheresController {
 	
 	@GetMapping("/vendre")
 	public String afficherPageVendre(Model modele, Principal principal) {
-
+		
 		// Pour l'affichage des points dans le header
 		// Récupération des infos utilisateur pour affichage de retrait 
 		String username = principal.getName();
@@ -212,7 +209,6 @@ public class EncheresController {
 		
 		modele.addAttribute("retrait", articleRetrait);
 		System.out.println(utilisateur);
-
 	    
 		return "PageVendreUnArticle";
 	}
@@ -220,7 +216,7 @@ public class EncheresController {
 	
 	@PostMapping("/vendre/valider")
 	public String afficherVendreArticle( ArticleVendu articleVendu, Utilisateur utilisateur, Model modele ,Principal principal) {
-		
+
 		// Pour l'affichage des points dans le header
 				String username = principal.getName();
 				utilisateur = utilisateurService.findByUserName(username);
@@ -228,11 +224,11 @@ public class EncheresController {
 				
 		articleVenduService.enregistrerArticleVendu(articleVendu, utilisateur);
 		
-		
 		//System.out.println(utilisateur);
 		
 		return "redirect:/encheres";
 	}
+	
 	
 	@GetMapping("/vendre/modif")
 	public String afficherPageEnchereNonCommencee(Utilisateur utilisateur, Model modele ,Principal principal) {
@@ -246,6 +242,7 @@ public class EncheresController {
 		
 		return "PageEnchereNonCommencee";
 	}
+	
 	
 	@RequestMapping("/encherir")
 	public String afficherPageEncherir(@RequestParam("idArticle") Integer idArticle, Utilisateur utilisateur, Model model, Principal principal, @RequestParam("prixEnchere") int prixEnchere) {
@@ -291,15 +288,15 @@ public class EncheresController {
 		return "PageEncherir";
 	}
 	
+	
 	@GetMapping("/acquisition")
 	public String afficherPageAcquisition() {
 		return "PageAcquisition";
 	}
 	
+	
 	@GetMapping("/ma-vente-fini")
 	public String afficherPageMaFinVente() {
 		return "PageDetailMaVenteFinEnchere";
 	}
-
-
 }
