@@ -42,7 +42,7 @@ public class SecurityConfig {
         auth.jdbcAuthentication()
                 .dataSource( dataSource )
                 .passwordEncoder( passwordEncoder )
-                .usersByUsernameQuery( "SELECT pseudo, mot_de_passe, 1 FROM utilisateurs WHERE ? IN ( pseudo , email )" )
+                .usersByUsernameQuery( "SELECT pseudo, mot_de_passe, 1 FROM utilisateurs WHERE ? IN ( pseudo , email) AND activer = 1" )
 //                .usersByUsernameQuery( "SELECT pseudo, mot_de_passe, 1 FROM utilisateurs WHERE pseudo = ?" )
                 .authoritiesByUsernameQuery( "SELECT ?, 'admin' " )
                 ;

@@ -12,7 +12,12 @@
 				</div>
 			</div>	
 			<div class="bloc-p-header">
-				<p data-th-text="${utilisateur.credit}>1?${utilisateur.credit}+ ' points' :${utilisateur.credit}+ ' point' "></p>
+				<div th:if="${utilisateur} != null">
+			  		<p data-th-text="${utilisateur.credit}>1?${utilisateur.credit}+ ' points' :${utilisateur.credit}+ ' point' "></p>
+				</div>
+				<div th:unless="${utilisateur} == null">
+			  		<p></p>
+				</div>
 			</div>	
 		</div>
 
