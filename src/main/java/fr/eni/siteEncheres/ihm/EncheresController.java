@@ -78,7 +78,6 @@ public class EncheresController {
 	    return "PageAccueilNonConnecte";
 	}
 	
-	
 	@GetMapping("/connexion")
 	public String afficherPageConnexion() {
 		return "PageConnexion";
@@ -113,12 +112,11 @@ public class EncheresController {
 	
 
 	@GetMapping("/encheres")
+	@PostMapping("/encheres")
 	public String afficherPageEncheres(Utilisateur utilisateur, Model modele, Principal principal) {
 		
-		modele.addAttribute("utilisateur", utilisateur);
-		
 		Categorie categorie = categorieService.findById(1);
-		  modele.addAttribute("categorie", categorie);
+		modele.addAttribute("categorie", categorie);
 		List<ArticleVendu> listeArticle = articleVenduService.getArticleVendu();	
 		modele.addAttribute("articleVendu", listeArticle);  
 		
