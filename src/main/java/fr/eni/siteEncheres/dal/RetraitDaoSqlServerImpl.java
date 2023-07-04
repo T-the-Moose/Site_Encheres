@@ -14,7 +14,6 @@ import fr.eni.siteEncheres.bo.Utilisateur;
 @Repository
 public class RetraitDaoSqlServerImpl implements RetraitDAO{
 	
-	private final static String SELECT_ALL = "SELECT * FROM RETRAIT";
 	private final static String FIND_BY_ID = "SELECT * FROM RETRAITS WHERE no_article=?";
 	
 	private NamedParameterJdbcTemplate namedParameterJdbcTemplate;

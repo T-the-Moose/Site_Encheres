@@ -104,10 +104,9 @@ public class EncheresController {
 		return "redirect:/connexion";
 	}
 	
-	
 
-	@GetMapping("/encheres")
-	@PostMapping("/encheres")
+
+	@RequestMapping("/encheres")
 	public String afficherPageEncheres(Utilisateur utilisateur, Model modele, Principal principal) {
 		
 		Categorie categorie = categorieService.findById(1);
@@ -197,29 +196,22 @@ public class EncheresController {
 	@GetMapping("/vendre")
 	public String afficherPageVendre(Model modele, Principal principal) {
 
-		
+		// Pour l'affichage des points dans le header
 		// Récupération des infos utilisateur pour affichage de retrait 
 		String username = principal.getName();
 		Utilisateur utilisateur = utilisateurService.findByUserName(username);
 		modele.addAttribute("utilisateur", utilisateur);
 
-		
 		ArticleVendu articleVendu  = new ArticleVendu();
 		modele.addAttribute("articleVendu", articleVendu);
 		
-
 		Retrait articleRetrait = new Retrait();
 		articleRetrait.setRue(utilisateur.getRue());
 		articleRetrait.setVille(utilisateur.getVille());
 		articleRetrait.setCode_Postal(utilisateur.getCodePostal());
 		
 		modele.addAttribute("retrait", articleRetrait);
-
-		// Pour l'affichage des points dans le header
-		String username = principal.getName();
-		Utilisateur utilisateur = utilisateurService.findByUserName(username);
-		modele.addAttribute("utilisateur", utilisateur);
-		//System.out.println(utilisateur);
+		System.out.println(utilisateur);
 	    
 		return "PageVendreUnArticle";
 	}
