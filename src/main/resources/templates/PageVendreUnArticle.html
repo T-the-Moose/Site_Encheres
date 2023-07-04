@@ -72,17 +72,17 @@
 		
 						<div class="infos-vendre">
 							<label class="titre-description" for="rue">Rue :</label>
-							<input class="description-vendre" type="text" id="rueNouvelleArticle"/>
+							<input class="description-vendre" type="text" id="rueNouvelleArticle" th:field="*{retrait.rue}"/>
 						</div>
 						
 						<div class="infos-vendre">
 							<label class="titre-description" for="codePostal">Code postal :</label>
-							<input class="description-vendre" type="text" id="codePostalNouvelArticle"/>
+							<input class="description-vendre" type="text" id="codePostalNouvelArticle" th:field="*{retrait.code_Postal}"/>
 						</div>
 						
 						<div class="infos-vendre">
 							<label class="titre-description" for="ville">Ville :</label>
-							<input class="description-vendre" type="text" id="villeNouvelArticle"/>
+							<input class="description-vendre" type="text" id="villeNouvelArticle" th:field="*{retrait.ville}"/>
 						</div>
 				</fieldset>
 						<div class="boutton-vendre">

@@ -29,7 +29,6 @@ public class RetraitDaoSqlServerImpl implements RetraitDAO{
 			
 			return retrait;
 		}
-		
 	}
 	
 	@Override
@@ -41,7 +40,7 @@ public class RetraitDaoSqlServerImpl implements RetraitDAO{
 	}
 	@Override
 	public void save(Retrait retrait) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 

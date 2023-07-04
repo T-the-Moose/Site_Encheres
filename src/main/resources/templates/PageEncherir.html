@@ -51,12 +51,13 @@
 				<p class="description" data-th-text="*{dateFinEncheres}"></p>
 			</div>
 			
-			<div class="block-description">
+			<div class="block-description-retrait">
 				<p class="titre-description">Retrait :</p>
 				
 				<div class="description">
-				<p class="p-description"></p>
-				<p class="p-description"></p>
+					<p class="p-description" data-th-text="*{utilisateur.rue} + ' '"></p>
+					<span class="p-description-s" data-th-text="*{utilisateur.codePostal} + ' '"></span>
+					<span class="p-description-s" data-th-text="*{utilisateur.ville} + ' '"></span>
 				</div>
 			</div>
 			
