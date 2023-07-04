@@ -7,4 +7,5 @@ public interface RetraitDAO {
 	Retrait read(Integer idRetrait);
 
 	void save(Retrait retrait);
+
 }

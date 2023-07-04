@@ -10,6 +10,7 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import fr.eni.siteEncheres.bo.ArticleVendu;
+import fr.eni.siteEncheres.bo.Retrait;
 import fr.eni.siteEncheres.bo.Utilisateur;
 
 
@@ -55,13 +56,8 @@ public class ArticleVenduDaoSqlServerImpl implements ArticleVenduDAO{
 			// Récupération id Categorie
 			articleVendu.setCategorie(categorieDAO.read(rs.getInt("no_categorie")));
 			
-//			articleVendu.setRetrait(retraitDAO.read(rs.getString("rue")));
-//			articleVendu.setRetrait(retraitDAO.read(rs.getString("code_postal")));
-//			articleVendu.setRetrait(retraitDAO.read(rs.getDate("ville")));
-			
 			return articleVendu;
 		}
-		
 	}
 
 	@Override
