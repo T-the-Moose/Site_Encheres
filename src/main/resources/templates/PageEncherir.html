@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="EN">
 <head>
 <meta charset="UTF-8">
 <title>Page Encherir</title>
@@ -20,7 +20,7 @@
 			</div>
 			
 			<form th:action="@{/encherir}" method="post">
-			<input type="hidden" th:field="*{idArticle}"  />
+				<input type="hidden" th:field="*{idArticle}"  />
 				<div class="block-description-article">
 					<h4 data-th-text="*{nomArticle}"></h4>
 				</div>
