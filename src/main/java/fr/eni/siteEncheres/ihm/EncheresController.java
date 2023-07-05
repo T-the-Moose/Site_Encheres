@@ -263,15 +263,12 @@ public class EncheresController {
 		
 		String username = principal.getName();
 	    Utilisateur utilisateur = utilisateurService.findByUserName(username);
-	    
-	    // Mettre à jour le crédit de l'utilisateur
-//	    utilisateur.setCredit(utilisateur.getCredit() - montantEnchere);
-//	    System.out.println(utilisateur);
-	    utilisateurService.retirerPoints(montantEnchere);
+	    Integer idUtilisateur = utilisateur.getIdUtilisateur();
+	  
 	    
 		System.out.println(utilisateur);
 	    
-	     //Vérifiez si le prix de l'enchère est supérieur au prix de départ
+//	     //Vérifiez si le prix de l'enchère est supérieur au prix de départ
 //	    if (montantEnchere.compareTo(model.getAttribute(null).getMiseAPrix()) > 0) {
 //	        // Retirez les points de l'utilisateur
 //	        utilisateur = utilisateurService.retirerPoints(montantEnchere);
@@ -291,8 +288,9 @@ public class EncheresController {
 //	        // Gérez le cas où l'enchère est invalide (par exemple, afficher un message d'erreur)
 //	        return "redirect:/erreur";
 //	    }
-		
-		return "redirect:/PagesListeEncheresConnecte";
+		  // Mettre à jour le crédit de l'utilisateur
+	    utilisateurService.retirerPoints(montantEnchere, idUtilisateur);
+		return "redirect:/encheres";
 	}
 	
 	

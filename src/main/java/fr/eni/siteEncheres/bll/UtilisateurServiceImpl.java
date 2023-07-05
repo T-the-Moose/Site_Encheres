@@ -51,10 +51,10 @@ public class UtilisateurServiceImpl implements UtilisateurService {
 	}
 
 	@Override
-	public Utilisateur retirerPoints(Integer pointsRequis) {
-		
-		return utilisateurDAO.deletePoints(pointsRequis);
+	public void retirerPoints(Integer pointsRequis, Integer idUtilisateur) {
+		utilisateurDAO.deletePoints(pointsRequis, idUtilisateur);
 	}
-	
-	
+
+
+		
 }

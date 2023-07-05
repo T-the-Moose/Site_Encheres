@@ -16,7 +16,7 @@ public interface UtilisateurDAO {
 
 	Utilisateur findUser(String username);
 
-	Utilisateur deletePoints(Integer pointsRequis);
+	void deletePoints(Integer idUtilisateur, Integer montantEnchere);
 
 	
 
