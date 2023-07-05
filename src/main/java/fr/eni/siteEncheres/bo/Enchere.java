@@ -1,29 +1,31 @@
 package fr.eni.siteEncheres.bo;
 
-import java.time.LocalDate;
+import java.sql.Date;
 
 public class Enchere {
 	
-	private LocalDate dateEnchere;
+	private Date dateEnchere;
 	private int montantEnchere;
 	
-	private Utilisateur idUtilisateur;
-	private ArticleVendu idArticle;
-	
+	private int idUtilisateur;
+	private int idArticle;
 	
 	public Enchere() {
 	}
 	
-	public Enchere(LocalDate dateEnchere, int montantEnchere) {
+	
+	public Enchere(int idUtilisateur, int idArticle, Date dateEnchere, int montantEnchere) {
+		this.idUtilisateur = idUtilisateur;
+		this.idArticle = idArticle;
 		this.dateEnchere = dateEnchere;
 		this.montantEnchere = montantEnchere;
 	}
 
-	public LocalDate getDateEnchere() {
+	public Date getDateEnchere() {
 		return dateEnchere;
 	}
 
-	public void setDateEnchere(LocalDate dateEnchere) {
+	public void setDateEnchere(Date dateEnchere) {
 		this.dateEnchere = dateEnchere;
 	}
 
@@ -35,19 +37,19 @@ public class Enchere {
 		this.montantEnchere = montantEnchere;
 	}
 	
-	public Utilisateur getIdUtilisateur() {
+	public int getIdUtilisateur() {
 		return idUtilisateur;
 	}
 
-	public void setIdUtilisateur(Utilisateur idUtilisateur) {
+	public void setIdUtilisateur(int idUtilisateur) {
 		this.idUtilisateur = idUtilisateur;
 	}
 
-	public ArticleVendu getIdArticle() {
+	public int getIdArticle() {
 		return idArticle;
 	}
 
-	public void setIdArticle(ArticleVendu idArticle) {
+	public void setIdArticle(int idArticle) {
 		this.idArticle = idArticle;
 	}
 

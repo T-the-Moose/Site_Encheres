@@ -14,9 +14,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import fr.eni.siteEncheres.bll.ArticleVenduService;
 import fr.eni.siteEncheres.bll.CategorieService;
+import fr.eni.siteEncheres.bll.EnchereService;
 import fr.eni.siteEncheres.bll.UtilisateurService;
 import fr.eni.siteEncheres.bo.ArticleVendu;
 import fr.eni.siteEncheres.bo.Categorie;
+import fr.eni.siteEncheres.bo.Enchere;
 import fr.eni.siteEncheres.bo.Retrait;
 import fr.eni.siteEncheres.bo.Utilisateur;
 import fr.eni.siteEncheres.dal.UtilisateurDAO;
@@ -29,15 +31,17 @@ public class EncheresController {
 	private UtilisateurService utilisateurService;
 	private ArticleVenduService articleVenduService;
 	private CategorieService categorieService;
+	private EnchereService enchereService;
 	
 	private UtilisateurDAO utilisateurDAO;
 	
 	
 	public EncheresController(UtilisateurService utilisateurService, ArticleVenduService articleVenduService,
-			CategorieService categorieService) {
+			CategorieService categorieService, EnchereService enchereService) {
 		this.utilisateurService = utilisateurService;
 		this.articleVenduService = articleVenduService;
 		this.categorieService = categorieService;
+		this.enchereService = enchereService;
 	}
 	
 	
@@ -249,7 +253,8 @@ public class EncheresController {
 		
 		ArticleVendu articleVendu = articleVenduService.findById(idArticle);
 		model.addAttribute("articleVendu", articleVendu);
-		
+		Enchere enchere = enchereService.findById(idArticle);
+		model.addAttribute("enchere", enchere);
 		// Pour l'affichage des points dans le header
 		String username = principal.getName();
 		utilisateur = utilisateurService.findByUserName(username);
@@ -259,15 +264,19 @@ public class EncheresController {
 	}
 	
 	@PostMapping("/encherir")
-	public String validationPageEncherir(@RequestParam("prixEnchere") Integer montantEnchere, Principal principal) {
+	public String validationPageEncherir(@RequestParam("prixEnchere") Integer montantEnchere, Principal principal, @RequestParam("idArticle") Integer idArticle, Model model) {
 		
 		String username = principal.getName();
 	    Utilisateur utilisateur = utilisateurService.findByUserName(username);
 	    Integer idUtilisateur = utilisateur.getIdUtilisateur();
 	  
+	    ArticleVendu articleVendu = articleVenduService.findById(idArticle);
+		model.addAttribute("articleVendu", articleVendu);
 	    
 		System.out.println(utilisateur);
 	    
+//		if (montantEnchere.compareTo(model.getAttribute(null).) )
+//		
 //	     //Vérifiez si le prix de l'enchère est supérieur au prix de départ
 //	    if (montantEnchere.compareTo(model.getAttribute(null).getMiseAPrix()) > 0) {
 //	        // Retirez les points de l'utilisateur
