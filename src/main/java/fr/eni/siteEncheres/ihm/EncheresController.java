@@ -244,8 +244,8 @@ public class EncheresController {
 	}
 	
 	
-	@RequestMapping("/encherir")
-	public String afficherPageEncherir(@RequestParam("idArticle") Integer idArticle, Utilisateur utilisateur, Model model, Principal principal, @RequestParam("prixEnchere") int prixEnchere) {
+	@GetMapping("/encherir")
+	public String afficherPageEncherir(@RequestParam("idArticle") Integer idArticle, Utilisateur utilisateur, Model model, Principal principal) {
 		
 		ArticleVendu articleVendu = articleVenduService.findById(idArticle);
 		model.addAttribute("articleVendu", articleVendu);
@@ -255,38 +255,49 @@ public class EncheresController {
 		utilisateur = utilisateurService.findByUserName(username);
 		model.addAttribute("utilisateur", utilisateur);
 		
-		
-		
-		
-		
-		
-		
-		// Récupérez l'article et l'utilisateur concernés
-		ArticleVendu article = articleVenduService.findById(idArticle);
-	    
-	    // Vérifiez si le prix de l'enchère est supérieur au prix de départ
-	    if (prixEnchere.compareTo(article.getMiseAPrix()) > 0) {
-	        // Retirez les points de l'utilisateur
-	        utilisateur.retirerPoints(pointsRequis);
-	        
-	        // Mettez à jour l'article avec le nouveau prix d'enchère
-	        article.setMiseAPrix(idArticle);
-	        article.setUtilisateurEnchere(utilisateur);
-	        
-	        // Enregistrez les modifications dans la base de données
-	        articleVenduService.enregistrerArticleVendu(articleVendu, utilisateur);
-	        utilisateurService.enregistrerUtilisateur(utilisateur);
-	        
-	        // Effectuez toute autre opération nécessaire
-	        
-	        return "redirect:/confirmation";
-	    } else {
-	        // Gérez le cas où l'enchère est invalide (par exemple, afficher un message d'erreur)
-	        return "redirect:/erreur";
-	    }
-		
 		return "PageEncherir";
 	}
+	
+	@PostMapping("/encherir")
+	public String validationPageEncherir(@RequestParam("prixEnchere") Integer montantEnchere, Principal principal) {
+		
+		String username = principal.getName();
+	    Utilisateur utilisateur = utilisateurService.findByUserName(username);
+	    
+	    // Mettre à jour le crédit de l'utilisateur
+//	    utilisateur.setCredit(utilisateur.getCredit() - montantEnchere);
+//	    System.out.println(utilisateur);
+	    utilisateurService.retirerPoints(montantEnchere);
+	    
+		System.out.println(utilisateur);
+	    
+	     //Vérifiez si le prix de l'enchère est supérieur au prix de départ
+//	    if (montantEnchere.compareTo(model.getAttribute(null).getMiseAPrix()) > 0) {
+//	        // Retirez les points de l'utilisateur
+//	        utilisateur = utilisateurService.retirerPoints(montantEnchere);
+//	        
+//	        // Mettez à jour l'article avec le nouveau prix d'enchère
+//	        article.setMiseAPrix(idArticle);
+//	        article.setUtilisateurEnchere(utilisateur);
+//	        
+//	        // Enregistrez les modifications dans la base de données
+//	        articleVenduService.enregistrerArticleVendu(articleVendu, utilisateur);
+//	        utilisateurService.enregistrerUtilisateur(utilisateur);
+//	        
+//	        // Effectuez toute autre opération nécessaire
+//	        
+//	        return "redirect:/confirmation";
+//	    } else {
+//	        // Gérez le cas où l'enchère est invalide (par exemple, afficher un message d'erreur)
+//	        return "redirect:/erreur";
+//	    }
+		
+		return "redirect:/PagesListeEncheresConnecte";
+	}
+	
+	
+	
+	
 	
 	
 	@GetMapping("/acquisition")

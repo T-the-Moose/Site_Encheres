@@ -49,6 +49,12 @@ public class UtilisateurServiceImpl implements UtilisateurService {
 		
 		return utilisateurDAO.findUser(username);
 	}
+
+	@Override
+	public Utilisateur retirerPoints(Integer pointsRequis) {
+		
+		return utilisateurDAO.deletePoints(pointsRequis);
+	}
 	
 	
 }
