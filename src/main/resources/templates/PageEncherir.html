@@ -49,7 +49,7 @@
 				
 				<div class="block-description">
 					<p class="titre-description">Fin de l'enchère :</p>
-					<p class="description" data-th-text="*{dateFinEncheres}"></p>
+					<p class="description" data-th-text="*{dateFinEncheres}" id="dateFinEncheres"></p>
 				</div>
 				
 				<div class="block-description-retrait">
@@ -69,23 +69,22 @@
 					<p class="description" data-th-text="*{utilisateur.pseudo}"></p>
 				</div>
 				
-				<div class="block-description proposition">
-					<p class="titre-description">Ma proposition : </p>
-					<input type="number" name="prixEnchere">
-					<div class="block-button proposition">
-						<button class="encherir" type="submit">Enchérir</button>
-					</div>
+				<div class="block-description proposition-debut">
+				    <p class="titre-description">Ma proposition :</p>
+				    <input type="number" name="prixEnchere">
+				    <div class="block-button proposition">
+				        <button type="submit">Enchérir</button>
+				    </div>
 				</div>
-				
-				<div class="block-description proposition">
-					<p class="titre-description">Fin de la vente : </p>
-					<div class="block-button proposition">
-						<button class="encherir" onclick="window.location.href='/accueil'">Retour à l'accueil</button>
-					</div>
-				</div>
-				
-				
+
 			</form>
+				<div class="block-description proposition-fin">
+				    <p class="titre-description">Fin de l'enchère </p>
+				    <p class="titre-description" id="dateFinEncheres" data-th-text="*{dateFinEncheres}"></p>
+				    	<div class="block-button proposition">
+				        	<button onclick="window.location.href='/'">Retour à l'accueil</button>
+				    	</div>
+				</div>
 		</div>
 	</div>
 	<script type="text/javascript" src="/script/checkBox.js"></script>

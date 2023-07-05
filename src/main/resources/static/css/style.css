@@ -392,6 +392,10 @@ a#article {
 	margin-right: 8em;
 }
 
+.block-description.proposition-debut {
+	display: none;
+}
+
 /******     FIN Page encherir    *******/
 
 /******     DEBUT Page Profil   *******/
