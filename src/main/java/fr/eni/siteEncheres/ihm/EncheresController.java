@@ -264,7 +264,7 @@ public class EncheresController {
 	}
 	
 	@PostMapping("/encherir")
-	public String validationPageEncherir(@RequestParam("prixEnchere") Integer montantEnchere, Principal principal, @RequestParam("idArticle") Integer idArticle, Model model) {
+	public String validationPageEncherir(@RequestParam("prixEnchere") Integer prixEnchere, Principal principal, @RequestParam("idArticle") Integer idArticle, Model model) {
 		
 		String username = principal.getName();
 	    Utilisateur utilisateur = utilisateurService.findByUserName(username);
@@ -272,10 +272,22 @@ public class EncheresController {
 	  
 	    ArticleVendu articleVendu = articleVenduService.findById(idArticle);
 		model.addAttribute("articleVendu", articleVendu);
+		
+		Enchere enchere = enchereService.findById(idUtilisateur);
+		
+		Integer meilleurOffre = enchere.getMontantEnchere();
+		
+	    System.out.println(meilleurOffre);
+		
+		System.out.println(prixEnchere);
 	    
-		System.out.println(utilisateur);
-	    
-//		if (montantEnchere.compareTo(model.getAttribute(null).) )
+		if (prixEnchere.compareTo(meilleurOffre)> 0 ) {
+			utilisateurService.retirerPoints(prixEnchere, idUtilisateur);
+			
+		} else {
+			String erreur = "L'offre doit être supèrieur au montant de départ !!!";
+			return erreur;
+		}
 //		
 //	     //Vérifiez si le prix de l'enchère est supérieur au prix de départ
 //	    if (montantEnchere.compareTo(model.getAttribute(null).getMiseAPrix()) > 0) {
@@ -298,7 +310,7 @@ public class EncheresController {
 //	        return "redirect:/erreur";
 //	    }
 		  // Mettre à jour le crédit de l'utilisateur
-	    utilisateurService.retirerPoints(montantEnchere, idUtilisateur);
+	    
 		return "redirect:/encheres";
 	}
 	
