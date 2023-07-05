@@ -66,3 +66,22 @@ function afficherApercuImage(event) {
     });
 
 
+function afficherFinEnchere() {
+    // Récupérer la date de fin d'enchère du backend et la convertir en objet Date JavaScript
+    var dateFinEncheres = new Date("<%= dateFinEncheres %>"); // Remplacer "<%= dateFinEncheres %>" par l'expression permettant d'obtenir la date de fin d'enchère depuis votre backend
+    
+    // Récupérer la date et l'heure actuelles
+    var dateActuelle = new Date();
+    
+    // Comparer les dates pour déterminer si la date de fin d'enchère est dépassée ou non
+    if (dateActuelle > dateFinEncheres) {
+        // Masquer la section "Ma proposition" et afficher le message "Fin d'enchère"
+        document.querySelector('.block-description.proposition[data-th-if]').style.display = 'none';
+        document.querySelector('.block-description.proposition[data-th-unless]').style.display = 'block';
+    } else {
+        // Masquer la section "Fin de la vente" et afficher la section "Ma proposition"
+        document.querySelector('.block-description.proposition[data-th-unless]').style.display = 'none';
+        document.querySelector('.block-description.proposition[data-th-if]').style.display = 'block';
+    }
+}
+
