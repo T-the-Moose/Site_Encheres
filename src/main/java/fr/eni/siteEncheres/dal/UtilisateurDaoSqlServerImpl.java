@@ -9,7 +9,9 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
@@ -115,13 +117,15 @@ public class UtilisateurDaoSqlServerImpl implements UtilisateurDAO {
 
 
 	@Override
-	public Utilisateur deletePoints(Integer pointsRequis) {
-		t = namedParameterJdbcTemplate;
-		Utilisateur utilisateur = t.getJdbcOperations().queryForObject(DELETE_POINTS, new UtilisateurMapper(), pointsRequis);
-		
-		return utilisateur;
+	public void deletePoints(Integer montantEnchere, Integer idUtilisateur) {
+	    SqlParameterSource parameters = new MapSqlParameterSource()
+	    		.addValue("montantEnchere", montantEnchere)
+	            .addValue("idUtilisateur", idUtilisateur);
+	            
+
+	    namedParameterJdbcTemplate.update(DELETE_POINTS, parameters);
+
 	}
-	
 	
 
 }

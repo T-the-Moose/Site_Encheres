@@ -16,6 +16,6 @@ public interface UtilisateurService {
 
 	Utilisateur findByUserName(String username);
 	
-	Utilisateur retirerPoints (Integer pointsRequis);
+	void retirerPoints(Integer pointsRequis, Integer idUtilisateur);
 
 }
