@@ -216,7 +216,7 @@ public class EncheresController {
 	
 	@PostMapping("/vendre/valider")
 	public String afficherVendreArticle( ArticleVendu articleVendu, Utilisateur utilisateur, Model modele ,Principal principal) {
-
+		
 		// Pour l'affichage des points dans le header
 				String username = principal.getName();
 				utilisateur = utilisateurService.findByUserName(username);
