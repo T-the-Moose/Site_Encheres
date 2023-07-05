@@ -17,6 +17,7 @@ import fr.eni.siteEncheres.bo.Utilisateur;
 public class EnchereDaoSqlServerImpl implements EnchereDAO {
 	
 	private final static String FIND_BY_ID = "SELECT no_utilisateur, no_article, date_enchere, montant_enchere FROM ENCHERES WHERE no_utilisateur=?";
+	private final static String UPDATE_PRIX_ENCHERE = "UPDATE ENCHERES SET montant_enchere=:montant_enchere WHERE no_utilisateur=:idUtilisateur";
 
 	@Autowired
 	private NamedParameterJdbcTemplate namedParameterJdbcTemplate;

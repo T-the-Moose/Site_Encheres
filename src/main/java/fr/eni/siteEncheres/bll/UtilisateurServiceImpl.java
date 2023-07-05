@@ -55,6 +55,12 @@ public class UtilisateurServiceImpl implements UtilisateurService {
 		utilisateurDAO.deletePoints(pointsRequis, idUtilisateur);
 	}
 
+	@Override
+	public void ajouterPoint(Integer sommeARecredite, Integer idAncienEncherisseur) {
+		utilisateurDAO.addPoints(sommeARecredite, idAncienEncherisseur);
+		
+	}
+
 
 		
 }

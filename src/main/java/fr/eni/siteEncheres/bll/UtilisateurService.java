@@ -18,4 +18,6 @@ public interface UtilisateurService {
 	
 	void retirerPoints(Integer pointsRequis, Integer idUtilisateur);
 
+	void ajouterPoint(Integer sommeARecredite, Integer idAncienEncherisseur);
+
 }
