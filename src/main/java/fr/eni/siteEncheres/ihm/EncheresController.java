@@ -111,8 +111,7 @@ public class EncheresController {
 	@RequestMapping("/encheres")
 	public String afficherPageEncheres(Utilisateur utilisateur, Model modele, Principal principal) {
 		
-		Categorie categorie = categorieService.findById(1);
-		modele.addAttribute("categorie", categorie);
+
 		List<ArticleVendu> listeArticle = articleVenduService.getArticleVendu();	
 		modele.addAttribute("articleVendu", listeArticle);  
 		
@@ -121,7 +120,7 @@ public class EncheresController {
 		String username = principal.getName();
 		utilisateur = utilisateurService.findByUserName(username);
 		modele.addAttribute("utilisateur", utilisateur);
-		//System.out.println(utilisateur);
+	
 		  
 		return "PagesListeEncheresConnecte";
 	}
