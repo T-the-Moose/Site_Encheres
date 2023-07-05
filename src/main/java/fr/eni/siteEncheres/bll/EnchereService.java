@@ -1,5 +1,8 @@
 package fr.eni.siteEncheres.bll;
 
-public interface EnchereService {
+import fr.eni.siteEncheres.bo.Enchere;
 
+public interface EnchereService {
+	
+	Enchere findById(Integer idUtilisateur);
 }

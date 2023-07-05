@@ -4,12 +4,10 @@ import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import javax.swing.tree.RowMapper;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
-import org.springframework.jdbc.core.RowMapper;
 
 import fr.eni.siteEncheres.bo.ArticleVendu;
 import fr.eni.siteEncheres.bo.Enchere;
@@ -17,13 +15,15 @@ import fr.eni.siteEncheres.bo.Utilisateur;
 
 @Repository
 public class EnchereDaoSqlServerImpl implements EnchereDAO {
+	
+	private final static String FIND_BY_ID = "SELECT no_utilisateur, no_article, date_enchere, montant_enchere FROM ENCHERES WHERE no_utilisateur=?";
+	String query = "SELECT t1.*, t2.nom FROM table1 t1 INNER JOIN table2 t2 ON t1.id = t2.table1_id";
 	@Autowired
 	private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 	
-	String query = "SELECT t1.*, t2.nom FROM table1 t1 INNER JOIN table2 t2 ON t1.id = t2.table1_id";
-
-	NamedParameterJdbcTemplate t;	
-	class EnchereMapper implements RowMapper<Enchere>{
+	NamedParameterJdbcTemplate t;
+	
+	class EnchereMapper implements RowMapper<Enchere> {
 		
 		@Override
 		public Enchere mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -42,6 +42,14 @@ public class EnchereDaoSqlServerImpl implements EnchereDAO {
 			return new Enchere(id_utilisateur, id_article, date_enchere, montant);
 		}
 		
+	}
+
+
+	@Override
+	public Enchere read(Integer idArticle) {
+		t = namedParameterJdbcTemplate;
+		Enchere enchere = t.getJdbcOperations().queryForObject(FIND_BY_ID, new EnchereMapper(), idArticle );
+		return enchere;
 	}
 	
 }

@@ -14,9 +14,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import fr.eni.siteEncheres.bll.ArticleVenduService;
 import fr.eni.siteEncheres.bll.CategorieService;
+import fr.eni.siteEncheres.bll.EnchereService;
 import fr.eni.siteEncheres.bll.UtilisateurService;
 import fr.eni.siteEncheres.bo.ArticleVendu;
 import fr.eni.siteEncheres.bo.Categorie;
+import fr.eni.siteEncheres.bo.Enchere;
 import fr.eni.siteEncheres.bo.Retrait;
 import fr.eni.siteEncheres.bo.Utilisateur;
 import fr.eni.siteEncheres.dal.UtilisateurDAO;
@@ -29,15 +31,17 @@ public class EncheresController {
 	private UtilisateurService utilisateurService;
 	private ArticleVenduService articleVenduService;
 	private CategorieService categorieService;
+	private EnchereService enchereService;
 	
 	private UtilisateurDAO utilisateurDAO;
 	
 	
 	public EncheresController(UtilisateurService utilisateurService, ArticleVenduService articleVenduService,
-			CategorieService categorieService) {
+			CategorieService categorieService, EnchereService enchereService) {
 		this.utilisateurService = utilisateurService;
 		this.articleVenduService = articleVenduService;
 		this.categorieService = categorieService;
+		this.enchereService = enchereService;
 	}
 	
 	
@@ -249,7 +253,8 @@ public class EncheresController {
 		
 		ArticleVendu articleVendu = articleVenduService.findById(idArticle);
 		model.addAttribute("articleVendu", articleVendu);
-		
+		Enchere enchere = enchereService.findById(idArticle);
+		model.addAttribute("enchere", enchere);
 		// Pour l'affichage des points dans le header
 		String username = principal.getName();
 		utilisateur = utilisateurService.findByUserName(username);
@@ -270,28 +275,28 @@ public class EncheresController {
 	    
 		System.out.println(utilisateur);
 	    
-		if (montantEnchere.compareTo(model.getAttribute(null).) )
-		
-	     //Vérifiez si le prix de l'enchère est supérieur au prix de départ
-	    if (montantEnchere.compareTo(model.getAttribute(null).getMiseAPrix()) > 0) {
-	        // Retirez les points de l'utilisateur
-	        utilisateur = utilisateurService.retirerPoints(montantEnchere);
-	        
-	        // Mettez à jour l'article avec le nouveau prix d'enchère
-	        article.setMiseAPrix(idArticle);
-	        article.setUtilisateurEnchere(utilisateur);
-	        
-	        // Enregistrez les modifications dans la base de données
-	        articleVenduService.enregistrerArticleVendu(articleVendu, utilisateur);
-	        utilisateurService.enregistrerUtilisateur(utilisateur);
-	        
-	        // Effectuez toute autre opération nécessaire
-	        
-	        return "redirect:/confirmation";
-	    } else {
-	        // Gérez le cas où l'enchère est invalide (par exemple, afficher un message d'erreur)
-	        return "redirect:/erreur";
-	    }
+//		if (montantEnchere.compareTo(model.getAttribute(null).) )
+//		
+//	     //Vérifiez si le prix de l'enchère est supérieur au prix de départ
+//	    if (montantEnchere.compareTo(model.getAttribute(null).getMiseAPrix()) > 0) {
+//	        // Retirez les points de l'utilisateur
+//	        utilisateur = utilisateurService.retirerPoints(montantEnchere);
+//	        
+//	        // Mettez à jour l'article avec le nouveau prix d'enchère
+//	        article.setMiseAPrix(idArticle);
+//	        article.setUtilisateurEnchere(utilisateur);
+//	        
+//	        // Enregistrez les modifications dans la base de données
+//	        articleVenduService.enregistrerArticleVendu(articleVendu, utilisateur);
+//	        utilisateurService.enregistrerUtilisateur(utilisateur);
+//	        
+//	        // Effectuez toute autre opération nécessaire
+//	        
+//	        return "redirect:/confirmation";
+//	    } else {
+//	        // Gérez le cas où l'enchère est invalide (par exemple, afficher un message d'erreur)
+//	        return "redirect:/erreur";
+//	    }
 		  // Mettre à jour le crédit de l'utilisateur
 	    utilisateurService.retirerPoints(montantEnchere, idUtilisateur);
 		return "redirect:/encheres";
