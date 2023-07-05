@@ -17,7 +17,7 @@ import fr.eni.siteEncheres.bo.Utilisateur;
 public class EnchereDaoSqlServerImpl implements EnchereDAO {
 	
 	private final static String FIND_BY_ID = "SELECT no_utilisateur, no_article, date_enchere, montant_enchere FROM ENCHERES WHERE no_utilisateur=?";
-	String query = "SELECT t1.*, t2.nom FROM table1 t1 INNER JOIN table2 t2 ON t1.id = t2.table1_id";
+
 	@Autowired
 	private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 	
