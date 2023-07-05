@@ -24,6 +24,9 @@ public class UtilisateurDaoSqlServerImpl implements UtilisateurDAO {
 	private final static String UPDATE = "update utilisateurs set pseudo=:pseudo, nom=:nom, prenom=:prenom, email=:email, telephone=:telephone, rue=:rue, code_postal=:codePostal, ville=:ville, mot_de_passe=:motDePasse where no_utilisateur=:idUtilisateur ";
 	private final static String DELETE = "update utilisateurs set activer=1 where no_utilisateur=:idUtilisateur";
 	private final static String SELECT_UTILISATEUR = "SELECT no_utilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, ville, credit  FROM UTILISATEURS WHERE pseudo=?";
+	private final static String DELETE_POINTS = "update utilisateurs set credit=(credit - :montantEnchere) WHERE no_utilisateur=:idUtilisateur";
+	
+	
 	@Autowired
 	private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 	
@@ -107,6 +110,15 @@ public class UtilisateurDaoSqlServerImpl implements UtilisateurDAO {
 	public Utilisateur findUser(String username) {
 		t = namedParameterJdbcTemplate;
 		Utilisateur utilisateur = t.getJdbcOperations().queryForObject(SELECT_UTILISATEUR, new UtilisateurMapper(), username );
+		return utilisateur;
+	}
+
+
+	@Override
+	public Utilisateur deletePoints(Integer pointsRequis) {
+		t = namedParameterJdbcTemplate;
+		Utilisateur utilisateur = t.getJdbcOperations().queryForObject(DELETE_POINTS, new UtilisateurMapper(), pointsRequis);
+		
 		return utilisateur;
 	}
 	

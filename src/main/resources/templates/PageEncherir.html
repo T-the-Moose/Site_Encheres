@@ -19,7 +19,7 @@
 				<h3>Détail vente</h3>
 			</div>
 			
-			<form th:action="@{/encherir}">
+			<form th:action="@{/encherir}" method="post">
 				<div class="block-description-article">
 					<h4 data-th-text="*{nomArticle}"></h4>
 				</div>
@@ -71,7 +71,7 @@
 				
 				<div class="block-description proposition">
 					<p class="titre-description">Ma proposition : </p>
-					<input type="number" name="prixEnchere" data-th-field="*{enchere.montantEnchere}">
+					<input type="number" name="prixEnchere">
 					<div class="block-button proposition">
 						<button class="encherir" type="submit">Enchérir</button>
 					</div>
