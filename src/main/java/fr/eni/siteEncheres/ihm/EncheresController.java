@@ -259,35 +259,39 @@ public class EncheresController {
 	}
 	
 	@PostMapping("/encherir")
-	public String validationPageEncherir(@RequestParam("prixEnchere") Integer montantEnchere, Principal principal) {
+	public String validationPageEncherir(@RequestParam("prixEnchere") Integer montantEnchere, Principal principal, @RequestParam("idArticle") Integer idArticle, Model model) {
 		
 		String username = principal.getName();
 	    Utilisateur utilisateur = utilisateurService.findByUserName(username);
 	    Integer idUtilisateur = utilisateur.getIdUtilisateur();
 	  
+	    ArticleVendu articleVendu = articleVenduService.findById(idArticle);
+		model.addAttribute("articleVendu", articleVendu);
 	    
 		System.out.println(utilisateur);
 	    
-//	     //Vérifiez si le prix de l'enchère est supérieur au prix de départ
-//	    if (montantEnchere.compareTo(model.getAttribute(null).getMiseAPrix()) > 0) {
-//	        // Retirez les points de l'utilisateur
-//	        utilisateur = utilisateurService.retirerPoints(montantEnchere);
-//	        
-//	        // Mettez à jour l'article avec le nouveau prix d'enchère
-//	        article.setMiseAPrix(idArticle);
-//	        article.setUtilisateurEnchere(utilisateur);
-//	        
-//	        // Enregistrez les modifications dans la base de données
-//	        articleVenduService.enregistrerArticleVendu(articleVendu, utilisateur);
-//	        utilisateurService.enregistrerUtilisateur(utilisateur);
-//	        
-//	        // Effectuez toute autre opération nécessaire
-//	        
-//	        return "redirect:/confirmation";
-//	    } else {
-//	        // Gérez le cas où l'enchère est invalide (par exemple, afficher un message d'erreur)
-//	        return "redirect:/erreur";
-//	    }
+		if (montantEnchere.compareTo(model.getAttribute(null).) )
+		
+	     //Vérifiez si le prix de l'enchère est supérieur au prix de départ
+	    if (montantEnchere.compareTo(model.getAttribute(null).getMiseAPrix()) > 0) {
+	        // Retirez les points de l'utilisateur
+	        utilisateur = utilisateurService.retirerPoints(montantEnchere);
+	        
+	        // Mettez à jour l'article avec le nouveau prix d'enchère
+	        article.setMiseAPrix(idArticle);
+	        article.setUtilisateurEnchere(utilisateur);
+	        
+	        // Enregistrez les modifications dans la base de données
+	        articleVenduService.enregistrerArticleVendu(articleVendu, utilisateur);
+	        utilisateurService.enregistrerUtilisateur(utilisateur);
+	        
+	        // Effectuez toute autre opération nécessaire
+	        
+	        return "redirect:/confirmation";
+	    } else {
+	        // Gérez le cas où l'enchère est invalide (par exemple, afficher un message d'erreur)
+	        return "redirect:/erreur";
+	    }
 		  // Mettre à jour le crédit de l'utilisateur
 	    utilisateurService.retirerPoints(montantEnchere, idUtilisateur);
 		return "redirect:/encheres";
