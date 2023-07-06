@@ -1,8 +1,10 @@
 package fr.eni.siteEncheres.ihm;
 
+import java.nio.file.spi.FileSystemProvider;
 import java.security.Principal;
 import java.util.List;
 
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -17,7 +19,6 @@ import fr.eni.siteEncheres.bll.CategorieService;
 import fr.eni.siteEncheres.bll.EnchereService;
 import fr.eni.siteEncheres.bll.UtilisateurService;
 import fr.eni.siteEncheres.bo.ArticleVendu;
-import fr.eni.siteEncheres.bo.Categorie;
 import fr.eni.siteEncheres.bo.Enchere;
 import fr.eni.siteEncheres.bo.Retrait;
 import fr.eni.siteEncheres.bo.Utilisateur;
@@ -218,7 +219,7 @@ public class EncheresController {
 	
 	
 	@PostMapping("/vendre/valider")
-	public String afficherVendreArticle( ArticleVendu articleVendu, Utilisateur utilisateur, Model modele ,Principal principal) {
+	public String afficherVendreArticle(ArticleVendu articleVendu, Utilisateur utilisateur, Model modele ,Principal principal) {
 		
 		// Pour l'affichage des points dans le header
 				String username = principal.getName();
@@ -248,12 +249,25 @@ public class EncheresController {
 	
 	
 	@GetMapping("/encherir")
-	public String afficherPageEncherir(@RequestParam("idArticle") Integer idArticle, Utilisateur utilisateur, Model model, Principal principal) {
+	public String afficherPageEncherir(@RequestParam("idArticle") Integer idArticle, Utilisateur utilisateur, Model model, Principal principal, Enchere enchere) {
 		
 		ArticleVendu articleVendu = articleVenduService.findById(idArticle);
 		model.addAttribute("articleVendu", articleVendu);
-		Enchere enchere = enchereService.findById(idArticle);
-		model.addAttribute("enchere", enchere);
+		
+		System.out.println("L id de l article est : " + idArticle);
+		
+		// A VOIR !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+		//if (enchere != null) {
+		try {
+			enchere = enchereService.findById(idArticle);
+			model.addAttribute("enchere", enchere);
+		} catch (EmptyResultDataAccessException ex) {
+			// TODO Auto-generated catch block
+			ex.printStackTrace();
+		}
+		//}
+
+		
 		// Pour l'affichage des points dans le header
 		String username = principal.getName();
 		utilisateur = utilisateurService.findByUserName(username);
@@ -263,18 +277,27 @@ public class EncheresController {
 	}
 	
 	@PostMapping("/encherir")
-	public String validationPageEncherir(@RequestParam("prixEnchere") Integer prixEnchere, Principal principal, @RequestParam("idArticle") Integer idArticle, Model model) {
+	public String validationPageEncherir(@RequestParam("prixEnchere") Integer prixEnchere, Principal principal, @RequestParam("idArticle") Integer idArticle, Model model, Enchere enchere,
+			ArticleVendu articleVendu, Utilisateur utilisateur) {
 		
 		String username = principal.getName();
-	    Utilisateur utilisateur = utilisateurService.findByUserName(username);
+	    utilisateur = utilisateurService.findByUserName(username);
 	    Integer idUtilisateur = utilisateur.getIdUtilisateur();
-	  
-	    ArticleVendu articleVendu = articleVenduService.findById(idArticle);
+	    
+		System.out.println("L'id utilisateur1 est : " + idUtilisateur);
+		
+		// Création d'une nouvelle enchère
+		Enchere creationEnchere = new Enchere();
+		model.addAttribute("enchere", creationEnchere);
+		
+		// Enregistrement de l'enchère
+		enchereService.enregistrerEnchere(enchere, prixEnchere, articleVendu, utilisateur);
+		
+		
+	    articleVendu = articleVenduService.findById(idArticle);
 		model.addAttribute("articleVendu", articleVendu);
-		
-		Enchere enchere = enchereService.findById(idUtilisateur);
-		
-		Integer meilleurOffre = enchere.getMontantEnchere();
+
+		Integer meilleurOffre = enchere.getMontantEnchere();		
 		
 	    System.out.println(meilleurOffre);
 		
@@ -294,9 +317,10 @@ public class EncheresController {
 			// Retirez les points de l'utilisateur
 			utilisateurService.retirerPoints(prixEnchere, idUtilisateur);
 			
-		} else {
-			String erreur = "L'offre doit être supèrieur au montant de départ !!!";
-			return erreur;
+//		} else {
+////			String erreur = "L'offre doit être supèrieur au montant de départ !!!";
+////			return erreur;
+//			
 		}
 //		
 //	     //Vérifiez si le prix de l'enchère est supérieur au prix de départ

@@ -7,14 +7,14 @@ public class Enchere {
 	private Date dateEnchere;
 	private int montantEnchere;
 	
-	private int idUtilisateur;
-	private int idArticle;
+	private Integer idUtilisateur;
+	private Integer idArticle;
 	
 	public Enchere() {
 	}
 	
 	
-	public Enchere(int idUtilisateur, int idArticle, Date dateEnchere, int montantEnchere) {
+	public Enchere(Integer idUtilisateur, Integer idArticle, Date dateEnchere, int montantEnchere) {
 		this.idUtilisateur = idUtilisateur;
 		this.idArticle = idArticle;
 		this.dateEnchere = dateEnchere;
@@ -37,19 +37,19 @@ public class Enchere {
 		this.montantEnchere = montantEnchere;
 	}
 	
-	public int getIdUtilisateur() {
+	public Integer getIdUtilisateur() {
 		return idUtilisateur;
 	}
 
-	public void setIdUtilisateur(int idUtilisateur) {
+	public void setIdUtilisateur(Integer idUtilisateur) {
 		this.idUtilisateur = idUtilisateur;
 	}
 
-	public int getIdArticle() {
+	public Integer getIdArticle() {
 		return idArticle;
 	}
 
-	public void setIdArticle(int idArticle) {
+	public void setIdArticle(Integer idArticle) {
 		this.idArticle = idArticle;
 	}
 
