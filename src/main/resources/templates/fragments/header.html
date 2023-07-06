@@ -13,7 +13,7 @@
 			</div>	
 			<div class="bloc-p-header">
 				<div th:if="${utilisateur} != null">
-			  		<p data-th-text="${utilisateur.credit}>1?${utilisateur.credit}+ ' points' :${utilisateur.credit}+ ' point' "></p>
+			  		<p id="creditUtilisateur" th:with="creditUtilisateur=${utilisateur.credit > 1 ? utilisateur.credit + ' points' : utilisateur.credit + ' point'}" th:text="${creditUtilisateur}"></p>
 				</div>
 				<div th:unless="${utilisateur} == null">
 			  		<p></p>

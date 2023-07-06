@@ -19,7 +19,7 @@
 				<h3>Détail vente</h3>
 			</div>
 			
-			<form th:action="@{/encherir}" method="post">
+			<form id="encherir" th:action="@{/encherir}" method="post">
 				<input type="hidden" th:field="*{idArticle}"  />
 				<div class="block-description-article">
 					<h4 data-th-text="*{nomArticle}"></h4>
@@ -40,7 +40,7 @@
 				
 				<div class="block-description">
 					<p class="titre-description">Meilleur offre :</p>
-					<p class="description"  data-th-text="${enchere.montantEnchere}"></p>
+					<p class="description" id="meilleurOffre" th:with="meilleurOffre=${enchere.montantEnchere}" th:text="${meilleurOffre}"></p>
 				</div>
 				
 				<div class="block-description">
@@ -72,11 +72,14 @@
 				
 				<div class="block-description proposition-debut">
 				    <p class="titre-description">Ma proposition :</p>
-				    <input type="number" name="prixEnchere">
+				    <input type="number" id="maProposition" name="prixEnchere">
 				    <div class="block-button proposition">
 				        <button type="submit">Enchérir</button>
 				    </div>
 				</div>
+				<div id="erreurMessage" style="display: none; color: red;"></div>
+
+				
 
 			</form>
 				<div class="block-description proposition-fin">

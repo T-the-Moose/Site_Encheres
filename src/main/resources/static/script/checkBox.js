@@ -97,4 +97,54 @@ document.addEventListener("DOMContentLoaded", function() {
     afficherFinEnchere();
 });
 
+document.addEventListener("DOMContentLoaded", function() {
+  var formulaire = document.getElementById("encherir"); // Remplacez "encherir" par l'ID de votre formulaire
+
+  formulaire.addEventListener("submit", function(e) {
+    var maProposition = parseInt(document.getElementById("maProposition").value); // Remplacez "prixEnchere" par l'ID de votre champ de prix d'enchère
+    //var meilleurOffre = parseInt(document.getElementById("meilleurOffre").dataset.meilleurOffreTh); // Remplacez "meilleurOffre" par l'ID de votre champ de meilleure offre
+    var meilleurOffreElement = document.getElementById("meilleurOffre");
+	var meilleurOffre = parseInt(meilleurOffreElement.textContent);
+
+	var creditUtilisateurElement = document.getElementById("creditUtilisateur");
+	var creditUtilisateurText = creditUtilisateurElement.textContent;
+	var creditUtilisateur = parseInt(creditUtilisateurText);
+    
+    if ((maProposition > meilleurOffre) && (maProposition <= creditUtilisateur)) {
+      // Effectuez les actions nécessaires en cas de succès de l'enchère
+		var erreurMessage = document.getElementById("erreurMessage");
+      		erreurMessage.innerHTML = "Votre enchère est bonne !!!";
+      		erreurMessage.style.display = "block";
+      // Supprimez le message d'erreur s'il existe
+       erreurMessage = document.getElementById("erreurMessage");
+      erreurMessage.style.display = "none";
+
+      // Envoie le formulaire
+      formulaire.submit();
+    } else {
+		if(meilleurOffre> maProposition){
+			erreurMessage = document.getElementById("erreurMessage");
+      		erreurMessage.innerHTML = "Votre enchère doit être supérieure au montant de la meilleure offre !!!";
+      		erreurMessage.style.display = "block";
+		} else {
+			erreurMessage = document.getElementById("erreurMessage");
+      		erreurMessage.innerHTML = "Votre offre est suppèrieure à votre crédit !!!";
+      		erreurMessage.style.display = "block";
+		}
+      
+
+      // Empêche l'envoi du formulaire
+      e.preventDefault();
+    }
+  });
+});
+
+
+
+
+
+
+
+
+
 
