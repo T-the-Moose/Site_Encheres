@@ -24,5 +24,15 @@ public class EnchereServiceImpl implements EnchereService{
 		enchereDAO.save(enchere, prixEnchere, articleVendu, utilisateur);
 		
 	}
+
+	@Override
+	public Integer readAncienEncherisseur(Integer idArticle) {
+		return enchereDAO.readAncienEncherisseur(idArticle);
+	}
+
+	@Override
+	public Integer readAncienOffre(Integer idArticle) {
+		return enchereDAO.readAncienOffre(idArticle);
+	}
 	
 }

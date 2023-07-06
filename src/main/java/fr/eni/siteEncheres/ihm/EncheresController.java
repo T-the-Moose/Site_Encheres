@@ -1,6 +1,5 @@
 package fr.eni.siteEncheres.ihm;
 
-import java.nio.file.spi.FileSystemProvider;
 import java.security.Principal;
 import java.util.List;
 
@@ -254,8 +253,6 @@ public class EncheresController {
 		ArticleVendu articleVendu = articleVenduService.findById(idArticle);
 		model.addAttribute("articleVendu", articleVendu);
 		
-		System.out.println("L id de l article est : " + idArticle);
-		
 		try {
 			enchere = enchereService.findById(idArticle);
 			model.addAttribute("enchere", enchere);
@@ -282,32 +279,42 @@ public class EncheresController {
 	    
 		System.out.println("L'id utilisateur1 est : " + idUtilisateur);
 		
-		// Création d'une nouvelle enchère
-		Enchere creationEnchere = new Enchere();
-		model.addAttribute("enchere", creationEnchere);
-		
-		// Enregistrement de l'enchère
-		enchereService.enregistrerEnchere(enchere, prixEnchere, articleVendu, utilisateur);
+
 		
 	    articleVendu = articleVenduService.findById(idArticle);
 		model.addAttribute("articleVendu", articleVendu);
 
-		Integer meilleurOffre = enchere.getMontantEnchere();		
-		Integer sommeARecredite = prixEnchere;
-		Integer idAncienEncherisseur = enchere.getIdUtilisateur();
+		Integer meilleurOffre = enchereService.readAncienEncherisseur(idArticle);
 		
 		
-		if (enchere.getMontantEnchere() != 0 && prixEnchere > meilleurOffre) {
+		System.out.println("La meilleure offre :" + meilleurOffre);
+	
+		if (meilleurOffre != null) {
+			System.out.println("If :");
+
+			Integer sommeARecredite = enchereService.readAncienOffre(idArticle);
+			Integer idAncienEncherisseur = enchereService.readAncienEncherisseur(idArticle);
+			enchere.setIdArticle(idAncienEncherisseur);
+			
+			enchereService.enregistrerEnchere(enchere, prixEnchere, articleVendu, utilisateur);
 			enchere.setMontantEnchere(prixEnchere);
+
 			utilisateurService.ajouterPoint(sommeARecredite, idAncienEncherisseur);
-			utilisateurService.retirerPoints(meilleurOffre, idUtilisateur);
+			utilisateurService.retirerPoints(prixEnchere, idUtilisateur);
+			
 		} else {
+			System.out.println("Else :");
+			
+			// Création d'une nouvelle enchère
+			Enchere creationEnchere = new Enchere();
+			model.addAttribute("enchere", creationEnchere);
+			
+			enchereService.enregistrerEnchere(enchere, prixEnchere, articleVendu, utilisateur);
 			enchere.setMontantEnchere(prixEnchere);
-			utilisateurService.retirerPoints(meilleurOffre, idUtilisateur);
+			utilisateurService.retirerPoints(prixEnchere, idUtilisateur);
+
 		}
 
-		System.out.println("Le pelo actuel est : " + idUtilisateur);
-		System.out.println("L'ancien pelo est : " + idAncienEncherisseur);
 //		
 //	     //Vérifiez si le prix de l'enchère est supérieur au prix de départ
 //	    if (montantEnchere.compareTo(model.getAttribute(null).getMiseAPrix()) > 0) {

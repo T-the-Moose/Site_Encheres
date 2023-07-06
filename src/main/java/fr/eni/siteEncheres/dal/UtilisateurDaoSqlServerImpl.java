@@ -27,7 +27,7 @@ public class UtilisateurDaoSqlServerImpl implements UtilisateurDAO {
 	private final static String DELETE = "update utilisateurs set activer=0 where no_utilisateur=:idUtilisateur";
 	private final static String SELECT_UTILISATEUR = "SELECT no_utilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, ville, credit  FROM UTILISATEURS WHERE pseudo=?";
 	private final static String DELETE_POINTS = "update utilisateurs set credit = (credit - :montantEnchere) WHERE no_utilisateur=:idUtilisateur";
-	private final static String ADD_POINTS = "update utilisateurs set credit = (credit + :sommeARecredite) WHERE no_utilisateur=:idAncienEncherisseur";
+	private final static String ADD_POINTS = "update utilisateurs set credit = (credit + :montantEnchere) WHERE no_utilisateur=:idUtilisateur";
 	
 	
 	@Autowired
@@ -130,12 +130,10 @@ public class UtilisateurDaoSqlServerImpl implements UtilisateurDAO {
 
 
 	@Override
-	public void addPoints(Integer sommeARecredite, Integer idAncienEncherisseur) {
+	public void addPoints(Integer montantEnchere, Integer idUtilisateur) {
 		SqlParameterSource parameters = new MapSqlParameterSource()
-	    		.addValue("montantEnchere", sommeARecredite)
-	            .addValue("idUtilisateur", idAncienEncherisseur);
-	            
-
+	    		.addValue("montantEnchere", montantEnchere)
+	            .addValue("idUtilisateur", idUtilisateur);
 	    namedParameterJdbcTemplate.update(ADD_POINTS, parameters);
 	}
 	

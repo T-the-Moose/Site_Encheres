@@ -9,4 +9,8 @@ public interface EnchereDAO {
 	Enchere read(Integer idArticle);
 
 	void save(Enchere enchere, Integer prixEnchere, ArticleVendu articleVendu, Utilisateur utilisateur);
+
+	Integer readAncienEncherisseur(Integer idArticle);
+
+	Integer readAncienOffre(Integer idArticle);
 }

@@ -9,4 +9,8 @@ public interface EnchereService {
 	Enchere findById(Integer idUtilisateur);
 
 	void enregistrerEnchere(Enchere enchere, Integer prixEnchere, ArticleVendu articleVendu, Utilisateur utilisateur);
+	
+	Integer readAncienEncherisseur(Integer idArticle);
+	
+	Integer readAncienOffre(Integer idArticle);
 }
