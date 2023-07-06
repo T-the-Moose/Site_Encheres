@@ -16,7 +16,6 @@ public class EnchereServiceImpl implements EnchereService{
 
 	@Override
 	public Enchere findById(Integer idUtilisateur) {
-		
 		return enchereDAO.read(idUtilisateur);
 	}
 

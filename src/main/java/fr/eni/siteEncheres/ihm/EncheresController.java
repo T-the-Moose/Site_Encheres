@@ -256,8 +256,6 @@ public class EncheresController {
 		
 		System.out.println("L id de l article est : " + idArticle);
 		
-		// A VOIR !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-		//if (enchere != null) {
 		try {
 			enchere = enchereService.findById(idArticle);
 			model.addAttribute("enchere", enchere);
@@ -265,8 +263,6 @@ public class EncheresController {
 			// TODO Auto-generated catch block
 			ex.printStackTrace();
 		}
-		//}
-
 		
 		// Pour l'affichage des points dans le header
 		String username = principal.getName();
