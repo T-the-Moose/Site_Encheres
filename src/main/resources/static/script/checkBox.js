@@ -135,7 +135,7 @@ document.addEventListener("DOMContentLoaded", function() {
 		} else {
 			if(vendeur == acheteur){
 				erreurMessage = document.getElementById("erreurMessage");
-      		erreurMessage.innerHTML = "Vous ne pouvez pas enchèrire sur un de vos ventes !!!";
+      		erreurMessage.innerHTML = "Vous ne pouvez pas enchèrire sur une de vos ventes !!!";
       		erreurMessage.style.display = "block";
 			} else {
 				erreurMessage = document.getElementById("erreurMessage");
