@@ -294,12 +294,10 @@ public class EncheresController {
 		enchereService.enregistrerEnchere(enchere, prixEnchere, articleVendu, utilisateur);
 		
 		
-	  
 	    articleVendu = articleVenduService.findById(idArticle);
 		model.addAttribute("articleVendu", articleVendu);
 
-		
-		Integer meilleurOffre = enchere.getMontantEnchere();
+		Integer meilleurOffre = enchere.getMontantEnchere();		
 		
 	    System.out.println(meilleurOffre);
 		
@@ -319,9 +317,10 @@ public class EncheresController {
 			// Retirez les points de l'utilisateur
 			utilisateurService.retirerPoints(prixEnchere, idUtilisateur);
 			
-		} else {
-			String erreur = "L'offre doit être supèrieur au montant de départ !!!";
-			return erreur;
+//		} else {
+////			String erreur = "L'offre doit être supèrieur au montant de départ !!!";
+////			return erreur;
+//			
 		}
 //		
 //	     //Vérifiez si le prix de l'enchère est supérieur au prix de départ

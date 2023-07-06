@@ -17,7 +17,7 @@ import fr.eni.siteEncheres.bo.Utilisateur;
 public class EnchereDaoSqlServerImpl implements EnchereDAO {
 	
 	private final static String FIND_BY_ID = "SELECT no_utilisateur, no_article, date_enchere, montant_enchere FROM ENCHERES WHERE no_article=?";
-	private final static String UPDATE = "UPDATE ENCHERES SET no_utilisateur=:idUtilisateur, no_article=:idArticle, date_enchere=:dateEnchere, montant_enchere=:montantEnchere WHERE no_article=:idArticle";
+	private final static String UPDATE = "UPDATE ENCHERES SET no_utilisateur=:idUtilisateur, no_article=:idArticle, montant_enchere=:montantEnchere WHERE no_article=:idArticle";
 	
 	private ArticleVenduDAO articleVenduDAO;
 	
@@ -66,16 +66,18 @@ public class EnchereDaoSqlServerImpl implements EnchereDAO {
 	@Override
 	public void save(Enchere enchere, Integer prixEnchere, ArticleVendu articleVendu, Utilisateur utilisateur) {
 		
-    	if(enchere.getIdArticle()!=null) {
-    		namedParameterJdbcTemplate.update(UPDATE,
-    				new BeanPropertySqlParameterSource(enchere));    		
-    	} else {
-	}
-    	System.out.println("Le num user est : " + utilisateur.getIdUtilisateur());
-    	System.out.println("Le prix de l'enchère est : " + prixEnchere);
-    	System.out.println("L'enchere est " + enchere.getIdArticle());
-    	
 		t = namedParameterJdbcTemplate;
+		
+    	if(enchere.getIdArticle()!=null) {
+    		
+    		enchere.setMontantEnchere(prixEnchere);
+    		
+    		var utilisateurUpdate = utilisateur.getIdUtilisateur();
+    		enchere.setIdUtilisateur(utilisateurUpdate);
+    		
+    		t.update(UPDATE, new BeanPropertySqlParameterSource(enchere));    		
+    	} else {
+	
         t.getJdbcOperations().update(
         	" INSERT INTO ENCHERES (no_utilisateur, no_article, montant_enchere) " +
         	" VALUES (?, ?, ?)",  
@@ -83,5 +85,6 @@ public class EnchereDaoSqlServerImpl implements EnchereDAO {
         	utilisateur.getIdUtilisateur(),
         	articleVendu.getIdArticle(),
         	prixEnchere);
+    	}
 	}
 }
