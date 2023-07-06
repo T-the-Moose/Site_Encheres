@@ -5,7 +5,7 @@
 		<div class="bloc-conteneur-p">
 			<div class="bloc-p-header">
 				<div th:if="${#authentication.name} != null">
-			  		<p th:text="${#authentication.name}"></p>
+			  		<p id="acheteur" th:text="${#authentication.name}"></p>
 				</div>
 				<div th:unless="${#authentication.name} == null">
 			  		<p></p>

@@ -109,8 +109,14 @@ document.addEventListener("DOMContentLoaded", function() {
 	var creditUtilisateurElement = document.getElementById("creditUtilisateur");
 	var creditUtilisateurText = creditUtilisateurElement.textContent;
 	var creditUtilisateur = parseInt(creditUtilisateurText);
+	
+	var vendeurElement = document.getElementById("vendeur");
+ 	var vendeur = vendeurElement.textContent;
+ 	
+ 	var acheteurElement = document.getElementById("acheteur");
+ 	var acheteur = acheteurElement.textContent;
     
-    if ((maProposition > meilleurOffre) && (maProposition <= creditUtilisateur)) {
+    if ((maProposition > meilleurOffre) && (maProposition <= creditUtilisateur) && (vendeur!= acheteur)) {
       // Effectuez les actions nécessaires en cas de succès de l'enchère
 		var erreurMessage = document.getElementById("erreurMessage");
       		erreurMessage.innerHTML = "Votre enchère est bonne !!!";
@@ -127,9 +133,16 @@ document.addEventListener("DOMContentLoaded", function() {
       		erreurMessage.innerHTML = "Votre enchère doit être supérieure au montant de la meilleure offre !!!";
       		erreurMessage.style.display = "block";
 		} else {
-			erreurMessage = document.getElementById("erreurMessage");
-      		erreurMessage.innerHTML = "Votre offre est suppèrieure à votre crédit !!!";
+			if(vendeur == acheteur){
+				erreurMessage = document.getElementById("erreurMessage");
+      		erreurMessage.innerHTML = "Vous ne pouvez pas enchèrire sur un de vos ventes !!!";
       		erreurMessage.style.display = "block";
+			} else {
+				erreurMessage = document.getElementById("erreurMessage");
+      			erreurMessage.innerHTML = "Votre offre est suppèrieure à votre crédit !!!";
+      			erreurMessage.style.display = "block";
+			}
+			
 		}
       
 
