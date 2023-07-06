@@ -20,21 +20,24 @@ public class ArticleVenduDaoSqlServerImpl implements ArticleVenduDAO{
 	private final static String SELECT_ALL_BY_CAT = "SELECT * FROM ARTICLES_VENDUS WHERE no_categorie = ?"; 
 	private final static String FIND_BY_ID = "SELECT * FROM ARTICLES_VENDUS WHERE no_article=?";
 	private final static String SELECT_MES_VENTES = "SELECT * FROM ARTICLES_VENDUS WHERE no_utilisateur = ?";
-	NamedParameterJdbcTemplate t;
+
 	
-	
-	@Autowired
 	private UtilisateurDAO utilisateurDAO;
 	
-	@Autowired
 	private CategorieDAO categorieDAO;
 	
-	@Autowired
 	private RetraitDAO retraitDAO;
 	
-	@Autowired
 	private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 	
+	public ArticleVenduDaoSqlServerImpl (UtilisateurDAO utilisateurDAO, CategorieDAO categorieDAO, RetraitDAO retraitDAO,
+			NamedParameterJdbcTemplate namedParameterJdbcTemplate) {
+		this.utilisateurDAO = utilisateurDAO;
+		this.categorieDAO = categorieDAO;
+		this.retraitDAO = retraitDAO;
+		this.namedParameterJdbcTemplate = namedParameterJdbcTemplate;
+	}
+	NamedParameterJdbcTemplate t;
 	
 	class ArticleVenduMapper implements RowMapper<ArticleVendu> {
 
@@ -108,7 +111,6 @@ public class ArticleVenduDaoSqlServerImpl implements ArticleVenduDAO{
         	articleVendu.getPrixVente(),
         	utilisateur.getIdUtilisateur(),
         	articleVendu.getCategorie().getIdCategorie()); 
-		
 	}
 
 }

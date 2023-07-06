@@ -7,85 +7,91 @@
 </head>
 <body>
 	<div data-th-replace="~{fragments/header :: header}"></div>
-	
+
 	<div class="conteneur-block" th:object="${articleVendu}">
 		<div id="conteneur-img-detail">
-			<img id="img-detail" alt="" src="/img/imagePcTest.jpeg">	
+			<img id="img-detail" alt="" src="/img/imagePcTest.jpeg">
 		</div>
-		
+
 		<div class="conteneur-block-centre">
-			
+
 			<div id="h3-description">
 				<h3>Détail vente</h3>
 			</div>
-			
+
 			<form th:action="@{/encherir}" method="post">
-				<input type="hidden" th:field="*{idArticle}"  />
+				<input type="hidden" th:field="*{idArticle}" />
 				<div class="block-description-article">
 					<h4 data-th-text="*{nomArticle}"></h4>
 				</div>
-				
-				<div class="block-description">		
+
+				<div class="block-description">
 					<p class="titre-description">Description :</p>
-					
+
 					<div class="description">
 						<p class="p-description" data-th-text="*{description}"></p>
 					</div>
 				</div>
-				
+
 				<div class="block-description">
 					<p class="titre-description">Catégorie :</p>
 					<p class="description" data-th-text="*{categorie.libelle}"></p>
 				</div>
-				
+
 				<div class="block-description">
-					<p class="titre-description">Meilleur offre :</p>
-					<p class="description"  data-th-text="${enchere.montantEnchere}"></p>
+					<p class="titre-description">Meilleure offre :</p>
+						<div th:if="${enchere} != 0">
+				  			<p th:text="${enchere.montantEnchere} + ' ' + 'point(s)'"></p>
+						</div>
 				</div>
-				
+
 				<div class="block-description">
 					<p class="titre-description">Mise à prix :</p>
-					<p class="description"  data-th-text="*{miseAPrix} + ' ' + points"></p>
+					<p class="description" data-th-text="*{miseAPrix} + ' ' + points"></p>
 				</div>
-				
+
 				<div class="block-description">
 					<p class="titre-description">Fin de l'enchère :</p>
-					<p class="description" data-th-text="*{dateFinEncheres}" id="dateFinEncheres"></p>
+					<p class="description" data-th-text="*{dateFinEncheres}"
+						id="dateFinEncheres"></p>
 				</div>
-				
+
 				<div class="block-description-retrait">
 					<p class="titre-description">Retrait :</p>
-					
+
 					<div class="description">
 						<p class="p-description" data-th-text="*{utilisateur.rue} + ' '"></p>
 						<div>
-							<span class="p-description" data-th-text="*{utilisateur.codePostal} + ' '"></span>
-							<span class="p-description" data-th-text="*{utilisateur.ville}"></span>
+							<span class="p-description"
+								data-th-text="*{utilisateur.codePostal} + ' '"></span> <span
+								class="p-description" data-th-text="*{utilisateur.ville}"></span>
 						</div>
 					</div>
 				</div>
-				
+
 				<div class="block-description">
 					<p class="titre-description">Vendeur :</p>
 					<p class="description" data-th-text="*{utilisateur.pseudo}"></p>
 				</div>
-				
+
 				<div class="block-description proposition-debut">
-				    <p class="titre-description">Ma proposition :</p>
-				    <input type="number" name="prixEnchere">
-				    <div class="block-button proposition">
-				        <button type="submit">Enchérir</button>
-				    </div>
+					<p class="titre-description">Ma proposition :</p>
+					<input type="number" name="prixEnchere">
+					<div class="block-button proposition">
+						<button type="submit">Enchérir</button>
+					</div>
 				</div>
 
 			</form>
-				<div class="block-description proposition-fin">
-				    <p class="titre-description">Fin de l'enchère </p>
-				    <p class="titre-description" id="dateFinEncheres" data-th-text="*{dateFinEncheres}"></p>
-				    	<div class="block-button proposition">
-				        	<button onclick="window.location.href='/'">Retour à l'accueil</button>
-				    	</div>
+			<div class="block-description proposition-fin">
+				<p class="titre-description">Fin de l'enchère</p>
+				<p class="titre-description" id="dateFinEncheres"
+					data-th-text="*{dateFinEncheres}"></p>
+				<div class="block-button proposition">
+					<button onclick="window.location.href='/'">Retour à
+						l'accueil</button>
 				</div>
+			</div>
 		</div>
 	</div>
 	<script type="text/javascript" src="/script/checkBox.js"></script>
