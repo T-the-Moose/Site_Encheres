@@ -22,7 +22,7 @@ public class EnchereDaoSqlServerImpl implements EnchereDAO {
 	private ArticleVenduDAO articleVenduDAO;
 	
 	private UtilisateurDAO utilisateurDAO;
-	
+
 	private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 	
 	

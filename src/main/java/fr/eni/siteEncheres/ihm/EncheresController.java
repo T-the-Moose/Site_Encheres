@@ -305,7 +305,18 @@ public class EncheresController {
 		
 		System.out.println(prixEnchere);
 	    
+		 //Vérifiez si le prix de l'enchère est supérieur au prix de départ
 		if (prixEnchere.compareTo(meilleurOffre)> 0 ) {
+			Integer sommeARecredite = prixEnchere;
+			Integer idAncienEncherisseur = enchere.getIdUtilisateur();
+			
+			utilisateurService.ajouterPoint(sommeARecredite, idAncienEncherisseur);
+			 
+			// Mettez à jour l'article avec le nouveau prix d'enchère
+			enchere.setMontantEnchere(prixEnchere);
+			System.out.println("le prix et a jour : " + prixEnchere);
+			
+			// Retirez les points de l'utilisateur
 			utilisateurService.retirerPoints(prixEnchere, idUtilisateur);
 			
 		} else {

@@ -18,6 +18,8 @@ public interface UtilisateurDAO {
 
 	void deletePoints(Integer idUtilisateur, Integer montantEnchere);
 
+	void addPoints(Integer sommeARecredite, Integer idAncienEncherisseur);
+
 	
 
 }
