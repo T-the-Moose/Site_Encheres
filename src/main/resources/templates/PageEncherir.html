@@ -43,11 +43,9 @@
 				<div class="block-description">
 
 					<p class="titre-description">Meilleur offre :</p>
-					<p class="description" id="meilleurOffre" th:with="meilleurOffre=${enchere.montantEnchere}" th:text="${meilleurOffre}"></p>
+					<p class="description" id="meilleurOffre" th:with="meilleurOffre=${enchere.montantEnchere}" th:text="${enchere.montantEnchere} + ' ' + 'point(s)'"></p>
 
-						<div th:if="${enchere} != 0">
-				  			<p th:text="${enchere.montantEnchere} + ' ' + 'point(s)'"></p>
-						</div>
+						
 
 				</div>
 
