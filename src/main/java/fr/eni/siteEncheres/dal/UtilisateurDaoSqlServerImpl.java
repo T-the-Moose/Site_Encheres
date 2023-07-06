@@ -24,7 +24,7 @@ public class UtilisateurDaoSqlServerImpl implements UtilisateurDAO {
 	private final static String SELECT_ALL = "SELECT no_utilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, ville, credit  FROM UTILISATEURS";
 	private final static String FIND_BY_ID = "SELECT no_utilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, ville, credit FROM UTILISATEURS WHERE no_utilisateur=?";
 	private final static String UPDATE = "update utilisateurs set pseudo=:pseudo, nom=:nom, prenom=:prenom, email=:email, telephone=:telephone, rue=:rue, code_postal=:codePostal, ville=:ville, mot_de_passe=:motDePasse where no_utilisateur=:idUtilisateur ";
-	private final static String DELETE = "update utilisateurs set activer=1 where no_utilisateur=:idUtilisateur";
+	private final static String DELETE = "update utilisateurs set activer=0 where no_utilisateur=:idUtilisateur";
 	private final static String SELECT_UTILISATEUR = "SELECT no_utilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, ville, credit  FROM UTILISATEURS WHERE pseudo=?";
 	private final static String DELETE_POINTS = "update utilisateurs set credit = (credit - :montantEnchere) WHERE no_utilisateur=:idUtilisateur";
 	private final static String ADD_POINTS = "update utilisateurs set credit = (credit + :sommeARecredite) WHERE no_utilisateur=:idAncienEncherisseur";
