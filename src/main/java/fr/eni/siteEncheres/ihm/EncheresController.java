@@ -293,35 +293,25 @@ public class EncheresController {
 		// Enregistrement de l'enchère
 		enchereService.enregistrerEnchere(enchere, prixEnchere, articleVendu, utilisateur);
 		
-		
 	    articleVendu = articleVenduService.findById(idArticle);
 		model.addAttribute("articleVendu", articleVendu);
 
 		Integer meilleurOffre = enchere.getMontantEnchere();		
+		Integer sommeARecredite = prixEnchere;
+		Integer idAncienEncherisseur = enchere.getIdUtilisateur();
 		
-	    System.out.println(meilleurOffre);
 		
-		System.out.println(prixEnchere);
-	    
-		 //Vérifiez si le prix de l'enchère est supérieur au prix de départ
-		if (prixEnchere.compareTo(meilleurOffre)> 0 ) {
-			Integer sommeARecredite = prixEnchere;
-			Integer idAncienEncherisseur = enchere.getIdUtilisateur();
-			
-			utilisateurService.ajouterPoint(sommeARecredite, idAncienEncherisseur);
-			 
-			// Mettez à jour l'article avec le nouveau prix d'enchère
+		if (enchere.getMontantEnchere() != 0 && prixEnchere > meilleurOffre) {
 			enchere.setMontantEnchere(prixEnchere);
-			System.out.println("le prix et a jour : " + prixEnchere);
-			
-			// Retirez les points de l'utilisateur
-			utilisateurService.retirerPoints(prixEnchere, idUtilisateur);
-			
-//		} else {
-////			String erreur = "L'offre doit être supèrieur au montant de départ !!!";
-////			return erreur;
-//			
+			utilisateurService.ajouterPoint(sommeARecredite, idAncienEncherisseur);
+			utilisateurService.retirerPoints(meilleurOffre, idUtilisateur);
+		} else {
+			enchere.setMontantEnchere(prixEnchere);
+			utilisateurService.retirerPoints(meilleurOffre, idUtilisateur);
 		}
+
+		System.out.println("Le pelo actuel est : " + idUtilisateur);
+		System.out.println("L'ancien pelo est : " + idAncienEncherisseur);
 //		
 //	     //Vérifiez si le prix de l'enchère est supérieur au prix de départ
 //	    if (montantEnchere.compareTo(model.getAttribute(null).getMiseAPrix()) > 0) {
