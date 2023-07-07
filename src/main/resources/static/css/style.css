@@ -9,9 +9,19 @@ h1, h2, h3, p, label, span {
 	font-family: 'Righteous', cursive;
 }
 
+input, select, select option, button {
+	border-radius: 30px;
+    background: rgb(255 255 255 / 25%);
+}
+
+textarea {
+	border-radius: 10px;
+	background: rgb(255 255 255 / 25%);
+}
+
 /******   Connexion   *******/
 
-#connexion {
+body {
     background-image: url(/img/background.jpg);
     background-repeat: no-repeat;
     -webkit-background-size: cover;
@@ -169,6 +179,23 @@ input#name, input#mdp {
 	padding: 1vh;
 }
 
+input#maProposition {
+    border-radius: 30px;
+    background: rgb(255 255 255 / 25%);
+}
+
+button.boutton-encherir {
+    border-radius: 30px;
+    background: rgb(255 255 255 / 25%);
+}
+
+form#encherir {
+    background-color: #cfd7dd;
+    border-radius: 30px;
+    padding: 2vh;
+    background: rgb(255 255 255 / 25%);
+}
+
 /******  FIN Detail Fin Vente   *******/
 
 /******  Inscription   *******/
@@ -218,6 +245,9 @@ input#name, input#mdp {
 	flex-direction: column;
 	width: 55%;
 	margin-left: 4em;
+	background: rgb(255 255 255 / 25%);
+    padding: 2vh;
+    border-radius: 30px;
 }
 
 .img-articleavendre {
@@ -347,6 +377,7 @@ img.img-logo {
     border-radius: 15px;
     margin: 1.5vh;
     width: 100%;
+    background-color: aliceblue;
 }
 
 a#article {
@@ -503,8 +534,7 @@ a.lien-header, a#deco, a#connex {
 }
 
 a.lien-header:hover {
-	color: #000000;
-   	text-shadow: #2349d1 1px 0 5px;
+	color: #f2c665;
 }
 
 #deco:hover {
