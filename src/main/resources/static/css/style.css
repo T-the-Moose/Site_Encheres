@@ -377,7 +377,7 @@ img.img-logo {
     border-radius: 15px;
     margin: 1.5vh;
     width: 100%;
-    background-color: aliceblue;
+    background: rgb(255 255 255 / 25%);
 }
 
 a#article {
