@@ -14,10 +14,10 @@ public class Enchere {
 	}
 	
 	
-	public Enchere(Integer idUtilisateur, Integer idArticle, Date dateEnchere, int montantEnchere) {
+	public Enchere(Integer idUtilisateur, Integer idArticle, Date date_enchere, int montantEnchere) {
 		this.idUtilisateur = idUtilisateur;
 		this.idArticle = idArticle;
-		this.dateEnchere = dateEnchere;
+		this.dateEnchere = date_enchere;
 		this.montantEnchere = montantEnchere;
 	}
 

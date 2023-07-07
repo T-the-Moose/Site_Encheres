@@ -1,9 +1,10 @@
 package fr.eni.siteEncheres.dal;
 
-import java.sql.Date;
+import java.util.Date;
+import java.text.SimpleDateFormat;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
+import java.sql.Timestamp;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
@@ -21,13 +22,14 @@ public class EnchereDaoSqlServerImpl implements EnchereDAO {
 	private final static String UPDATE = "UPDATE ENCHERES SET no_utilisateur=:idUtilisateur, no_article=:idArticle, montant_enchere=:montantEnchere WHERE no_article=:idArticle";
 	private final static String FIND_BY_ID_EX_USER = "SELECT no_utilisateur FROM ENCHERES WHERE no_article=?";
 	private final static String RECUP_EX_OFFRE = "SELECT montant_enchere FROM ENCHERES WHERE no_article=?";
-	
-	
+	private final static String RECUP_SI_OFFRE = "SELECT COUNT(*) AS total FROM ENCHERES WHERE no_article =?";
+			
 	private ArticleVenduDAO articleVenduDAO;
 	
 	private UtilisateurDAO utilisateurDAO;
 
 	private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
+	
 	
 	
 	public EnchereDaoSqlServerImpl (ArticleVenduDAO articleVenduDAO, UtilisateurDAO utilisateurDAO, NamedParameterJdbcTemplate namedParameterJdbcTemplate) {
@@ -54,7 +56,7 @@ public class EnchereDaoSqlServerImpl implements EnchereDAO {
 			utilisateur.setIdUtilisateur(id_utilisateur);
 			article.setIdArticle(id_article);
 			
-			return new Enchere(id_utilisateur, id_article, date_enchere, montant);
+			return new Enchere(id_utilisateur, id_article, (java.sql.Date) date_enchere, montant);
 		}
 	}
 
@@ -94,23 +96,42 @@ public class EnchereDaoSqlServerImpl implements EnchereDAO {
 		t = namedParameterJdbcTemplate;
 		
 		// requête COUNT en INSERT
-    	if(enchere.getIdArticle()!= null) {
-
+		
+		int ifEnchere = t.getJdbcOperations().queryForObject(RECUP_SI_OFFRE, Integer.class, articleVendu.getIdArticle());
+		
+		System.out.println(ifEnchere);
+		
+    	if(ifEnchere != 0 ) {
+    		System.out.println("if enchere");
     		enchere.setMontantEnchere(prixEnchere);
     		
     		var utilisateurUpdate = utilisateur.getIdUtilisateur();
+    		Integer idArticle = articleVendu.getIdArticle();
+    		enchere.setIdArticle(idArticle);
     		enchere.setIdUtilisateur(utilisateurUpdate);
+    		System.out.println(utilisateurUpdate);
     		
-    		t.update(UPDATE, new BeanPropertySqlParameterSource(enchere));    		
+    		
+    		
+    		t.update(UPDATE, new BeanPropertySqlParameterSource(enchere));
+    		
+    		
     	} else {
-	
-        t.getJdbcOperations().update(
-        	" INSERT INTO ENCHERES (no_utilisateur, no_article, montant_enchere) " +
-        	" VALUES (?, ?, ?)",  
-        	
-        	utilisateur.getIdUtilisateur(),
-        	articleVendu.getIdArticle(),
-        	prixEnchere);
+		
+    		System.out.println("else enchere");
+			Date date = new Date();  // Date du jour
+			
+			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+			String dateEnchere = dateFormat.format(date);  // Formatage de la date
+
+			t.getJdbcOperations().update(
+			    "INSERT INTO ENCHERES (no_utilisateur, no_article, date_enchere, montant_enchere) " +
+			    "VALUES (?, ?, ?, ?)",
+			    utilisateur.getIdUtilisateur(),
+			    articleVendu.getIdArticle(),
+			    dateEnchere,
+			    prixEnchere
+			);
     	}
 	}
 }

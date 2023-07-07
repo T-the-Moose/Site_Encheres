@@ -330,18 +330,23 @@ img.img-logo {
 	width: 25vh;
 }
 
-.listes_accueil {
+.listes_general{
 	display: flex;
-	flex-wrap: wrap;
-	width: 100%;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.listes_accueil {
+	width: 35%;
+	
 }
 
 .card_accueil {
 	border: 1px black solid;
-	border-radius: 15px;
-	margin: 1.5vh;
-	width: 35%;
-	display: flex;
+    border-radius: 15px;
+    margin: 1.5vh;
+    width: 100%;
 }
 
 a#article {

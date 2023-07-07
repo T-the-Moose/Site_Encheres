@@ -57,8 +57,7 @@ public class UtilisateurDaoSqlServerImpl implements UtilisateurDAO {
 		}
 	}
 	
-	// Methode findById
-	
+		
 	
 	public Utilisateur read (Integer idUtilisateur) {
 		t = namedParameterJdbcTemplate;

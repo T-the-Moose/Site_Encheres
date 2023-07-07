@@ -31,11 +31,9 @@ public class EncheresController {
 	private UtilisateurService utilisateurService;
 	private ArticleVenduService articleVenduService;
 	private CategorieService categorieService;
-	private EnchereService enchereService;
-	
+	private EnchereService enchereService;	
 	private UtilisateurDAO utilisateurDAO;
-	
-	
+		
 	public EncheresController(UtilisateurService utilisateurService, ArticleVenduService articleVenduService,
 			CategorieService categorieService, EnchereService enchereService) {
 		this.utilisateurService = utilisateurService;
@@ -43,8 +41,7 @@ public class EncheresController {
 		this.categorieService = categorieService;
 		this.enchereService = enchereService;
 	}
-	
-	
+		
 	@GetMapping({"/", "/accueil"})
 	public String afficherAccueil(Model modele) {
 		
@@ -53,7 +50,6 @@ public class EncheresController {
 		
 		return "PageAccueilNonConnecte";
 	}
-	
 	
 	@GetMapping("/accueil/articleParCategorie")
 	public String afficherAccueilParCategorie(@RequestParam Integer idCategorie, String filtre, Model modele, Principal principal) {
@@ -72,8 +68,7 @@ public class EncheresController {
 		String username = principal.getName();
 		Utilisateur utilisateur = utilisateurService.findByUserName(username);
 		modele.addAttribute("utilisateur", utilisateur);
-		//System.out.println(utilisateur);
-	    
+		
 	    return "PageAccueilNonConnecte";
 	}
 	
@@ -83,7 +78,7 @@ public class EncheresController {
 	}
 	
 	@GetMapping("/inscription")
-	public String afficherPageInscription(@ModelAttribute Utilisateur utilisateur) {
+	public String afficherPageInscription(@ModelAttribute Utilisateur utilisateur, BindingResult validationResultat) {
 			return "PageCreerCompte";
 	}
 	
@@ -101,30 +96,22 @@ public class EncheresController {
 		// Pour l'affichage des points dans le header
 		String username = principal.getName();
 		utilisateur = utilisateurService.findByUserName(username);
-		modele.addAttribute("utilisateur", utilisateur);
-		//System.out.println(utilisateur);
-		
+		modele.addAttribute("utilisateur", utilisateur);	
 		return "redirect:/connexion";
 	}
 	
-
 	@RequestMapping("/encheres")
 	public String afficherPageEncheres(Utilisateur utilisateur, Model modele, Principal principal) {
 		
-
 		List<ArticleVendu> listeArticle = articleVenduService.getArticleVendu();	
 		modele.addAttribute("articleVendu", listeArticle);  
-		
 		
 		// Pour l'affichage des points dans le header
 		String username = principal.getName();
 		utilisateur = utilisateurService.findByUserName(username);
-		modele.addAttribute("utilisateur", utilisateur);
-	
-		  
+		modele.addAttribute("utilisateur", utilisateur);	  
 		return "PagesListeEncheresConnecte";
 	}
-	
 	
 	@GetMapping("/liste-encheres/mes-ventes")
 	public String afficherPageMesVentes(@RequestParam Integer idCategorie, String filtre, Model modele, Principal principal) {
@@ -142,12 +129,9 @@ public class EncheresController {
 		// Pour l'affichage des points dans le header
 		String username = principal.getName();
 		Utilisateur utilisateur = utilisateurService.findByUserName(username);
-		modele.addAttribute("utilisateur", utilisateur);
-		//System.out.println(utilisateur);
-		
+		modele.addAttribute("utilisateur", utilisateur);	
 		return "PagesListeEncheresConnecte";
 	}
-	
 	
 	@GetMapping("/profil")
 	public String afficherPageProfil(Model model, Principal principal) {
@@ -155,8 +139,8 @@ public class EncheresController {
 		String username = principal.getName();
 		
 		Utilisateur utilisateur = utilisateurService.findByUserName(username);
-		 model.addAttribute("utilisateur", utilisateur);
 		
+		 model.addAttribute("utilisateur", utilisateur);	
 		return "PageMonProfil";
 	}
 	
@@ -165,8 +149,8 @@ public class EncheresController {
 	public String afficherPagesModifierMonProfil(Model model, Principal principal) {
 		String username = principal.getName();	
 		Utilisateur utilisateur = utilisateurService.findByUserName(username);
-		 model.addAttribute("utilisateur", utilisateur);
 		
+		 model.addAttribute("utilisateur", utilisateur);
 		return "PageModifierMonProfil";
 	}
 
@@ -174,24 +158,21 @@ public class EncheresController {
 	@PostMapping("/profilModifier")
 	public String afficherPageProfilModifier(@Valid @ModelAttribute Utilisateur utilisateur , BindingResult validationResultat ) {
 		
-		if(validationResultat.hasErrors()) {
-						
+		if(validationResultat.hasErrors()) {				
 			return "redirect:/modifierProfil";
 		}
 		utilisateurService.enregistrerUtilisateur(utilisateur);
 		return "redirect:/encheres";
 	}
 	
-	
 	@PostMapping("/supprimerProfil")
 	public String supprimerProfilUtilisateur(Model modele, Principal principal) {
 		String username = principal.getName();	
 		Utilisateur utilisateur = utilisateurService.findByUserName(username);
-		System.out.println(utilisateur);
+
 		utilisateurService.supprimerUtilisateur(utilisateur);		
 		return "redirect:/logout";
 	}
-	
 	
 	@GetMapping("/vendre")
 	public String afficherPageVendre(Model modele, Principal principal) {
@@ -211,11 +192,9 @@ public class EncheresController {
 		articleRetrait.setCode_Postal(utilisateur.getCodePostal());
 		
 		modele.addAttribute("retrait", articleRetrait);
-		System.out.println(utilisateur);
-	    
+
 		return "PageVendreUnArticle";
 	}
-	
 	
 	@PostMapping("/vendre/valider")
 	public String afficherVendreArticle(ArticleVendu articleVendu, Utilisateur utilisateur, Model modele ,Principal principal) {
@@ -226,26 +205,20 @@ public class EncheresController {
 				modele.addAttribute("utilisateur", utilisateur);
 				
 		articleVenduService.enregistrerArticleVendu(articleVendu, utilisateur);
-		
-		//System.out.println(utilisateur);
-		
+
 		return "redirect:/encheres";
 	}
-	
-	
+		
 	@GetMapping("/vendre/modif")
 	public String afficherPageEnchereNonCommencee(Utilisateur utilisateur, Model modele ,Principal principal) {
-		
 		
 		// Pour l'affichage des points dans le header
 		String username = principal.getName();
 		utilisateur = utilisateurService.findByUserName(username);
 		modele.addAttribute("utilisateur", utilisateur);
-		//System.out.println(utilisateur);
-		
+	
 		return "PageEnchereNonCommencee";
 	}
-	
 	
 	@GetMapping("/encherir")
 	public String afficherPageEncherir(@RequestParam("idArticle") Integer idArticle, Utilisateur utilisateur, Model model, Principal principal, Enchere enchere) {
@@ -256,8 +229,13 @@ public class EncheresController {
 		try {
 			enchere = enchereService.findById(idArticle);
 			model.addAttribute("enchere", enchere);
+			Integer idMeilleurOffre = enchereService.readAncienEncherisseur(idArticle);
+			Utilisateur utilMeilleurOffre = utilisateurService.findById(idMeilleurOffre);
+			String utilisateurMeilleurOffre = utilMeilleurOffre.getPseudo();
+			model.addAttribute("utilisateurMeilleurOffre", utilisateurMeilleurOffre);
+			
 		} catch (EmptyResultDataAccessException ex) {
-			// TODO Auto-generated catch block
+			
 			ex.printStackTrace();
 		}
 		
@@ -275,23 +253,13 @@ public class EncheresController {
 		
 		String username = principal.getName();
 	    utilisateur = utilisateurService.findByUserName(username);
-	    Integer idUtilisateur = utilisateur.getIdUtilisateur();
-	    
-		System.out.println("L'id utilisateur1 est : " + idUtilisateur);
-		
-
-		
+	    Integer idUtilisateur = utilisateur.getIdUtilisateur();	
 	    articleVendu = articleVenduService.findById(idArticle);
 		model.addAttribute("articleVendu", articleVendu);
 
 		Integer meilleurOffre = enchereService.readAncienEncherisseur(idArticle);
-		
-		
-		System.out.println("La meilleure offre :" + meilleurOffre);
 	
 		if (meilleurOffre != null) {
-			System.out.println("If :");
-
 			Integer sommeARecredite = enchereService.readAncienOffre(idArticle);
 			Integer idAncienEncherisseur = enchereService.readAncienEncherisseur(idArticle);
 			enchere.setIdArticle(idAncienEncherisseur);
@@ -301,10 +269,7 @@ public class EncheresController {
 
 			utilisateurService.ajouterPoint(sommeARecredite, idAncienEncherisseur);
 			utilisateurService.retirerPoints(prixEnchere, idUtilisateur);
-			
-		} else {
-			System.out.println("Else :");
-			
+		} else {	
 			// Création d'une nouvelle enchère
 			Enchere creationEnchere = new Enchere();
 			model.addAttribute("enchere", creationEnchere);
@@ -312,45 +277,14 @@ public class EncheresController {
 			enchereService.enregistrerEnchere(enchere, prixEnchere, articleVendu, utilisateur);
 			enchere.setMontantEnchere(prixEnchere);
 			utilisateurService.retirerPoints(prixEnchere, idUtilisateur);
-
 		}
-
-//		
-//	     //Vérifiez si le prix de l'enchère est supérieur au prix de départ
-//	    if (montantEnchere.compareTo(model.getAttribute(null).getMiseAPrix()) > 0) {
-//	        // Retirez les points de l'utilisateur
-//	        utilisateur = utilisateurService.retirerPoints(montantEnchere);
-//	        
-//	        // Mettez à jour l'article avec le nouveau prix d'enchère
-//	        article.setMiseAPrix(idArticle);
-//	        article.setUtilisateurEnchere(utilisateur);
-//	        
-//	        // Enregistrez les modifications dans la base de données
-//	        articleVenduService.enregistrerArticleVendu(articleVendu, utilisateur);
-//	        utilisateurService.enregistrerUtilisateur(utilisateur);
-//	        
-//	        // Effectuez toute autre opération nécessaire
-//	        
-//	        return "redirect:/confirmation";
-//	    } else {
-//	        // Gérez le cas où l'enchère est invalide (par exemple, afficher un message d'erreur)
-//	        return "redirect:/erreur";
-//	    }
-		  // Mettre à jour le crédit de l'utilisateur
-	    
 		return "redirect:/encheres";
 	}
-	
-	
-	
-	
-	
 	
 	@GetMapping("/acquisition")
 	public String afficherPageAcquisition() {
 		return "PageAcquisition";
 	}
-	
 	
 	@GetMapping("/ma-vente-fini")
 	public String afficherPageMaFinVente() {
