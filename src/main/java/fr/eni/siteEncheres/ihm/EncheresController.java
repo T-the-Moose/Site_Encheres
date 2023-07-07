@@ -72,8 +72,7 @@ public class EncheresController {
 		String username = principal.getName();
 		Utilisateur utilisateur = utilisateurService.findByUserName(username);
 		modele.addAttribute("utilisateur", utilisateur);
-		//System.out.println(utilisateur);
-	    
+		
 	    return "PageAccueilNonConnecte";
 	}
 	
@@ -83,7 +82,9 @@ public class EncheresController {
 	}
 	
 	@GetMapping("/inscription")
-	public String afficherPageInscription(@ModelAttribute Utilisateur utilisateur) {
+	public String afficherPageInscription(@ModelAttribute Utilisateur utilisateur, BindingResult validationResultat) {
+		
+		
 			return "PageCreerCompte";
 	}
 	
@@ -102,7 +103,7 @@ public class EncheresController {
 		String username = principal.getName();
 		utilisateur = utilisateurService.findByUserName(username);
 		modele.addAttribute("utilisateur", utilisateur);
-		//System.out.println(utilisateur);
+		
 		
 		return "redirect:/connexion";
 	}
@@ -143,7 +144,7 @@ public class EncheresController {
 		String username = principal.getName();
 		Utilisateur utilisateur = utilisateurService.findByUserName(username);
 		modele.addAttribute("utilisateur", utilisateur);
-		//System.out.println(utilisateur);
+		
 		
 		return "PagesListeEncheresConnecte";
 	}
@@ -227,7 +228,7 @@ public class EncheresController {
 				
 		articleVenduService.enregistrerArticleVendu(articleVendu, utilisateur);
 		
-		//System.out.println(utilisateur);
+
 		
 		return "redirect:/encheres";
 	}
@@ -241,7 +242,7 @@ public class EncheresController {
 		String username = principal.getName();
 		utilisateur = utilisateurService.findByUserName(username);
 		modele.addAttribute("utilisateur", utilisateur);
-		//System.out.println(utilisateur);
+	
 		
 		return "PageEnchereNonCommencee";
 	}
@@ -262,7 +263,7 @@ public class EncheresController {
 			model.addAttribute("utilisateurMeilleurOffre", utilisateurMeilleurOffre);
 			
 		} catch (EmptyResultDataAccessException ex) {
-			// TODO Auto-generated catch block
+			
 			ex.printStackTrace();
 		}
 		
@@ -320,36 +321,8 @@ public class EncheresController {
 
 		}
 
-//		
-//	     //Vérifiez si le prix de l'enchère est supérieur au prix de départ
-//	    if (montantEnchere.compareTo(model.getAttribute(null).getMiseAPrix()) > 0) {
-//	        // Retirez les points de l'utilisateur
-//	        utilisateur = utilisateurService.retirerPoints(montantEnchere);
-//	        
-//	        // Mettez à jour l'article avec le nouveau prix d'enchère
-//	        article.setMiseAPrix(idArticle);
-//	        article.setUtilisateurEnchere(utilisateur);
-//	        
-//	        // Enregistrez les modifications dans la base de données
-//	        articleVenduService.enregistrerArticleVendu(articleVendu, utilisateur);
-//	        utilisateurService.enregistrerUtilisateur(utilisateur);
-//	        
-//	        // Effectuez toute autre opération nécessaire
-//	        
-//	        return "redirect:/confirmation";
-//	    } else {
-//	        // Gérez le cas où l'enchère est invalide (par exemple, afficher un message d'erreur)
-//	        return "redirect:/erreur";
-//	    }
-		  // Mettre à jour le crédit de l'utilisateur
-	    
 		return "redirect:/encheres";
 	}
-	
-	
-	
-	
-	
 	
 	@GetMapping("/acquisition")
 	public String afficherPageAcquisition() {
