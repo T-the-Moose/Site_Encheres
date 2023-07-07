@@ -9,7 +9,12 @@ h1, h2, h3, p, label, span {
 	font-family: 'Righteous', cursive;
 }
 
-input, select, select option, button {
+input, select, button {
+	border-radius: 30px;
+    background: rgb(255 255 255 / 25%);
+}
+
+option {
 	border-radius: 30px;
     background: rgb(255 255 255 / 25%);
 }
