@@ -390,6 +390,7 @@ a#article {
 .img_accueil {
 	width: 15vh;
 	margin: 1vh;
+	border-radius: 15px;
 }
 
 .erreur-vente {
