@@ -33,21 +33,23 @@
 				<button type="submit" class="button_rechercher_accueil">Rechercher</button>
 			</div>
 			</form>
-			
-			<div class="listes_accueil" data-th-each="article : ${articleVendu}">
-				<div class="card_accueil"><a class="block-enchere" id="article" th:href="@{/encherir(idArticle=${article.idArticle})}">
-					<div class="img_card_accueil">
-						<img alt="" src="/img/1.jpg" class="img_accueil">
+			<div class="listes_general">
+				<div class="listes_accueil" data-th-each="article : ${articleVendu}">
+					<div class="card_accueil">
+						<a class="block-enchere" id="article" th:href="@{/encherir(idArticle=${article.idArticle})}">
+						<div class="img_card_accueil">
+							<img alt="" src="/img/1.jpg" class="img_accueil">
+						</div>
+						<div class="description_accueil">
+							<p data-th-text="${article.nomArticle}"></p>
+							<p>Prix : <span data-th-text="${article.miseAPrix}+ ' ' + points"></span></p>
+							<p>Fin de l'enchère : <span data-th-text="${article.dateFinEncheres}"></span></p>
+							<p>Vendeur : <span data-th-text="${article.utilisateur.pseudo}"></span></p>
+						</div>
+						</a>
 					</div>
-					<div class="description_accueil">
-						<p data-th-text="${article.nomArticle}"></p>
-						<p>Prix : <span data-th-text="${article.miseAPrix}+ ' ' + points"></span></p>
-						<p>Fin de l'enchère : <span data-th-text="${article.dateFinEncheres}"></span></p>
-						<p>Vendeur : <span data-th-text="${article.utilisateur.pseudo}"></span></p>
-					</div>
-				</div>
-			</a></div>
-			
+			</div>
+			</div>
 			<div data-th-if="${articleVendu.isEmpty()}">
 			<p class="erreur-vente">Aucun article en vente pour cette recherche</p>
 			</div>
