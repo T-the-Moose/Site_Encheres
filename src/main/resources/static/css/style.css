@@ -485,11 +485,22 @@ a#article {
 	align-items: center;
 }
 
+.conteneur-block-centre-profil-center {
+	margin: 2vh;
+    display: flex;
+    flex-direction: column;
+    width: 55%;
+    align-items: center;
+    border-radius: 10px;
+    padding: 2vh;
+    background: rgb(255 255 255 / 25%);
+}
+
 .infos-profil {
 	display: flex;
 	margin: 1vh;
 	justify-content: space-evenly;
-	width: 50%;
+	width: 100%;
 }
 
 .titre-description-profil {
