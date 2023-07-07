@@ -10,6 +10,14 @@ h1, h2, h3, p, label, span {
 }
 
 /******   Connexion   *******/
+
+#connexion {
+    background-image: url(/img/background.jpg);
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+}
 .titre_nav_accueil_inscription {
 	border: solid black;
 	border-radius: 50%;
@@ -24,12 +32,30 @@ h1, h2, h3, p, label, span {
 }
 
 .block-connexion {
-	display: block;
-	text-align: center;
+    display: flex;
+    text-align: center;
+    width: auto;
+    justify-content: center;
+    margin-top: 15vh;
+}
+
+.block-conteneur-connexion {
+    width: 35%;
+    display: block;
+    background-color: #ffffff;
+    border-radius: 30px;
+    border: solid 1px #242124;
+    background: rgb(255 255 255 / 25%);
 }
 
 .conteneur-input {
 	margin: 20px;
+}
+
+input#name, input#mdp {
+    border-radius: 30px;
+    background-color: white;
+    background: rgb(255 255 255 / 25%);
 }
 
 #block-conteneur-choix {
@@ -49,8 +75,13 @@ h1, h2, h3, p, label, span {
 }
 
 #block-input-connexion input {
-	padding: 10px;
-	margin: 5px;
+    padding: 10px;
+    margin: 5px;
+}
+
+.boutton-connexion {
+	border-radius: 30px;
+    background: rgb(255 255 255 / 25%);
 }
 
 .block-checkbox {
@@ -242,14 +273,15 @@ h1, h2, h3, p, label, span {
 }
 
 .titre_nav_accueil {
-	border: solid black;
-	border-radius: 50%;
-	padding: 1em;
+	padding: 0.5em;
 }
 
-.lien_accueil {
-	color: black;
-	text-decoration: none;
+img.img-logo-connexion {
+    width: 10%;
+}
+
+img.img-logo {
+    width: 25%;
 }
 
 .h2_accueil {
