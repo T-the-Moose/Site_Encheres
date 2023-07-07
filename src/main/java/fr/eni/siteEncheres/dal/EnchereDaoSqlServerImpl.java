@@ -95,14 +95,15 @@ public class EnchereDaoSqlServerImpl implements EnchereDAO {
 		
 		t = namedParameterJdbcTemplate;
 		
-		// requête COUNT en INSERT
+		// requête COUNT
 		
 		int ifEnchere = t.getJdbcOperations().queryForObject(RECUP_SI_OFFRE, Integer.class, articleVendu.getIdArticle());
 		
 		System.out.println(ifEnchere);
 		
     	if(ifEnchere != 0 ) {
-    		System.out.println("if enchere");
+    		
+    		//Si l'enchere n'exsite pas
     		enchere.setMontantEnchere(prixEnchere);
     		
     		var utilisateurUpdate = utilisateur.getIdUtilisateur();
@@ -117,8 +118,9 @@ public class EnchereDaoSqlServerImpl implements EnchereDAO {
     		
     		
     	} else {
-		
-    		System.out.println("else enchere");
+    		
+    		//Si l'enchére existe
+    		
 			Date date = new Date();  // Date du jour
 			
 			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
