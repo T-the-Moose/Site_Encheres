@@ -256,6 +256,11 @@ public class EncheresController {
 		try {
 			enchere = enchereService.findById(idArticle);
 			model.addAttribute("enchere", enchere);
+			Integer idMeilleurOffre = enchereService.readAncienEncherisseur(idArticle);
+			Utilisateur utilMeilleurOffre = utilisateurService.findById(idMeilleurOffre);
+			String utilisateurMeilleurOffre = utilMeilleurOffre.getPseudo();
+			model.addAttribute("utilisateurMeilleurOffre", utilisateurMeilleurOffre);
+			
 		} catch (EmptyResultDataAccessException ex) {
 			// TODO Auto-generated catch block
 			ex.printStackTrace();
