@@ -2,7 +2,7 @@
 
 Création de 0 d'un site d'enchere pour le projet n°2 ENI.
 
-Crée en collaboration avec @FlorianLf et @T-the-Moose
+Crée en collaboration avec @FlorianLf et @KillianSb
 
 ## Lancement du projet 
 
