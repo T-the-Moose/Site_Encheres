@@ -1,11 +1,10 @@
-
-    Site Enchere Projet ENI -
+## Site Enchere Projet 
 
 Création de 0 d'un site d'enchere pour le projet n°2 ENI.
 
 Crée en collaboration avec @FlorianLf et @T-the-Moose
 
-    Lancement du projet -
+## Lancement du projet 
 
 1- Télecharger le projet.
 
